@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "SwimNW",
+    "slug": "SwimNW",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "SwimNW"
+}
