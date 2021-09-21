@@ -1,4 +1,9 @@
 export default [
+  { 
+      name: 'Map',
+      iconType:'Material',
+      iconName: 'face-profile'
+  },
   {
       name:'Profile',
       iconType:'Material',

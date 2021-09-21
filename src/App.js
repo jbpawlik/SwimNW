@@ -11,7 +11,6 @@ export default function App() {
     <React.Fragment>
       
       <DrawerMenu/>
-      <Map/>
     </React.Fragment>
   );
 }

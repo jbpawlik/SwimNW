@@ -8,6 +8,7 @@ import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
+import MapScreen from "../screens/Map";
 import DrawerItems from '../constants/DrawerItems';
 import Header from '../components/Header';
 
@@ -19,7 +20,7 @@ const DrawerMenu = () => {
       <NavigationContainer>
         <Drawer.Navigator 
           drawerType="front"
-          initialRouteName="Profile"
+          initialRouteName="Map"
           screenOptions={{
             activeTintColor: '#e91e63',
             itemStyle: { marginVertical: 10 },
@@ -30,7 +31,8 @@ const DrawerMenu = () => {
               key={drawer.name}
               name={drawer.name}
               component={
-                drawer.name==='Profile' ? ProfileScreen 
+                drawer.name==='Map' ? MapScreen 
+                : drawer.name==='Profile' ? ProfileScreen 
                 : drawer.name==='Settings' ? SettingsScreen 
                 : drawer.name==='Saved Items' ? SavedScreen
                 : ReferScreen
