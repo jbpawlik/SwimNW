@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import ProfileScreen from '../screens/Profile';
 import SettingsScreen from '../screens/Settings';
+import Account from "../screens/Account";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
@@ -36,7 +37,7 @@ const DrawerMenu = () => {
                 : drawer.name==='Profile' ? ProfileScreen 
                 : drawer.name==='Settings' ? SettingsScreen 
                 : drawer.name==='Saved Items' ? SavedScreen
-                : ReferScreen
+                : Account
               }
               options={{
                 drawerIcon:({focused})=>

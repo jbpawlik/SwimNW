@@ -9,6 +9,18 @@ import { Provider } from 'react-redux';
 import firebase from "./firebase";
 import App from './src/App';
 
+//You turned off dispatch: store.dispatch below
+
+const rrfProps = {
+  firebase,
+  config: {
+        userProfile: "users",
+        useFirestoreForProfile: true,
+    },
+  dispatch: '',
+  createFirestoreInstance
+}
+
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately

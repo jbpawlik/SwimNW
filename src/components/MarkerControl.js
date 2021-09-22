@@ -46,8 +46,8 @@ class MarkerControl extends React.Component {
   handleChangingSelectedMarker = (id) => {
     this.props.firestore.get({collection: 'markers', doc: id}).then((marker) => {
       const firestoreMarker = {
-        name: ticket.get("name"),
-        id: ticket.id
+        name: marker.get("name"),
+        id: marker.id
       }
       this.setState({selectedMarker: firestoreMarker });
     });
@@ -60,7 +60,7 @@ class MarkerControl extends React.Component {
   }
 
   handleClick = () => {
-    if (this.state.selectedTicket != null) {
+    if (this.state.selectedMarker != null) {
       this.setState({
         selectedMarker: null,
         editing: false

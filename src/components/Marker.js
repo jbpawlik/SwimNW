@@ -14,7 +14,7 @@ function Marker(props){
 }
 
 Marker.propTypes = {
-  names: PropTypes.string,
+  name: PropTypes.string,
   id: PropTypes.string,
   whenMarkerClicked: PropTypes.func,
   dateCreated: PropTypes.string

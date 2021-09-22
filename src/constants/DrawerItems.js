@@ -15,12 +15,12 @@ export default [
       iconName:'settings'
   },
   {
-      name:'Saved Items',
+      name:'My Swims',
       iconType:'Material',
       iconName:'bookmark-check-outline'
   },
   {
-      name:'Refer a Friend!',
+      name:'Account',
       iconType:'FontAwesome5',
       iconName:'user-friends'
   }
