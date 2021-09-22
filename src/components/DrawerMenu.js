@@ -6,6 +6,7 @@ import SettingsScreen from '../screens/Settings';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
 import MapScreen from "../screens/Map";
@@ -19,7 +20,7 @@ const DrawerMenu = () => {
     <React.Fragment>
       <NavigationContainer>
         <Drawer.Navigator 
-          drawerType="front"
+          drawerType="slide"
           initialRouteName="Map"
           screenOptions={{
             activeTintColor: '#e91e63',
@@ -39,6 +40,13 @@ const DrawerMenu = () => {
               }
               options={{
                 drawerIcon:({focused})=>
+                drawer.iconType==='Entypo' ?
+                  <MaterialCommunityIcons
+                    name="map"
+                    size={24}
+                    color={focused ? "#e91e63" : "black"}
+                  />
+                :
                 drawer.iconType==='Material' ? 
                   <MaterialCommunityIcons 
                       name={drawer.iconName}

@@ -1,8 +1,8 @@
 export default [
   { 
       name: 'Map',
-      iconType:'Material',
-      iconName: 'face-profile'
+      iconType:'Entypo',
+      iconName: 'map'
   },
   {
       name:'Profile',
