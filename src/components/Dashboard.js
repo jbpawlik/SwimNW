@@ -5,7 +5,7 @@ import firebase from '../firebase';
 export default class Dashboard extends Component {
   constructor() {
     super();
-    this.state = { 
+    this.state = {
       uid: ''
     }
   }
@@ -15,13 +15,13 @@ export default class Dashboard extends Component {
       this.props.navigation.navigate('Signin')
     })
     .catch(error => this.setState({ errorMessage: error.message }))
-  }  
+  }
 
   render() {
-    this.state = { 
+    this.state = {
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid
-    }    
+    }
     return (
       <View style={styles.container}>
         <Text style = {styles.textStyle}>
@@ -30,7 +30,7 @@ export default class Dashboard extends Component {
 
         <Button
           color="#3740FE"
-          title="Logout"
+          title="Signout"
           onPress={() => this.signOut()}
         />
       </View>
