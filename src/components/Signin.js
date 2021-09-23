@@ -36,7 +36,7 @@ export default class Signin extends Component {
           email: '', 
           password: ''
         })
-        this.props.navigation.navigate('Map')
+        this.props.navigation.navigate('Profile')
       })
       .catch(error => this.setState({ errorMessage: error.message }))
     }

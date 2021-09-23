@@ -42,7 +42,7 @@ export default class Signup extends Component {
           email: '', 
           password: ''
         })
-        this.props.navigation.navigate('Login')
+        this.props.navigation.navigate('Profile')
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }
@@ -86,9 +86,9 @@ export default class Signup extends Component {
 
         <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('Login')}>
+          onPress={() => this.props.navigation.navigate('Signin')}>
           Already Registered? Click here to login
-        </Text>                          
+        </Text>
       </View>
     );
   }

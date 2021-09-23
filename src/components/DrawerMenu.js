@@ -36,7 +36,7 @@ const DrawerMenu = () => {
                 drawer.name==='Map' ? MapScreen 
                 : drawer.name==='Profile' ? ProfileScreen 
                 : drawer.name==='Settings' ? SettingsScreen 
-                : drawer.name==='Saved Items' ? SavedScreen
+                : drawer.name==='My Swims' ? SavedScreen
                 : Account
               }
               options={{
@@ -67,39 +67,6 @@ const DrawerMenu = () => {
                     size={24} 
                     color={focused ? "#e91e63" : "black"} 
                   />
-                  
-                  
-                  // ,
-                  // headerShown: true,
-                  // header: ({ navigation, route, options }) => {
-                  //   const title =
-                  //     options.headerTitle !== undefined
-                  //     ? options.headerTitle
-                  //     : options.title !== undefined
-                  //     ? options.title 
-                  //     : route.name;
-                      
-                  //     return (
-                  //       <Header screen={title}/>
-                  //     )
-                      
-                  // }
-                  
-
-                  //Shows up but doesn't do anything
-                  // ,
-                  // header: ({ navigation, route, options }) => {
-                  //   const title =
-                  //   options.headerTitle !== undefined
-                  //   ? options.headerTitle
-                  //   : options.title !== undefined
-                  //   ? options.title
-                  //   : route.name;
-                  //   return (
-                  //   <Header screen="{title}"/>
-                  //   );
-                  //   }
-
                 }}
             />)
           }
