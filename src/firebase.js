@@ -1,8 +1,8 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app'
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: "AIzaSyAtp7rpL40bUmkI-GWk771_xF1SltIRtz0",
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,

@@ -8,6 +8,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import firebase from "./firebase";
 import App from './src/App';
+import 'firebase/auth';
+
 
 //You turned off dispatch: store.dispatch below
 
