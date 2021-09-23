@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 // import Marker from './Marker';
 import Markers from './Markers';
+import firebase from '../firebase';
 
 export default class Map extends Component {
 
@@ -26,9 +27,30 @@ export default class Map extends Component {
         latitudeDelta: 0.1,
         longitudeDelta: 0.1}
     }
+    this.dbRef = firebase.firestore().collection('markers');
+    this.markerArray = []
+  }
+
+  // getMarkers = () => {
+  //   return this.dbRef
+  // } 
+
+  getMarkers = () => {
+        this.dbRef.get()
+            .then(snapshot => {
+                snapshot.docs.forEach(marker => {
+                    let currentID = marker.id
+                    let appObj = { ...marker.data(), ['id']: currentID }
+                    this.markerArray.push(appObj)
+                    this.markerArray.push(marker.data())
+            })
+           console.log(this.markerArray)
+        })
   }
 
   render() {
+    const markers = this.getMarkers();
+    console.log(this.markerArray)
     return (
       <MapView
          style={{ flex: 1 }}
@@ -42,11 +64,12 @@ export default class Map extends Component {
          longitudeDelta: 0.1}}
          customMapStyle={mapStyle}
          >
-           {this.state.markers.map((marker, index) => (
+           {this.markerArray.map((marker, index) => (
            <Marker
            key={index}
-          coordinate={marker.coordinate}
-          title={marker.name}
+          latitude={marker.latitude}
+          longitude={marker.longitude}
+          title={marker.title}
           />
            ))}
       </MapView>

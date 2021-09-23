@@ -7,7 +7,7 @@ import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityInd
 import firebase from '../firebase';
 
 export default class ReusableForm extends Component {
-  
+
   constructor() {
     super();
     this.dbRef = firebase.firestore().collection('markers');
