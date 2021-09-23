@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 function Marker(props){
   return (
     <React.Fragment>
-      <div onClick = {()=> props.whenMarkerClicked(props.id)}>
+      {/* <div onClick = {()=> props.whenMarkerClicked(props.id)}>
         <h1>{props.name}</h1>
         <p>{props.dateCreated}</p>
         <hr/>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

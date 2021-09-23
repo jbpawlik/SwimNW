@@ -6,25 +6,26 @@ import Markers from './Markers';
 
 export default class Map extends Component {
 
-  
-  state = {
-    markers: 
-    [
-      {
-        coordinate: {
-          latitude: 45.5,
-          longitude: -122.675
-        },
-        title: 'Test',
-        description: 'Test'
-      }
-
-    ], 
-    region: {
-      latitude: 45.5,
-      longitude: -122.675,
-      latitudeDelta: 0.1,
-      longitudeDelta: 0.1}
+  constructor(props) {
+    super(props)
+    this.state = {
+      markers:
+      [
+        {
+          coordinate: {
+            latitude: 45.5,
+            longitude: -122.675
+          },
+          title: 'Test',
+          description: 'Test'
+        }
+      ],
+      region: {
+        latitude: 45.5,
+        longitude: -122.675,
+        latitudeDelta: 0.1,
+        longitudeDelta: 0.1}
+    }
   }
 
   render() {
