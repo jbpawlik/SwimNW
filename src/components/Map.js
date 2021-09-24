@@ -27,14 +27,11 @@ export default class Map extends Component {
         latitudeDelta: 0.1,
         longitudeDelta: 0.1}
     }
+    // this.handlePress = this.handlePress.bind(this);
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
     this.arrayLength = this.markerArray.length;
   }
-
-  // getMarkers = () => {
-  //   return this.dbRef
-  // } 
 
   setArrayLength = () => {
     // console.log(this.markerArray.length)
@@ -73,6 +70,20 @@ export default class Map extends Component {
 
   // this.getMarkers();
   
+  //Working handlePress function that needs to be updated to use Firestore collection instead of state
+  handlePress = (event) => {
+    this.setState({
+      markers: [
+        ...this.state.markers,
+        { coordinate: event.nativeEvent.coordinate,
+        title: 'newMarker',
+        description: 'test'
+        }
+      ]
+        })
+        console.log(this.state.markers)
+  }
+
   render() {
     if (this.markerArray.length <= 1) {
       this.getMarkers()
@@ -81,7 +92,7 @@ export default class Map extends Component {
       // this.setArrayLength()
       // this.getMarkers()
       // console.log('hello')
-      console.log(this.arrayLength)
+      // console.log(this.arrayLength)
       // console.log(this.markerArray.length)
       // console.log(this.markerArray.length)
       // this.setState({arrayLength: this.markerArray.length})
@@ -94,16 +105,19 @@ export default class Map extends Component {
     // console.log(markers)
     return (
       <MapView
-         style={{ flex: 1 }}
-         provider={PROVIDER_GOOGLE}
-         showsUserLocation
-         followUserLocation={true}
-         initialRegion={{
-         latitude: 45.5,
-         longitude: -122.675,
-         latitudeDelta: 0.1,
-         longitudeDelta: 0.1}}
-         customMapStyle={mapStyle}
+        style={{ flex: 1 }}
+        provider={PROVIDER_GOOGLE}
+        showsUserLocation
+        followUserLocation={true}
+        initialRegion = {this.state.region}
+        // initialRegion={{
+        // latitude: 45.5,
+        // longitude: -122.675,
+        // latitudeDelta: 0.1,
+        // longitudeDelta: 0.1}}
+        customMapStyle={mapStyle}
+        onLongPress={this.handlePress}
+
          >
            {/* Works
            <Marker 
