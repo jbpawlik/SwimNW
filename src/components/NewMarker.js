@@ -9,9 +9,7 @@ function NewMarker(props){
 
   function addMarkerToFirestore(event) {
     event.preventDefault();
-
     props.onNewMarkerCreation();
-
     return firestore.collection('markers').add(
       {
         title: event.target.title.value,
@@ -23,8 +21,7 @@ function NewMarker(props){
   
   return (
     <React.Fragment>
-      <ReusableForm 
-      />
+      <ReusableForm/>
     </React.Fragment>
   );
 }

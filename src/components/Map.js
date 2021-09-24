@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 // import Marker from './Marker';
-import Markers from './Markers';
+// import Markers from './Markers';
 import firebase from '../firebase';
 
 export default class Map extends Component {
