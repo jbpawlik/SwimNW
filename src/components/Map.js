@@ -34,6 +34,16 @@ export default class Map extends Component {
     this.arrayLength = this.markerArray.length;
   }
 
+  // componentDidUpdate() {
+  //   if (this.arrayLength !== this.markerArray.length) {
+  //   this.setState({arrayLength: this.markerArray.length})
+  //   }
+  // }
+
+  // shouldComponentUpdate(nextProps) {
+  //   return nextProps.markerArray !== this.props.markerArray
+  // }
+
   setArrayLength = () => {
     // console.log(this.markerArray.length)
     this.setState({arrayLength: this.markerArray.length})
@@ -112,7 +122,7 @@ export default class Map extends Component {
         followUserLocation={true}
         initialRegion = {this.state.region}
         radius={20}
-        maxZoom={15}
+        extent={200}
         clusterColor={'steelblue'}
         // initialRegion={{
         // latitude: 45.5,

@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../firebase';
 
-export default class Signin extends Component {
+export default class Signin extends Component {  
   constructor() {
     super();
-    this.state = {
-      email: '',
+    this.state = { 
+      email: '', 
       password: '',
       isLoading: false
     }
   }
-
+  
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;

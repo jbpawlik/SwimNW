@@ -22,3 +22,5 @@ The most pressing problems to solve:
 11 - Spent a half hour trying to fix the API key thing. I installed a dotenv plugin specifically for React Native, but it's still not working. Frustrating day so far.
 
 11:45 - Added a handlePress function to Map.js. This adds a marker to state.markers, which I don't actually use. I need this initial function to do much more complicated things. Lunch time.
+
+12:30 - Added map clustering
