@@ -26,3 +26,7 @@ The most pressing problems to solve:
 12:30 - Added map clustering
 
 2:45 - I really don't know where the last two hours went. I moved the NewMarker form to its own screen, which enabled me to use the navigation prop to switch to the map when a new marker is added.
+
+3:45 - Slowly trying to figure out how to use long presses to interact with markers.
+
+4:40 - Added a dialogue that pops up when you long press, asking if you want to make a new marker. Still needs to navigate you to the NewMarker screen.
