@@ -29,6 +29,7 @@ export default class Map extends Component {
     }
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
+    this.arrayLength = '';
   }
 
   // getMarkers = () => {
@@ -39,13 +40,22 @@ export default class Map extends Component {
     this.dbRef.get()
         .then(snapshot => {
             snapshot.docs.forEach(marker => {
+              if (!this.markerArray.includes(marker.id)) {
+                console.log(marker.id)
                 let currentID = marker.id
                 let appObj = { ...marker.data(), ['id']: currentID }
                 this.markerArray.push(appObj)
-                this.markerArray.push(marker.data())
+                // this.markerArray.push(marker.data())
+              }
         })
         // console.log(this.markerArray)
         this.setState({markerArray: this.markerArray})
+        this.setState({arrayLength: this.markerArray.length})
+        console.log(this.markerArray)
+        console.log('Log')
+        console.log(this.arrayLength)
+
+        // this.setState({arrayLength: this.markerArray.length})
         return this.markerArray;
     })
     // console.log(this.markerArray)
@@ -57,8 +67,15 @@ export default class Map extends Component {
     if (this.markerArray.length <= 1) {
       this.getMarkers()
       // console.log(markers)
-    } else {
+    } else if (this.arrayLength !== this.markerArray.length) {
+      // this.getMarkers()
+      // console.log(this.arrayLength)
+      // console.log(this.markerArray.length)
+      // this.setState({arrayLength: this.markerArray.length})
+      // console.log(this.markerArray.length)
       // console.log(this.markerArray[0].latitude)
+    } else {
+      // console.log(markers)
     }
     // const markers = this.getMarkers();
     // console.log(markers)
