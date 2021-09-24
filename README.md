@@ -19,4 +19,6 @@ The most pressing problems to solve:
 
 10:30 - I've spent two hours trying to troubleshoot #1 in Map.js. I feel very close to understanding the problem. It has something to do with the asynchronous nature of setState, but even trying to manually update the arrayLength property doesn't work. I'm going to work on something else for a while.
 
-11: Spent a half hour trying to fix the API key thing. I installed a dotenv plugin specifically for React Native, but it's still not working. Frustrating day so far.
+11 - Spent a half hour trying to fix the API key thing. I installed a dotenv plugin specifically for React Native, but it's still not working. Frustrating day so far.
+
+11:45 - Added a handlePress function to Map.js. This adds a marker to state.markers, which I don't actually use. I need this initial function to do much more complicated things. Lunch time.
