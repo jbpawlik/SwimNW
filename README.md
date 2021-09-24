@@ -18,3 +18,5 @@ The most pressing problems to solve:
 3. The Firebase login credentials / .env process outlined in the lessons is not working for this project. I can't figure out why. It worked when I did the homework and the projects for class, but I had to put the information directly into my firebase.js file, which means that I've been sending the key to Github. I'll have to go back later and get it to un-share all of those files in past commits.
 
 10:30 - I've spent two hours trying to troubleshoot #1 in Map.js. I feel very close to understanding the problem. It has something to do with the asynchronous nature of setState, but even trying to manually update the arrayLength property doesn't work. I'm going to work on something else for a while.
+
+11: Spent a half hour trying to fix the API key thing. I installed a dotenv plugin specifically for React Native, but it's still not working. Frustrating day so far.
