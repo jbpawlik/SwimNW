@@ -13,6 +13,7 @@ import ReferScreen from '../screens/Refer';
 import MapScreen from "../screens/Map";
 import DrawerItems from '../constants/DrawerItems';
 import Header from '../components/Header';
+import NewMarker from "../screens/NewMarker";
 
 const Drawer = createDrawerNavigator();
 
@@ -21,7 +22,7 @@ const DrawerMenu = () => {
     <React.Fragment>
       <NavigationContainer>
         <Drawer.Navigator 
-          drawerType="slide"
+          drawerType="front"
           initialRouteName="Map"
           screenOptions={{
             activeTintColor: '#e91e63',
@@ -35,7 +36,8 @@ const DrawerMenu = () => {
               component={
                 drawer.name==='Map' ? MapScreen 
                 : drawer.name==='Profile' ? ProfileScreen 
-                : drawer.name==='Settings' ? SettingsScreen 
+                : drawer.name==='Settings' ? SettingsScreen
+                : drawer.name==='Add Swim' ? NewMarker
                 : drawer.name==='My Swims' ? SavedScreen
                 : Account
               }

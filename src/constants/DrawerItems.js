@@ -15,6 +15,11 @@ export default [
       iconName:'settings'
   },
   {
+      name:'Add Swim',
+      iconType:'Feather',
+      iconName: 'settings'
+  },
+  {
       name:'My Swims',
       iconType:'Material',
       iconName:'bookmark-check-outline'
