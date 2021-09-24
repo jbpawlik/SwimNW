@@ -83,7 +83,7 @@ export default class Map extends Component {
       [
         {
           text: 'Add New Swim',
-          onPress: () => this.props.navigation.navigate('NewMarker')
+          onPress: () => this.props.navigation.navigate('Add Swim')
         },
         {
           text: 'Cancel',
