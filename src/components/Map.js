@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import MapView, {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView from 'react-native-map-clustering';
 // import Marker from './Marker';
 // import Markers from './Markers';
 import firebase from '../firebase';
@@ -110,6 +111,9 @@ export default class Map extends Component {
         showsUserLocation
         followUserLocation={true}
         initialRegion = {this.state.region}
+        radius={20}
+        maxZoom={15}
+        clusterColor={'steelblue'}
         // initialRegion={{
         // latitude: 45.5,
         // longitude: -122.675,
@@ -135,6 +139,7 @@ export default class Map extends Component {
            {this.markerArray.map((marker, index) => (
              <Marker 
              key={index}
+             tracksViewChanges={false}
              coordinate={marker.coordinate}
              title={marker.title}
              />
