@@ -29,19 +29,24 @@ export default class Map extends Component {
     }
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
-    this.arrayLength = '';
+    this.arrayLength = this.markerArray.length;
   }
 
   // getMarkers = () => {
   //   return this.dbRef
   // } 
 
+  setArrayLength = () => {
+    // console.log(this.markerArray.length)
+    this.setState({arrayLength: this.markerArray.length})
+    // console.log(this.arrayLength)
+  }
+
   getMarkers = () => {
     this.dbRef.get()
         .then(snapshot => {
             snapshot.docs.forEach(marker => {
               if (!this.markerArray.includes(marker.id)) {
-                console.log(marker.id)
                 let currentID = marker.id
                 let appObj = { ...marker.data(), ['id']: currentID }
                 this.markerArray.push(appObj)
@@ -49,13 +54,18 @@ export default class Map extends Component {
               }
         })
         // console.log(this.markerArray)
+        // console.log(this.markerArray.length)
         this.setState({markerArray: this.markerArray})
+        // console.log(this.arrayLength)
+        // this.setArrayLength()
+        
+        console.log(this.arrayLength)
+        // console.log('Log')
+
         this.setState({arrayLength: this.markerArray.length})
-        console.log(this.markerArray)
-        console.log('Log')
+        
         console.log(this.arrayLength)
 
-        // this.setState({arrayLength: this.markerArray.length})
         return this.markerArray;
     })
     // console.log(this.markerArray)
@@ -68,8 +78,11 @@ export default class Map extends Component {
       this.getMarkers()
       // console.log(markers)
     } else if (this.arrayLength !== this.markerArray.length) {
+      // this.setArrayLength()
       // this.getMarkers()
-      // console.log(this.arrayLength)
+      // console.log('hello')
+      console.log(this.arrayLength)
+      // console.log(this.markerArray.length)
       // console.log(this.markerArray.length)
       // this.setState({arrayLength: this.markerArray.length})
       // console.log(this.markerArray.length)
