@@ -56,9 +56,9 @@ export default class ReusableForm extends Component {
     } else {
       this.dbRef.add({
         title: this.state.title,
-        latitude: parseInt(this.state.latitude), 
-        longitude: parseInt(this.state.longitude),
-        coordinate: {latitude: parseInt(this.state.latitude), longitude: parseInt(this.state.longitude)}
+        latitude: parseFloat(this.state.latitude), 
+        longitude: parseFloat(this.state.longitude),
+        coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
       })
     }
     }
