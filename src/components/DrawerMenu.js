@@ -22,9 +22,10 @@ const DrawerMenu = () => {
     <React.Fragment>
       <NavigationContainer>
         <Drawer.Navigator 
-          drawerType="front"
+          // drawerType='front'
           initialRouteName="Map"
           screenOptions={{
+            drawerType: 'slide',
             activeTintColor: '#e91e63',
             itemStyle: { marginVertical: 10 },
           }}>

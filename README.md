@@ -24,3 +24,5 @@ The most pressing problems to solve:
 11:45 - Added a handlePress function to Map.js. This adds a marker to state.markers, which I don't actually use. I need this initial function to do much more complicated things. Lunch time.
 
 12:30 - Added map clustering
+
+2:45 - I really don't know where the last two hours went. I moved the NewMarker form to its own screen, which enabled me to use the navigation prop to switch to the map when a new marker is added.
