@@ -26,7 +26,9 @@ export default class Map extends Component {
         latitude: 45.5,
         longitude: -122.675,
         latitudeDelta: 0.1,
-        longitudeDelta: 0.1}
+        longitudeDelta: 0.1
+      },
+      tempCoordinate: {}
     }
     // this.handlePress = this.handlePress.bind(this);
     this.dbRef = firebase.firestore().collection('markers');
@@ -50,7 +52,7 @@ export default class Map extends Component {
     // console.log(this.arrayLength)
   }
 
-  getMarkers = () => {
+  getMarkers = async () => {
     this.dbRef.get()
         .then(snapshot => {
             snapshot.docs.forEach(marker => {
@@ -58,41 +60,32 @@ export default class Map extends Component {
                 let currentID = marker.id
                 let appObj = { ...marker.data(), ['id']: currentID }
                 this.markerArray.push(appObj)
+                // Was generating duplicate information
                 // this.markerArray.push(marker.data())
               }
         })
-        // console.log(this.markerArray)
-        // console.log(this.markerArray.length)
         this.setState({markerArray: this.markerArray})
-        // console.log(this.arrayLength)
-        // this.setArrayLength()
-        
-        console.log(this.arrayLength)
-        // console.log('Log')
-
         this.setState({arrayLength: this.markerArray.length})
-        
-        console.log(this.arrayLength)
 
-        return this.markerArray;
+        // return this.markerArray;
     })
-    // console.log(this.markerArray)
   }
 
   // this.getMarkers();
   
   //Working handlePress function that needs to be updated to use Firestore collection instead of state
   handlePress = (event) => {
-    this.setState({
-      markers: [
-        ...this.state.markers,
-        { coordinate: event.nativeEvent.coordinate,
-        title: 'newMarker',
-        description: 'test'
-        }
-      ]
-        })
-        console.log(this.state.markers)
+    this.setState({tempCoordinate: event.nativeEvent.coordinate})
+    // this.setState({
+    //   markers: [
+    //     ...this.state.markers,
+    //     { coordinate: event.nativeEvent.coordinate,
+    //     title: 'newMarker',
+    //     description: 'test'
+    //     }
+    //   ]
+    //     })
+    //     console.log(this.state.markers)
   }
 
   render() {
@@ -100,20 +93,10 @@ export default class Map extends Component {
       this.getMarkers()
       // console.log(markers)
     } else if (this.arrayLength !== this.markerArray.length) {
-      // this.setArrayLength()
-      // this.getMarkers()
-      // console.log('hello')
-      // console.log(this.arrayLength)
-      // console.log(this.markerArray.length)
-      // console.log(this.markerArray.length)
-      // this.setState({arrayLength: this.markerArray.length})
-      // console.log(this.markerArray.length)
       // console.log(this.markerArray[0].latitude)
     } else {
       // console.log(markers)
     }
-    // const markers = this.getMarkers();
-    // console.log(markers)
     return (
       <MapView
         style={{ flex: 1 }}
