@@ -13,8 +13,8 @@ export default class ReusableForm extends Component {
     this.dbRef = firebase.firestore().collection('markers');
     this.state = { 
       title: '',
-      latitude: '', 
-      longitude: '',
+      latitude: null, 
+      longitude: null,
       // isLoading: false
     }
   }
@@ -56,8 +56,9 @@ export default class ReusableForm extends Component {
     } else {
       this.dbRef.add({
         title: this.state.title,
-        latitude: this.state.latitude, 
-        longitude: this.state.longitude
+        latitude: parseInt(this.state.latitude), 
+        longitude: parseInt(this.state.longitude),
+        coordinate: {latitude: parseInt(this.state.latitude), longitude: parseInt(this.state.longitude)}
       })
     }
     }

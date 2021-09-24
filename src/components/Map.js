@@ -28,7 +28,7 @@ export default class Map extends Component {
         longitudeDelta: 0.1}
     }
     this.dbRef = firebase.firestore().collection('markers');
-    this.markerArray = []
+    this.markerArray = [];
   }
 
   // getMarkers = () => {
@@ -36,21 +36,32 @@ export default class Map extends Component {
   // } 
 
   getMarkers = () => {
-        this.dbRef.get()
-            .then(snapshot => {
-                snapshot.docs.forEach(marker => {
-                    let currentID = marker.id
-                    let appObj = { ...marker.data(), ['id']: currentID }
-                    this.markerArray.push(appObj)
-                    this.markerArray.push(marker.data())
-            })
-           console.log(this.markerArray)
+    this.dbRef.get()
+        .then(snapshot => {
+            snapshot.docs.forEach(marker => {
+                let currentID = marker.id
+                let appObj = { ...marker.data(), ['id']: currentID }
+                this.markerArray.push(appObj)
+                this.markerArray.push(marker.data())
         })
+        // console.log(this.markerArray)
+        this.setState({markerArray: this.markerArray})
+        return this.markerArray;
+    })
+    // console.log(this.markerArray)
   }
 
+  // this.getMarkers();
+  
   render() {
-    const markers = this.getMarkers();
-    console.log(this.markerArray)
+    if (this.markerArray.length <= 1) {
+      this.getMarkers()
+      // console.log(markers)
+    } else {
+      // console.log(this.markerArray[0].latitude)
+    }
+    // const markers = this.getMarkers();
+    // console.log(markers)
     return (
       <MapView
          style={{ flex: 1 }}
@@ -64,14 +75,36 @@ export default class Map extends Component {
          longitudeDelta: 0.1}}
          customMapStyle={mapStyle}
          >
+           {/* Works
+           <Marker 
+           title={'Test'}
+           coordinate={{latitude: 45.5, longitude: -122.675}}
+           /> */}
+
+          {/* Works
+           {this.state.markers.map((marker, index) => (
+              <Marker 
+              coordinate={marker.coordinate}
+              title={marker.title}
+              />
+           ))} */}
            {this.markerArray.map((marker, index) => (
+             <Marker 
+             key={index}
+             coordinate={marker.coordinate}
+             title={marker.title}
+             />
+           ))
+           }
+           {/* {this.markerArray.map((marker, index) => (
            <Marker
-           key={index}
-          latitude={marker.latitude}
-          longitude={marker.longitude}
-          title={marker.title}
+            key={index}
+            coordinate={{latitude: `${marker.latitude}`, longitude: `${marker.longitude}`}}
+            //   latitude={marker.latitude}
+            // longitude={marker.longitude}
+            title={marker.title}
           />
-           ))}
+           ))} */}
       </MapView>
     );
   }
