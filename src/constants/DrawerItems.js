@@ -9,16 +9,16 @@ export default [
       iconType:'Material',
       iconName:'face-profile'
   },
-  {
-      name:'Settings',
-      iconType:'Feather',
-      iconName:'settings'
-  },
-  {
-      name:'Add Swim',
-      iconType:'Feather',
-      iconName: 'settings'
-  },
+//   {
+//       name:'Settings',
+//       iconType:'Feather',
+//       iconName:'settings'
+//   },
+//   {
+//       name:'Add Swim',
+//       iconType:'Feather',
+//       iconName: 'settings'
+//   },
   {
       name:'My Swims',
       iconType:'Material',

@@ -1,33 +1,19 @@
 import React, {Component} from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+import Account from "../screens/Account";
+import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
+import DrawerItems from '../constants/DrawerItems';
 import ProfileScreen from '../screens/Profile';
 import SettingsScreen from '../screens/Settings';
-import Account from "../screens/Account";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
 import MapScreen from "../screens/MapScreen";
-import DrawerItems from '../constants/DrawerItems';
-import Header from '../components/Header';
-import NewMarker from "../screens/NewMarker";
-import ScreenControl from './ScreenControl';
-
 
 const Drawer = createDrawerNavigator();
 
-export default class DrawerMenu extends Component {
+export default function DrawerMenu() {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      tempCoordinate: {}
-    }
-  }
-  render() {
   return (
     <React.Fragment>
       <NavigationContainer>
@@ -45,10 +31,9 @@ export default class DrawerMenu extends Component {
               key={drawer.name}
               name={drawer.name}
               component={
-                drawer.name==='Map' ? MapScreen 
+                drawer.name==='Map'? MapScreen 
                 : drawer.name==='Profile' ? ProfileScreen 
                 : drawer.name==='Settings' ? SettingsScreen
-                : drawer.name==='Add Swim' ? NewMarker
                 : drawer.name==='My Swims' ? SavedScreen
                 : Account
               }
@@ -87,8 +72,4 @@ export default class DrawerMenu extends Component {
       </NavigationContainer>
     </React.Fragment>
   )
-        }
 }
-
-// export default DrawerMenu;
-

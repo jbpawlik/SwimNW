@@ -44,3 +44,7 @@ The most pressing problems to solve:
 12:30 - Back to work. I made a ScreenControl component to hold the map so that I can pass props to it. Now I need to cut up the NewMarker screen into a component that can go into ScreenControl, and possibly turn the form part of it back into a component. I might kill the Add Swim screen and just have the form as part of Map.
 
 1:30 - Got that done. Now I can press on the map, navigate to a form, and (potentially) make a new marker. I need to update the forms and Firestore collection to remove latitude/longitude as now it will take a coordinate value from the marker location.
+
+1:45 - You can now add a new marker to the map AND it will update right away and show on the form. I have no idea why it updates now; I literally spent four hours trying to get it to do that the other day.
+
+2:45 - Cleaning up extraneous files and comments. Figuring out what information to add to marker form.

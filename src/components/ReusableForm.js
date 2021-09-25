@@ -12,8 +12,8 @@ export default class ReusableForm extends React.Component {
     this.dbRef = firebase.firestore().collection('markers');
     this.state = { 
       title: '',
-      latitude: null, 
-      longitude: null,
+      // latitude: null, 
+      // longitude: null,
     }
   }
 
@@ -24,34 +24,9 @@ export default class ReusableForm extends React.Component {
   }
 
   addMarker = () => {
-    // if(this.state.email === '' && this.state.password === '') {
-    //   Alert.alert('Enter details to signup!')
-    // } else {
-      // this.setState({
-      //   isLoading: true,
-      // })
-      // firebase
-      // .auth()
-      // .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      // .then((res) => {
-      //   res.user.updateProfile({
-      //     displayName: this.state.displayName
-      //   })
-      //   console.log('User registered successfully!')
-      //   this.setState({
-      //     isLoading: false,
-      //     displayName: '',
-      //     email: '', 
-      //     password: ''
-      //   })
-      //   this.props.navigation.navigate('Profile')
-      // })
-      // .catch(error => this.setState({ errorMessage: error.message }))
-      // if (this.state.title === '' || this.state.latitude === '' || this.state.longitude === '' ) {
-        if (this.state.title === '') {
-
-        Alert.alert('Fill out all required fields')
-
+    
+    if (this.state.title === '') {
+      Alert.alert('Fill out all required fields')
     } else {
       this.dbRef.add({
         title: this.state.title,
@@ -77,11 +52,10 @@ export default class ReusableForm extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={styles.inputStyle}
-          // required='true'
           placeholder="Title"
           value={this.state.title}
           onChangeText={(val) => this.updateInputVal(val, 'title')}
-        />      
+        />
         {/* <TextInput
           style={styles.inputStyle}
           keyboardType='numeric'
@@ -107,11 +81,6 @@ export default class ReusableForm extends React.Component {
           onPress={() => this.props.hideReusableForm()}
         />
 
-        {/* <Text 
-          style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('Signin')}>
-          Already Registered? Click here to login
-        </Text> */}
       </View>
     );
   }
