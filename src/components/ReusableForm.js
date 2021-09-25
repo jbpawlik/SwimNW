@@ -47,19 +47,21 @@ export default class ReusableForm extends React.Component {
       //   this.props.navigation.navigate('Profile')
       // })
       // .catch(error => this.setState({ errorMessage: error.message }))
-      if (this.state.title === '' || this.state.latitude === '' || this.state.longitude === '' ) {
+      // if (this.state.title === '' || this.state.latitude === '' || this.state.longitude === '' ) {
+        if (this.state.title === '') {
 
         Alert.alert('Fill out all required fields')
 
     } else {
       this.dbRef.add({
         title: this.state.title,
-        latitude: parseFloat(this.state.latitude), 
-        longitude: parseFloat(this.state.longitude),
+        // latitude: parseFloat(this.state.latitude), 
+        // longitude: parseFloat(this.state.longitude),
         coordinate: this.props.tempCoordinate
         // coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
       })
-      this.props.navigation.navigate('Map')
+      // this.props.navigation.navigate('Map')
+      this.props.hideReusableForm()
     }
     }
 
@@ -72,7 +74,7 @@ export default class ReusableForm extends React.Component {
     //   )
     // }
     return (
-      <View style={styles.container}>  
+      <View style={styles.container}>
         <TextInput
           style={styles.inputStyle}
           // required='true'
@@ -80,24 +82,20 @@ export default class ReusableForm extends React.Component {
           value={this.state.title}
           onChangeText={(val) => this.updateInputVal(val, 'title')}
         />      
-        <TextInput
+        {/* <TextInput
           style={styles.inputStyle}
-          // required='true'
           keyboardType='numeric'
-          placeholder="Latitude"
+          placeholder={this.state.tempCoordinate}
           value={this.state.latitude}
           onChangeText={(val) => this.updateInputVal(val, 'latitude')}
         />
         <TextInput
           style={styles.inputStyle}
-          // required='true'
           keyboardType='numeric'
           placeholder="Longitude"
           value={this.state.longitude}
           onChangeText={(val) => this.updateInputVal(val, 'longitude')}
-          // maxLength={15}
-          // secureTextEntry={true}
-        />   
+        />    */}
         <Button
           color="#3740FE"
           title="Add Marker"
