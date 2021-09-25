@@ -30,3 +30,12 @@ The most pressing problems to solve:
 3:45 - Slowly trying to figure out how to use long presses to interact with markers.
 
 4:40 - Added a dialogue that pops up when you long press, asking if you want to make a new marker. Still needs to navigate you to the NewMarker screen.
+
+4:45 - NM, just fixed that. Going to wrap things up and submit this project.
+
+#### Saturday 9/25
+
+7:30 - I'm just going to keep writing in this README to track how I'm doing. Before I went to bed last night I was researching the app store approval process. It's not that bad (fingers crossed) and makes me think I can submit this in 2-3 days (toes twisted).
+
+8:20 - Trying to learn enough about props to save temporary coordinates from the longPress so that they can be used in the NewMarker form. I think I should have learned this from the lessons but I didn't quite grasp it at the time.
+
