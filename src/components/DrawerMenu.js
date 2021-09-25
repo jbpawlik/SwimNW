@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import ProfileScreen from '../screens/Profile';
@@ -10,14 +10,24 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
-import MapScreen from "../screens/Map";
+import MapScreen from "../screens/MapScreen";
 import DrawerItems from '../constants/DrawerItems';
 import Header from '../components/Header';
 import NewMarker from "../screens/NewMarker";
+import ScreenControl from './ScreenControl';
+
 
 const Drawer = createDrawerNavigator();
 
-const DrawerMenu = () => {
+export default class DrawerMenu extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      tempCoordinate: {}
+    }
+  }
+  render() {
   return (
     <React.Fragment>
       <NavigationContainer>
@@ -25,7 +35,7 @@ const DrawerMenu = () => {
           // drawerType='front'
           initialRouteName="Map"
           screenOptions={{
-            drawerType: 'slide',
+            // drawerType: 'slide',
             activeTintColor: '#e91e63',
             itemStyle: { marginVertical: 10 },
           }}>
@@ -77,7 +87,8 @@ const DrawerMenu = () => {
       </NavigationContainer>
     </React.Fragment>
   )
+        }
 }
 
-export default DrawerMenu;
+// export default DrawerMenu;
 

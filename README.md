@@ -39,3 +39,4 @@ The most pressing problems to solve:
 
 8:20 - Trying to learn enough about props to save temporary coordinates from the longPress so that they can be used in the NewMarker form. I think I should have learned this from the lessons but I didn't quite grasp it at the time.
 
+11:30 - This is taking me forever. Because of how I set up the drawer menu, none of the screens are actually inside a parent. I am having to create new components just to be able to pass props between them. It is very frustrating.

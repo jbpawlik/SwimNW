@@ -1,12 +1,12 @@
 // import React from "react";
 // import PropTypes from "prop-types";
-
+import MapScreen from '../screens/MapScreen'
 
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../firebase';
 
-export default class NewMarker extends Component {
+export default class NewMarker extends MapScreen {
 
   constructor() {
     super();
@@ -58,7 +58,8 @@ export default class NewMarker extends Component {
         title: this.state.title,
         latitude: parseFloat(this.state.latitude), 
         longitude: parseFloat(this.state.longitude),
-        coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
+        coordinate: this.props.tempCoordinate
+        // coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
       })
       this.props.navigation.navigate('Map')
     }
@@ -71,33 +72,33 @@ export default class NewMarker extends Component {
     //       <ActivityIndicator size="large" color="#9E9E9E"/>
     //     </View>
     //   )
-    // }    
+    // }
     return (
       <View style={styles.container}>  
         <TextInput
           style={styles.inputStyle}
-          required='true'
+          // required='true'
           placeholder="Title"
           value={this.state.title}
           onChangeText={(val) => this.updateInputVal(val, 'title')}
         />      
         <TextInput
           style={styles.inputStyle}
-          required='true'
-
+          // required='true'
+          keyboardType='numeric'
           placeholder="Latitude"
           value={this.state.latitude}
           onChangeText={(val) => this.updateInputVal(val, 'latitude')}
         />
         <TextInput
           style={styles.inputStyle}
-          required='true'
-
+          // required='true'
+          keyboardType='numeric'
           placeholder="Longitude"
           value={this.state.longitude}
           onChangeText={(val) => this.updateInputVal(val, 'longitude')}
-          maxLength={15}
-          secureTextEntry={true}
+          // maxLength={15}
+          // secureTextEntry={true}
         />   
         <Button
           color="#3740FE"

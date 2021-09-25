@@ -3,11 +3,11 @@ import {View,Text, StyleSheet, TouchableOpacity,} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationContainer } from '@react-navigation/native';
+import ScreenControl from './ScreenControl';
 
 export default function Header({screen}){
   const navigation = useNavigation();
    return(
-       
     <View style={headerStyles.container}>
         <TouchableOpacity onPress={()=>navigation.toggleDrawer()}>
             <Entypo name="menu" size={24} color="black" />

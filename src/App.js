@@ -5,6 +5,9 @@ import Map from './components/Map'
 import DrawerMenu from './components/DrawerMenu';
 import firebase from 'firebase';
 
+//Ignore timer warning in re: Firebase; fundamental incompatibility with React Native; placeholder solution while debugging
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer for a long period of time'])
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(false);
