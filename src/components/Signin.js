@@ -32,7 +32,7 @@ export default class Signin extends Component {
         console.log(res)
         console.log('User logged-in successfully!')
         this.setState({
-          isLoading: false,
+          // isLoading: false,
           email: '',
           password: ''
         })

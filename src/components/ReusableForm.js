@@ -1,24 +1,37 @@
 // import React from "react";
 // import PropTypes from "prop-types";
 
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../firebase';
 import {Picker} from '@react-native-picker/picker'
 
+
 export default class ReusableForm extends React.Component {
 
   constructor() {
+    let user = firebase.auth().currentUser;
+    // const db = firebase.firestore();
     super();
     this.dbRef = firebase.firestore().collection('markers');
     this.state = { 
       title: '',
+      rating: '',
       // latitude: null, 
       // longitude: null,
-      privacy: '',
-      selectedPrivacy: '',
+      location: '',
+      type: '',
+      season: '',
+      privacy: 'Public',
+      userID: user.uid
     }
   }
+
+  // const [loggedIn, setLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   return firebase.auth().onAuthStateChanged(setLoggedIn);
+  // }, []);
 
   updateInputVal = (val, prop) => {
     const state = this.state;
@@ -27,7 +40,7 @@ export default class ReusableForm extends React.Component {
   }
 
   addMarker = () => {
-    
+
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {
@@ -36,7 +49,8 @@ export default class ReusableForm extends React.Component {
         // latitude: parseFloat(this.state.latitude), 
         // longitude: parseFloat(this.state.longitude),
         coordinate: this.props.tempCoordinate,
-        privacy: this.state.privacy
+        privacy: this.state.privacy,
+        userID: this.state.userID
         // coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
       })
       // this.props.navigation.navigate('Map')
@@ -52,6 +66,8 @@ export default class ReusableForm extends React.Component {
     //     </View>
     //   )
     // }
+    console.log(this.state.userID)
+
     return (
       <View style={styles.container}>
         <TextInput
