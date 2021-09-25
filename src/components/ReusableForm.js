@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import firebase from '../firebase';
+import {Picker} from '@react-native-picker/picker'
 
 export default class ReusableForm extends React.Component {
 
@@ -14,6 +15,8 @@ export default class ReusableForm extends React.Component {
       title: '',
       // latitude: null, 
       // longitude: null,
+      privacy: '',
+      selectedPrivacy: '',
     }
   }
 
@@ -32,7 +35,8 @@ export default class ReusableForm extends React.Component {
         title: this.state.title,
         // latitude: parseFloat(this.state.latitude), 
         // longitude: parseFloat(this.state.longitude),
-        coordinate: this.props.tempCoordinate
+        coordinate: this.props.tempCoordinate,
+        privacy: this.state.privacy
         // coordinate: {latitude: parseFloat(this.state.latitude), longitude: parseFloat(this.state.longitude)}
       })
       // this.props.navigation.navigate('Map')
@@ -56,6 +60,16 @@ export default class ReusableForm extends React.Component {
           value={this.state.title}
           onChangeText={(val) => this.updateInputVal(val, 'title')}
         />
+        <Picker
+          selectedValue={this.state.privacy}
+          placeholder="Select Privacy Level"
+          onValueChange={(val, index) =>
+            this.updateInputVal(val, 'privacy')
+          }>
+          <Picker.Item label="Public" value="Public" />
+          <Picker.Item label="Protected" value="Protected" />
+          <Picker.Item label="Private" value="Private" />
+        </Picker>
         {/* <TextInput
           style={styles.inputStyle}
           keyboardType='numeric'

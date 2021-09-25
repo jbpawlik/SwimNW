@@ -11,7 +11,7 @@ export default class Signup extends Component {
       displayName: '',
       email: '', 
       password: '',
-      isLoading: false
+      // isLoading: false
     }
   }
 
@@ -49,13 +49,13 @@ export default class Signup extends Component {
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
-        <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E"/>
-        </View>
-      )
-    }    
+    // if(this.state.isLoading){
+    //   return(
+    //     <View style={styles.preloader}>
+    //       <ActivityIndicator size="large" color="#9E9E9E"/>
+    //     </View>
+    //   )
+    // }    
     return (
       <View style={styles.container}>  
         <TextInput
