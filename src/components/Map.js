@@ -72,8 +72,6 @@ export default class MapScreen extends React.Component {
     })
   }
 
-  // this.getMarkers();
-  
   //Working handlePress function that needs to be updated to use Firestore collection instead of state
   handlePress = (event) => {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
@@ -87,7 +85,8 @@ export default class MapScreen extends React.Component {
         {
           text: 'Add New Swim',
           // onPress: () => this.props.navigation.navigate('Add Swim')
-          onPress: () => this.props.goToNewMarkerScreen()
+          // onPress: () => this.props.goToNewMarkerScreen()
+          onPress: this.props.showReusableForm
         },
         {
           text: 'Cancel',
