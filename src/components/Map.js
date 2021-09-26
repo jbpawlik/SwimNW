@@ -4,16 +4,17 @@ import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
 
+
 export default class MapScreen extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
       region: {
-        latitude: 45.5,
-        longitude: -122.675,
-        latitudeDelta: 0.1,
-        longitudeDelta: 0.1
+        latitude: 45.559797,
+        longitude: -117.939148,
+        latitudeDelta: 20,
+        longitudeDelta: 10
       },
       tempCoordinate: {}
     }
@@ -70,6 +71,10 @@ export default class MapScreen extends React.Component {
   //   )
   // }
 
+//   animateToRegion = () => {
+//     mapRef.current.getMapRef().animateToRegion(region, 1000);
+//  }
+
   markerPress = (event) => {
     let user = firebase.auth().currentUser;
     const coord = event.nativeEvent.coordinate.latitude
@@ -102,6 +107,9 @@ export default class MapScreen extends React.Component {
         radius={20}
         extent={200}
         clusterColor={'steelblue'}
+        // ref={mapRef}
+        showsPointsOfInterest={false}
+        // onMapReady={}
         // initialRegion={{
         // latitude: 45.5,
         // longitude: -122.675,
