@@ -50,3 +50,7 @@ The most pressing problems to solve:
 2:45 - Cleaning up extraneous files and comments. Figuring out what information to add to marker form.
 
 3:40 - Added a Picker (selector) to ReusableForm.
+
+4:50 - Added all of the properties required to make a marker (location, season, type, etc.). Decided not to do a rating system. Done for the day.
+
+#### Sunday 9/26
