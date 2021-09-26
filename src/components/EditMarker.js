@@ -11,11 +11,9 @@ export default class EditMarker extends React.Component {
 
   constructor(props) {
     const user = firebase.auth().currentUser;
-
     super(props);
-        // const marker = this.props.selectedMarker[0]
-        console.log(this.props)
-    // this.marker = firebase.firestore().collection('markers').doc(this.props.selectedMarker[0]);
+    this.markerID = this.props.selectedMarker[0];
+    this.marker = firebase.firestore().collection('markers').doc(this.markerID);
     this.state = { 
       title: '',
       location: '',
