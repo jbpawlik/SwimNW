@@ -14,12 +14,32 @@ export default class EditMarker extends React.Component {
     super(props);
     this.markerTitle2 = [];
     this.markerID = this.props.selectedMarker[0];
-    // this.marker = firebase.firestore().collection('markers').doc(this.markerID);
-    this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
+    this.marker = firebase.firestore().collection('markers').doc(this.markerID);
+    // this.marker = firebase.firestore().collection('markers').get().then(snapshot => { snapshot.docs.forEach(marker => { if (marker._delegate._document.key.path.segments[6] === this.markerID ) {
+      // console.log(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})})
+      // console.log(this)}})})
+      // this.markerTitle2.push(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})}).then(console.log(this.markerTitle2))
+    // this.dbRef = firebase.firestore().collection('markers')
+    //     this.dbRef.get()
+    // .then(snapshot => {
+    //   snapshot.docs.forEach(marker => {
+    //     if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
+    //       const markerID = marker._delegate._document.key.path.segments[6]
+    //       this.props.selectedMarker.push(markerID)
+    //       if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
+    //         this.props.showEditMarkerForm()
+    //       } else {
+    //         this.props.showMarkerDetail()
+    //       }
+    //     }})})
 
-        return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})
-    ;;
-    // console.log(this.marker)
+
+
+
+    // this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
+
+    //     return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})
+    // ;;
     this.state = { 
       title: '',
       location: '',
@@ -29,6 +49,11 @@ export default class EditMarker extends React.Component {
       secrecy: '',
     }
   }
+
+  // componentDidMount = () => {
+  //   this.markerTitle2.push(markerTitle2: firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => { return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue'];
+  //   }))
+  // }
 
   // async getMarkerTitle() {
   //   this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
@@ -46,25 +71,29 @@ export default class EditMarker extends React.Component {
     this.setState(state);
   }
 
-  editMarker = () => {
-    console.log(this.markerTitle)
+  deleteMarker = () => {
+      this.marker.delete();
+      this.props.hideEditMarkerForm();
+  }
+    
 
-    if (this.state.title === '') {
-      Alert.alert('Fill out all required fields')
-    } else {
-      this.marker.update({
-        title: this.state.title,
-        location: this.state.location,
-        description: this.state.description,
-        type: this.state.type,
-        season: this.state.season,
-        danger: this.state.danger,
-        secrecy: this.state.secrecy,
-      })
-      // this.props.navigation.navigate('Map')
-      this.props.hideEditMarkerForm()
-    }
-    }
+    editMarker = () => {
+      if (this.state.title === '') {
+        Alert.alert('Fill out all required fields')
+      } else {
+        this.marker.update({
+          title: this.state.title,
+          location: this.state.location,
+          description: this.state.description,
+          type: this.state.type,
+          season: this.state.season,
+          danger: this.state.danger,
+          secrecy: this.state.secrecy,
+        })
+        // this.props.navigation.navigate('Map')
+        this.props.hideEditMarkerForm()
+      }
+      }
 
   render() {
     return (
@@ -147,6 +176,11 @@ export default class EditMarker extends React.Component {
             color="#3740FE"
             title="Edit Marker"
             onPress={() => this.editMarker()}
+          />
+          <Button
+            color="#3740FE"
+            title="Delete Marker"
+            onPress={() => this.deleteMarker()}
           />
         </View>
       </React.Fragment>

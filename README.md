@@ -64,3 +64,5 @@ The most pressing problems to solve:
 11:10 - The problem, which is the same one that ate up four hours the other day, is that I can't use this.setState(property: newStringOrNumber) inside the functions I am writing. I had to make the property an empty array, then push the new thing to it. I'm still not sure why.
 
 11:40 - Working on switching to the Edit Marker screen.
+
+2:50 - Took about fifteen for a snack. I've been working on the same problem as this morning but in a different place. This time I can't even update it with an array.
