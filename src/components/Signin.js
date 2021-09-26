@@ -8,7 +8,7 @@ export default class Signin extends Component {
     this.state = { 
       email: '', 
       password: '',
-      isLoading: false
+      // isLoading: false
     }
   }
   
@@ -22,9 +22,9 @@ export default class Signin extends Component {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signin!')
     } else {
-      this.setState({
-        isLoading: true,
-      })
+      // this.setState({
+      //   isLoading: true,
+      // })
       firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)

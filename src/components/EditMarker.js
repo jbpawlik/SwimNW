@@ -12,8 +12,14 @@ export default class EditMarker extends React.Component {
   constructor(props) {
     const user = firebase.auth().currentUser;
     super(props);
+    this.markerTitle2 = [];
     this.markerID = this.props.selectedMarker[0];
-    this.marker = firebase.firestore().collection('markers').doc(this.markerID);
+    // this.marker = firebase.firestore().collection('markers').doc(this.markerID);
+    this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
+
+        return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})
+    ;;
+    // console.log(this.marker)
     this.state = { 
       title: '',
       location: '',
@@ -24,6 +30,16 @@ export default class EditMarker extends React.Component {
     }
   }
 
+  // async getMarkerTitle() {
+  //   this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
+
+  //     this.setState({markerTitle2: querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})}).then(
+  //       console.log(this.markerTitle2)
+  //     )
+  // ;
+  // }
+
+  
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -31,6 +47,7 @@ export default class EditMarker extends React.Component {
   }
 
   editMarker = () => {
+    console.log(this.markerTitle)
 
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
@@ -41,6 +58,7 @@ export default class EditMarker extends React.Component {
         description: this.state.description,
         type: this.state.type,
         season: this.state.season,
+        danger: this.state.danger,
         secrecy: this.state.secrecy,
       })
       // this.props.navigation.navigate('Map')
@@ -58,6 +76,7 @@ export default class EditMarker extends React.Component {
             onPress={() => this.props.hideEditMarkerForm()}
           />
         </View>
+        {/* <Text>{this.marker.title}</Text> */}
         <View style={styles.container}>
           <TextInput
             style={styles.inputStyle}
@@ -105,6 +124,15 @@ export default class EditMarker extends React.Component {
             <Picker.Item label="Hot Spring" value="Hot Spring"/>
             <Picker.Item label="Pond" value="Pond"/>
             <Picker.Item label="Waterfall" value="Waterfall"/>
+          </Picker>
+          <Picker
+            selectedValue={this.state.danger}
+            onValueChange={(val, index) =>
+              this.updateInputVal(val, 'danger')
+            }>
+            <Picker.Item label="Low Risk" value="Low Risk" />
+            <Picker.Item label="Moderate Risk" value="Moderate Risk" />
+            <Picker.Item label="High Risk" value="High Risk" />
           </Picker>
           <Picker
             selectedValue={this.state.secrecy}

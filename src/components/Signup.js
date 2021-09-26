@@ -25,9 +25,9 @@ export default class Signup extends Component {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signup!')
     } else {
-      this.setState({
-        isLoading: true,
-      })
+      // this.setState({
+      //   isLoading: true,
+      // })
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
