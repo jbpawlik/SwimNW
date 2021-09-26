@@ -54,3 +54,13 @@ The most pressing problems to solve:
 4:50 - Added all of the properties required to make a marker (location, season, type, etc.). Decided not to do a rating system. Done for the day.
 
 #### Sunday 9/26
+
+7:45 - Working on making an edit marker screen, adding a comment/review form for public users, and putting in a delete button.
+
+10:00 - Breakfast.
+
+10:30 - Still working on trying to get the pressed marker to return an id that I can use to generate an info page. It is surprisingly difficult.
+
+11:10 - The problem, which is the same one that ate up four hours the other day, is that I can't use this.setState(property: newStringOrNumber) inside the functions I am writing. I had to make the property an empty array, then push the new thing to it. I'm still not sure why.
+
+11:40 - Working on switching to the Edit Marker screen.

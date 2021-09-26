@@ -7,21 +7,19 @@ import firebase from '../firebase';
 import {Picker} from '@react-native-picker/picker'
 
 
-export default class ReusableForm extends React.Component {
+export default class EditMarker extends React.Component {
 
   constructor() {
     let user = firebase.auth().currentUser;
     super();
-    this.dbRef = firebase.firestore().collection('markers');
+    this.marker = firebase.firestore().collection('markers').doc(this.props.selectedMarker[0]);
     this.state = { 
       title: '',
       location: '',
       description: '',
       type: '',
       season: '',
-      danger: '',
-      secrecy: 'Public',
-      userID: user.uid
+      secrecy: '',
     }
   }
 
@@ -31,22 +29,18 @@ export default class ReusableForm extends React.Component {
     this.setState(state);
   }
 
-  addMarker = () => {
+  editMarker = () => {
 
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {
-      this.dbRef.add({
+      this.marker.update({
         title: this.state.title,
-        coordinate: this.props.tempCoordinate,
         location: this.state.location,
         description: this.state.description,
         type: this.state.type,
         season: this.state.season,
-        danger: this.state.danger,
         secrecy: this.state.secrecy,
-        markerID: Math.floor(Math.random() * (10000000 - 0) + 0),
-        userID: this.state.userID
       })
       // this.props.navigation.navigate('Map')
       this.props.hideReusableForm()
@@ -112,15 +106,6 @@ export default class ReusableForm extends React.Component {
             <Picker.Item label="Waterfall" value="Waterfall"/>
           </Picker>
           <Picker
-            selectedValue={this.state.danger}
-            onValueChange={(val, index) =>
-              this.updateInputVal(val, 'danger')
-            }>
-            <Picker.Item label="Low Risk" value="Low Risk" />
-            <Picker.Item label="Moderate Risk" value="Moderate Risk" />
-            <Picker.Item label="High Risk" value="High Risk" />
-          </Picker>
-          <Picker
             selectedValue={this.state.secrecy}
             onValueChange={(val, index) =>
               this.updateInputVal(val, 'secrecy')
@@ -131,8 +116,8 @@ export default class ReusableForm extends React.Component {
           </Picker>
           <Button
             color="#3740FE"
-            title="Add Marker"
-            onPress={() => this.addMarker()}
+            title="Edit Marker"
+            onPress={() => this.editMarker()}
           />
         </View>
       </React.Fragment>

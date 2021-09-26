@@ -19,6 +19,7 @@ export default class MapScreen extends React.Component {
     }
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
+    // this.selectedMarker = [];
   }
 
   getMarkers = async () => {
@@ -59,6 +60,35 @@ export default class MapScreen extends React.Component {
     )
   }
 
+  // markerPress = (event) => {
+  //   event.stopPropagation();
+  //   this.setState({selectedMarker: event.nativeEvent.coordinate})
+  //   console.log(event.nativeEvent.coordinate)
+
+  //   Alert.alert(
+      
+  //   )
+  // }
+
+  markerPress = (event) => {
+    let user = firebase.auth().currentUser;
+    const coord = event.nativeEvent.coordinate.latitude
+    this.props.selectedMarker.shift()
+    console.log(this.props.selectedMarker)
+    this.dbRef.get()
+      .then(snapshot => {
+        snapshot.docs.forEach(marker => {
+          if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
+            const markerID = marker._delegate._document.key.path.segments[6]
+            this.props.selectedMarker.push(markerID)
+            if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
+              this.props.showEditMarkerForm()
+            } else {
+              this.props.showMarkerDetail()
+            }
+          }})})
+        }
+
   render() {
     if (this.markerArray.length <= 1) {
       this.getMarkers()
@@ -80,6 +110,7 @@ export default class MapScreen extends React.Component {
         // longitudeDelta: 0.1}}
         customMapStyle={mapStyle}
         onLongPress={this.handlePress}
+        onMarkerPress={this.markerPress}
         >
           {this.markerArray.map((marker, index) => (
             <Marker 
@@ -87,6 +118,7 @@ export default class MapScreen extends React.Component {
             tracksViewChanges={false}
             coordinate={marker.coordinate}
             title={marker.title}
+            onLongPress={this.markerPress}
             />
           ))}
       </MapView>
