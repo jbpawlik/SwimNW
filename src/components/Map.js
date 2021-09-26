@@ -74,7 +74,6 @@ export default class MapScreen extends React.Component {
     let user = firebase.auth().currentUser;
     const coord = event.nativeEvent.coordinate.latitude
     this.props.selectedMarker.shift()
-    console.log(this.props.selectedMarker)
     this.dbRef.get()
       .then(snapshot => {
         snapshot.docs.forEach(marker => {

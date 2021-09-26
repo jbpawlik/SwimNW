@@ -9,10 +9,13 @@ import {Picker} from '@react-native-picker/picker'
 
 export default class EditMarker extends React.Component {
 
-  constructor() {
-    let user = firebase.auth().currentUser;
-    super();
-    this.marker = firebase.firestore().collection('markers').doc(this.props.selectedMarker[0]);
+  constructor(props) {
+    const user = firebase.auth().currentUser;
+
+    super(props);
+        // const marker = this.props.selectedMarker[0]
+        console.log(this.props)
+    // this.marker = firebase.firestore().collection('markers').doc(this.props.selectedMarker[0]);
     this.state = { 
       title: '',
       location: '',
@@ -43,7 +46,7 @@ export default class EditMarker extends React.Component {
         secrecy: this.state.secrecy,
       })
       // this.props.navigation.navigate('Map')
-      this.props.hideReusableForm()
+      this.props.hideEditMarkerForm()
     }
     }
 
@@ -54,7 +57,7 @@ export default class EditMarker extends React.Component {
           <Button
             color="#3740FE"
             title="Back to Map"
-            onPress={() => this.props.hideReusableForm()}
+            onPress={() => this.props.hideEditMarkerForm()}
           />
         </View>
         <View style={styles.container}>
