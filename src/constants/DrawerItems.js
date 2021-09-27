@@ -5,7 +5,7 @@ export default [
       iconName: 'map'
   },
   {
-      name:'Profile',
+      name:'SwimNW',
       iconType:'Material',
       iconName:'face-profile'
   },

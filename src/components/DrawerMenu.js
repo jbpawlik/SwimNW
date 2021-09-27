@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Account from "../screens/Account";
 import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
 import DrawerItems from '../constants/DrawerItems';
-import ProfileScreen from '../screens/Profile';
+import InfoScreen from '../screens/InfoScreen';
 import SettingsScreen from '../screens/Settings';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
@@ -32,7 +32,7 @@ export default function DrawerMenu() {
               name={drawer.name}
               component={
                 drawer.name==='Map'? MapScreen 
-                : drawer.name==='Profile' ? ProfileScreen 
+                : drawer.name==='SwimNW' ? InfoScreen 
                 : drawer.name==='Settings' ? SettingsScreen
                 : drawer.name==='My Swims' ? SavedScreen
                 : Account

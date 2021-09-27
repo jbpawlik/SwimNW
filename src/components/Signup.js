@@ -37,7 +37,7 @@ export default class Signup extends Component {
         })
         console.log('User registered successfully!')
         this.setState({
-          isLoading: false,
+          // isLoading: false,
           displayName: '',
           email: '', 
           password: ''
