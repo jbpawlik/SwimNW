@@ -16,12 +16,14 @@ export default class Map extends React.Component {
         latitudeDelta: 20,
         longitudeDelta: 10
       },
-      tempCoordinate: {}
+      tempCoordinate: {},
+      dataSource: []
     }
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
     // this.selectedMarker = [];
   }
+
 
   getMarkers = async () => {
     this.dbRef.get()
@@ -62,7 +64,7 @@ export default class Map extends React.Component {
   }
 
   markerPress = (event) => {
-    let user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
     const coord = event.nativeEvent.coordinate.latitude
     this.props.selectedMarker.shift()
     this.dbRef.get()
@@ -71,7 +73,9 @@ export default class Map extends React.Component {
           if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
             const markerID = marker._delegate._document.key.path.segments[6]
             this.props.selectedMarker.push(markerID)
-            if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
+            if (!user) {
+              this.props.showMarkerDetail() 
+            } else if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
               this.props.showEditMarkerForm()
             } else {
               this.props.showMarkerDetail()
@@ -95,8 +99,6 @@ export default class Map extends React.Component {
         // onMapReady={}
         mapType={'standard'}
         clusterColor={'steelblue'}
-        // showsPointsOfInterest={false}
-
         customMapStyle={mapStyle}
         onLongPress={this.handlePress}
         onMarkerPress={this.markerPress}

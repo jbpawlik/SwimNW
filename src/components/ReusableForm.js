@@ -13,8 +13,7 @@ export default class ReusableForm extends React.Component {
     const user = firebase.auth().currentUser;
     super();
     this.dbRef = firebase.firestore().collection('markers');
-    
-    this.state = { 
+    this.state = {
       title: '',
       location: '',
       description: '',

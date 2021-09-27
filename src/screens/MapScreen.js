@@ -82,6 +82,7 @@ export default class MapScreen extends React.Component {
             showReusableForm={this.showReusableForm}
             showEditMarkerForm={this.showEditMarkerForm}
             selectedMarker={this.state.selectedMarker}
+            showMarkerDetail={this.showMarkerDetail}
           />
         </React.Fragment>
       )
