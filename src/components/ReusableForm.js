@@ -10,9 +10,11 @@ import {Picker} from '@react-native-picker/picker'
 export default class ReusableForm extends React.Component {
 
   constructor() {
-    let user = firebase.auth().currentUser;
+    const user = firebase.auth().currentUser;
+    // const address = this.props.tempCoordinate
     super();
     this.dbRef = firebase.firestore().collection('markers');
+    
     this.state = { 
       title: '',
       location: '',
@@ -31,8 +33,14 @@ export default class ReusableForm extends React.Component {
     this.setState(state);
   }
 
-  addMarker = () => {
+  // this.marker.addressForCoordinate(
+  //   return this.tempCoordinate
+  // );
 
+  addMarker = () => {
+    const address = this.props.tempCoordinate
+    console.log(this.props.tempCoordinate)
+    console.log(address)
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {
@@ -41,6 +49,7 @@ export default class ReusableForm extends React.Component {
         coordinate: this.props.tempCoordinate,
         location: this.state.location,
         description: this.state.description,
+        address: addressForCoordinate(this.props.tempCoordinate),
         type: this.state.type,
         season: this.state.season,
         danger: this.state.danger,

@@ -5,7 +5,7 @@ import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
 
 
-export default class MapScreen extends React.Component {
+export default class Map extends React.Component {
 
   constructor(props) {
     super(props)
@@ -42,7 +42,12 @@ export default class MapScreen extends React.Component {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
     // this.getTempCoordinate(event.nativeEvent.coordinate)
     this.props.setTempCoordinate(event.nativeEvent.coordinate)
-
+    mapRef.current.addressForCoordinate(event.nativeEvent.coordinate)
+    .then((address) => {
+      console.log('address', address); 
+    }).catch((err) => {
+      console.log('err', err); 
+    })
     Alert.alert(
       "New Swim?",
       "Add a new swim?",
@@ -75,6 +80,8 @@ export default class MapScreen extends React.Component {
 //     mapRef.current.getMapRef().animateToRegion(region, 1000);
 //  }
 
+
+
   markerPress = (event) => {
     let user = firebase.auth().currentUser;
     const coord = event.nativeEvent.coordinate.latitude
@@ -106,9 +113,11 @@ export default class MapScreen extends React.Component {
         initialRegion = {this.state.region}
         radius={20}
         extent={200}
+        ref = {mapRef}
+        mapType={'standard'}
         clusterColor={'steelblue'}
         // ref={mapRef}
-        showsPointsOfInterest={false}
+        // showsPointsOfInterest={false}
         // onMapReady={}
         // initialRegion={{
         // latitude: 45.5,
@@ -146,7 +155,7 @@ const mapStyle = [
     "featureType": "administrative.province",
     "stylers": [
       {
-        "weight": "2"
+        "weight": "5"
       }
     ]
   },
