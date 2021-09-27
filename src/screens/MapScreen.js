@@ -63,13 +63,6 @@ export default class MapScreen extends React.Component {
           hideReusableForm={this.hideReusableForm}
         />
       )
-    } else if (this.state.showEditMarkerForm === true) {
-      return (
-        <EditMarker
-          hideEditMarkerForm={this.hideEditMarkerForm}
-          selectedMarker={this.state.selectedMarker}
-        />
-      )
     } else if (this.state.showMarkerDetail === true) {
       return (
         <MarkerDetail
@@ -78,6 +71,13 @@ export default class MapScreen extends React.Component {
           showEditMarkerForm={this.showEditMarkerForm}
           setUserID={this.setUserID}
           userID={this.userID}
+        />
+      )
+    } else if (this.state.showEditMarkerForm === true) {
+      return (
+        <EditMarker
+          hideEditMarkerForm={this.hideEditMarkerForm}
+          selectedMarker={this.state.selectedMarker}
         />
       )
     } else {
