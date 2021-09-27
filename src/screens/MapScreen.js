@@ -14,11 +14,16 @@ export default class MapScreen extends React.Component {
       showEditMarkerForm: false,
       showMarkerDetail: false,
       selectedMarker: [],
+      userID: null,
     }
   }
 
   setTempCoordinate = (data) => {
     this.setState({tempCoordinate: data})
+  }
+  
+  setUserID = (data) => {
+    this.setState({userID: data})
   }
 
   goToNewMarkerScreen = () => {
@@ -70,6 +75,9 @@ export default class MapScreen extends React.Component {
         <MarkerDetail
           hideMarkerDetail={this.hideMarkerDetail}
           selectedMarker={this.state.selectedMarker}
+          showEditMarkerForm={this.showEditMarkerForm}
+          setUserID={this.setUserID}
+          userID={this.userID}
         />
       )
     } else {
