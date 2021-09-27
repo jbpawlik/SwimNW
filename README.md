@@ -66,3 +66,5 @@ The most pressing problems to solve:
 11:40 - Working on switching to the Edit Marker screen.
 
 2:50 - Took about fifteen for a snack. I've been working on the same problem as this morning but in a different place. This time I can't even update it with an array.
+
+5:20 - Wasted almost all day trying to figure out how to edit the marker, and failed. Ended up adding a delete button (surprisingly easy) and styling the map (surprisingly hard).
