@@ -42,7 +42,7 @@ export default class Map extends React.Component {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
     // this.getTempCoordinate(event.nativeEvent.coordinate)
     this.props.setTempCoordinate(event.nativeEvent.coordinate)
-    
+
     Alert.alert(
       "New Swim?",
       "Add a new swim?",
@@ -117,10 +117,10 @@ export default class Map extends React.Component {
 
 const mapStyle = [
   {
-    "elementType": "labels.icon",
+    "elementType": "labels.text",
     "stylers": [
       {
-        "visibility": "off"
+        "visibility": "simplified",
       }
     ]
   },
@@ -128,7 +128,7 @@ const mapStyle = [
     "featureType": "administrative.province",
     "stylers": [
       {
-        "weight": "5"
+        "weight": "1"
       }
     ]
   },
@@ -140,24 +140,7 @@ const mapStyle = [
       }
     ]
   },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#E2EFCD"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#A7E49A"
-      }
-    ]
-  },
+
   {
     "featureType": "water",
     "elementType": "geometry.fill",
@@ -172,7 +155,7 @@ const mapStyle = [
     "elementType": "geometry.stroke",
     "stylers": [
       {
-        "color": "#7392FB"
+        "color": "#7392FB",
       }
     ]
   }

@@ -11,7 +11,6 @@ export default class ReusableForm extends React.Component {
 
   constructor() {
     const user = firebase.auth().currentUser;
-    // const address = this.props.tempCoordinate
     super();
     this.dbRef = firebase.firestore().collection('markers');
     
