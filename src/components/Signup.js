@@ -45,7 +45,7 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Profile')
       })
-      .catch(error => this.setState({ errorMessage: error.message }))      
+      .catch(error => this.setState({ errorMessage: error.message }))
     }
   }
 
@@ -81,6 +81,7 @@ export default class Signup extends Component {
           placeholder="Password"
           value={this.state.password}
           onChangeText={(val) => this.updateInputVal(val, 'password')}
+          minLength={6}
           maxLength={15}
           secureTextEntry={true}
         />   
