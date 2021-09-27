@@ -38,9 +38,6 @@ export default class ReusableForm extends React.Component {
   // );
 
   addMarker = () => {
-    const address = this.props.tempCoordinate
-    console.log(this.props.tempCoordinate)
-    console.log(address)
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {
@@ -49,7 +46,6 @@ export default class ReusableForm extends React.Component {
         coordinate: this.props.tempCoordinate,
         location: this.state.location,
         description: this.state.description,
-        address: addressForCoordinate(this.props.tempCoordinate),
         type: this.state.type,
         season: this.state.season,
         danger: this.state.danger,

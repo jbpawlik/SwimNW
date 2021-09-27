@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, Component, useRef, createRef } from 'react';
 import { Alert, Platform, StyleSheet, Text, View } from 'react-native';
 import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
@@ -42,12 +42,7 @@ export default class Map extends React.Component {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
     // this.getTempCoordinate(event.nativeEvent.coordinate)
     this.props.setTempCoordinate(event.nativeEvent.coordinate)
-    mapRef.current.addressForCoordinate(event.nativeEvent.coordinate)
-    .then((address) => {
-      console.log('address', address); 
-    }).catch((err) => {
-      console.log('err', err); 
-    })
+    
     Alert.alert(
       "New Swim?",
       "Add a new swim?",
@@ -65,22 +60,6 @@ export default class Map extends React.Component {
       ]
     )
   }
-
-  // markerPress = (event) => {
-  //   event.stopPropagation();
-  //   this.setState({selectedMarker: event.nativeEvent.coordinate})
-  //   console.log(event.nativeEvent.coordinate)
-
-  //   Alert.alert(
-      
-  //   )
-  // }
-
-//   animateToRegion = () => {
-//     mapRef.current.getMapRef().animateToRegion(region, 1000);
-//  }
-
-
 
   markerPress = (event) => {
     let user = firebase.auth().currentUser;
@@ -113,17 +92,11 @@ export default class Map extends React.Component {
         initialRegion = {this.state.region}
         radius={20}
         extent={200}
-        ref = {mapRef}
+        // onMapReady={}
         mapType={'standard'}
         clusterColor={'steelblue'}
-        // ref={mapRef}
         // showsPointsOfInterest={false}
-        // onMapReady={}
-        // initialRegion={{
-        // latitude: 45.5,
-        // longitude: -122.675,
-        // latitudeDelta: 0.1,
-        // longitudeDelta: 0.1}}
+
         customMapStyle={mapStyle}
         onLongPress={this.handlePress}
         onMarkerPress={this.markerPress}
