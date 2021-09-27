@@ -134,16 +134,64 @@ export default class MapScreen extends React.Component {
 }
 
 const mapStyle = [
-    {
-        "featureType": "administrative.country",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            },
-            {
-                "hue": "#ff0000"
-            }
-        ]
-    }
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "stylers": [
+      {
+        "weight": "2"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#E2EFCD"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#A7E49A"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#73BFFB"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#7392FB"
+      }
+    ]
+  }
 ]
