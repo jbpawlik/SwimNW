@@ -19,3 +19,5 @@ target 'SwimNW' do
   #   end
   # end
 end
+
+pod 'FirebaseUI'

@@ -14,5 +14,4 @@ export default function InfoScreen() {
 
 const styles = StyleSheet.create({
   padding: 35,
-  
 });
