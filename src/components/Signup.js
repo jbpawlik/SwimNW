@@ -28,11 +28,12 @@ export default class Signup extends Component {
       // this.setState({
       //   isLoading: true,
       // })
+      console.log('hello')
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
-        res.user.updateProfile({
+        res.user.updateProfile({          
           displayName: this.state.displayName
         })
         console.log('User registered successfully!')
@@ -46,6 +47,11 @@ export default class Signup extends Component {
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }
+  }
+
+  addUserAndGoToSignUp = () => {
+    this.registerUser()
+    this.props.navigation.navigate('Signin')
   }
 
   render() {
@@ -81,7 +87,7 @@ export default class Signup extends Component {
         <Button
           color="#3740FE"
           title="Signup"
-          onPress={() => this.registerUser()}
+          onPress={() => this.addUserAndGoToSignUp()}
         />
 
         <Text 

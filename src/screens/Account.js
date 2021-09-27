@@ -21,7 +21,7 @@ function MyStack() {
             name="Dashboard" 
             component={Dashboard} 
             options={{ title: 'Dashboard' }}
-          />       
+          />
         </Stack.Navigator>
       )
     } else {
@@ -42,7 +42,7 @@ function MyStack() {
         name="Signup" 
         component={Signup} 
         options={{ title: 'Signup' }}
-      />       
+      />
       <Stack.Screen 
         name="Signin" 
         component={Signin} 
