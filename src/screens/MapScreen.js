@@ -15,6 +15,7 @@ export default class MapScreen extends React.Component {
       showEditMarkerForm: false,
       showMarkerDetail: false,
       selectedMarker: [],
+      userID: 0,
     }
     this.user = firebase.auth().currentUser;
   }
@@ -24,7 +25,11 @@ export default class MapScreen extends React.Component {
   }
   
   setUserID = (data) => {
-    this.setState({userID: data})
+    if (this.user != null) {
+      this.setState({userID: data})
+    } else {
+      this.setState({userID: 0})
+    }
   }
 
   goToNewMarkerScreen = () => {
@@ -63,6 +68,9 @@ export default class MapScreen extends React.Component {
           tempCoordinate={this.state.tempCoordinate}
           setTempCoordinate={this.setTempCoordinate}
           hideReusableForm={this.hideReusableForm}
+          setUserID={this.setUserID}
+          userID={this.userID}
+          user={this.user}
         />
       )
     } else if (this.state.showMarkerDetail === true) {

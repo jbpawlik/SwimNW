@@ -43,16 +43,16 @@ export default class Signup extends Component {
           email: '', 
           password: ''
         })
-        this.props.navigation.navigate('Profile')
+        this.props.navigation.navigate('Signin')
       })
       .catch(error => this.setState({ errorMessage: error.message }))
     }
   }
 
-  addUserAndGoToSignUp = () => {
-    this.registerUser()
-    this.props.navigation.navigate('Signin')
-  }
+  // addUserAndGoToSignUp = () => {
+  //   this.registerUser()
+  //   this.props.navigation.navigate('Signin')
+  // }
 
   render() {
     // if(this.state.isLoading){
@@ -88,7 +88,7 @@ export default class Signup extends Component {
         <Button
           color="#3740FE"
           title="Signup"
-          onPress={() => this.addUserAndGoToSignUp()}
+          onPress={() => this.registerUser()}
         />
 
         <Text 

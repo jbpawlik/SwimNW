@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import firebase from '../firebase';
-
+import { useNavigation } from '@react-navigation/native';
 export default class Dashboard extends Component {
   constructor() {
     super();
@@ -14,10 +14,11 @@ export default class Dashboard extends Component {
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Signin')
     })
-    .catch(error => this.setState({ errorMessage: error.message }))
+    // .catch(error => this.setState({ errorMessage: error.message }))
   }
 
   render() {
+    const { navigation } = this.props;
     this.state = {
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid
@@ -38,6 +39,8 @@ export default class Dashboard extends Component {
   }
 }
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -48,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   textStyle: {
-    fontSize: 15,
-    marginBottom: 20
+    fontSize: 24,
+    marginBottom: 20,
+    padding: 40
   }
 });

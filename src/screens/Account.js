@@ -67,8 +67,6 @@ export default function Account() {
   return (
     <React.Fragment>
       <MyStack/>
-      {/* <Signup/>
-      <Signin/> */}
     </React.Fragment>
   )
 }

@@ -9,9 +9,10 @@ import {Picker} from '@react-native-picker/picker'
 
 export default class ReusableForm extends React.Component {
 
-  constructor() {
+  constructor(props) {
     const user = firebase.auth().currentUser;
-    super();
+    console.log(props)
+    super(props);
     this.dbRef = firebase.firestore().collection('markers');
     this.state = {
       title: '',
@@ -21,9 +22,10 @@ export default class ReusableForm extends React.Component {
       season: '',
       danger: '',
       secrecy: 'Public',
-      userID: user.uid
+      userID: props.userID
     }
   }
+
 
   updateInputVal = (val, prop) => {
     const state = this.state;

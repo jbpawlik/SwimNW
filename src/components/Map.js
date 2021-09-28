@@ -21,8 +21,15 @@ export default class Map extends React.Component {
     }
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
+    this.user = firebase.auth().currentUser;
+
     // this.selectedMarker = [];
   }
+
+  componentDidMount() {
+    this.getMarkers()
+  }
+
 
   getMarkers = async () => {
     this.dbRef.get()
@@ -42,6 +49,7 @@ export default class Map extends React.Component {
   handlePress = (event) => {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
     // this.getTempCoordinate(event.nativeEvent.coordinate)
+    // if (this.user) {
     this.props.setTempCoordinate(event.nativeEvent.coordinate)
 
     Alert.alert(
@@ -60,6 +68,7 @@ export default class Map extends React.Component {
         }
       ]
     )
+    // }
   }
 
   markerPress = (event) => {
@@ -83,9 +92,9 @@ export default class Map extends React.Component {
         }
 
   render() {
-    if (this.markerArray.length <= 1) {
-      this.getMarkers()
-    }
+    // if (this.markerArray.length <= 1) {
+    //   this.getMarkers()
+    // }
     return (
       <MapView
         style={{ flex: 1 }}
