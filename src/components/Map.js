@@ -4,7 +4,6 @@ import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
 
-
 export default class Map extends React.Component {
 
   constructor(props) {
@@ -22,8 +21,6 @@ export default class Map extends React.Component {
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
     this.user = firebase.auth().currentUser;
-
-    // this.selectedMarker = [];
   }
 
   componentDidMount() {
@@ -47,29 +44,24 @@ export default class Map extends React.Component {
     })
   }
   handlePress = (event) => {
-    // this.setState({tempCoordinate: event.nativeEvent.coordinate})
-    // this.getTempCoordinate(event.nativeEvent.coordinate)
     const user = firebase.auth().currentUser;
     if (user) {
-    
-    this.props.setTempCoordinate(event.nativeEvent.coordinate)
+      this.props.setTempCoordinate(event.nativeEvent.coordinate)
 
-    Alert.alert(
-      "New Swim?",
-      "Add a new swim?",
-      [
-        {
-          text: 'Add New Swim',
-          // onPress: () => this.props.navigation.navigate('Add Swim')
-          // onPress: () => this.props.goToNewMarkerScreen()
-          onPress: this.props.showReusableForm
-        },
-        {
-          text: 'Cancel',
-          style: 'cancel'
-        }
-      ]
-    )
+      Alert.alert(
+        "New Swim?",
+        "Add a new swim?",
+        [
+          {
+            text: 'Add New Swim',
+            onPress: this.props.showReusableForm
+          },
+          {
+            text: 'Cancel',
+            style: 'cancel'
+          }
+        ]
+      )
     }
   }
 
@@ -83,20 +75,13 @@ export default class Map extends React.Component {
           if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
             const markerID = marker._delegate._document.key.path.segments[6]
             this.props.selectedMarker.push(markerID)
-            // if (!user) {
-              this.props.showMarkerDetail() 
-            // } else if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
-            //   this.props.showEditMarkerForm()
-            // } else {
-            //   this.props.showMarkerDetail()
-            // }
-          }})})
-        }
+            this.props.showMarkerDetail() 
+          }
+        })
+      })
+    }
 
   render() {
-    // if (this.markerArray.length <= 1) {
-    //   this.getMarkers()
-    // }
     return (
       <MapView
         style={{ flex: 1 }}
@@ -106,7 +91,6 @@ export default class Map extends React.Component {
         initialRegion = {this.state.region}
         radius={20}
         extent={200}
-        // onMapReady={}
         mapType={'standard'}
         clusterColor={'steelblue'}
         customMapStyle={mapStyle}
