@@ -4,7 +4,7 @@ import firebase from '../firebase';
 
 
 export default class Signup extends Component {
-  
+
   constructor() {
     super();
     this.state = { 
@@ -13,6 +13,8 @@ export default class Signup extends Component {
       password: '',
       // isLoading: false
     }
+    this.dbRef = firebase.firestore().collection('markers');
+    this.users = firebase.firestore().collection('users');
   }
 
   updateInputVal = (val, prop) => {
@@ -21,31 +23,26 @@ export default class Signup extends Component {
     this.setState(state);
   }
 
-  registerUser = () => {
+  registerUser = async () => {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signup!')
     } else {
-      // this.setState({
-      //   isLoading: true,
-      // })
-      console.log('hello')
-      firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((res) => {
-        res.user.updateProfile({          
-          displayName: this.state.displayName
-        })
-        console.log('User registered successfully!')
-        this.setState({
-          // isLoading: false,
-          displayName: '',
-          email: '', 
-          password: ''
-        })
-        this.props.navigation.navigate('Signin')
+      try {
+
+    
+      const res = await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      const user = res.user
+      await this.users.add({
+        uid: user.uid,
+        name: user.displayName,
+        authProvider: 'google',
+        email: user.email
       })
-      .catch(error => this.setState({ errorMessage: error.message }))
+
+    } catch (error) {
+      console.error(error)
+      Alert.alert(error.message)
+    }
     }
   }
 

@@ -21,6 +21,8 @@ export default class Map extends React.Component {
     this.dbRef = firebase.firestore().collection('markers');
     this.markerArray = [];
     this.user = firebase.auth().currentUser;
+    
+
   }
 
   componentDidMount() {

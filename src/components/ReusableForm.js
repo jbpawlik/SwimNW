@@ -22,7 +22,7 @@ export default class ReusableForm extends React.Component {
       season: '',
       danger: '',
       secrecy: 'Public',
-      userID: props.userID
+      userID: user.uid
     }
   }
 
