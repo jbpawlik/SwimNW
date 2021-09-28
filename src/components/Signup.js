@@ -49,6 +49,7 @@ export default class Signup extends Component {
     }
   }
 
+  //Cannibalize to create a function that will create a collection of users with more than just email/password
   // registerUser = async () => {
   //   if(this.state.email === '' && this.state.password === '') {
   //     Alert.alert('Enter details to signup!')

@@ -15,31 +15,7 @@ export default class EditMarker extends React.Component {
     this.markerTitle2 = [];
     this.markerID = this.props.selectedMarker[0];
     this.marker = firebase.firestore().collection('markers').doc(this.markerID);
-    // this.marker = firebase.firestore().collection('markers').get().then(snapshot => { snapshot.docs.forEach(marker => { if (marker._delegate._document.key.path.segments[6] === this.markerID ) {
-      // console.log(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})})
-      // console.log(this)}})})
-      // this.markerTitle2.push(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})}).then(console.log(this.markerTitle2))
-    // this.dbRef = firebase.firestore().collection('markers')
-    //     this.dbRef.get()
-    // .then(snapshot => {
-    //   snapshot.docs.forEach(marker => {
-    //     if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
-    //       const markerID = marker._delegate._document.key.path.segments[6]
-    //       this.props.selectedMarker.push(markerID)
-    //       if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
-    //         this.props.showEditMarkerForm()
-    //       } else {
-    //         this.props.showMarkerDetail()
-    //       }
-    //     }})})
 
-
-
-
-    // this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
-
-    //     return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})
-    // ;;
     this.state = { 
       title: '',
       location: '',
@@ -60,15 +36,6 @@ export default class EditMarker extends React.Component {
   // componentDidMount = () => {
   //   this.markerTitle2.push(markerTitle2: firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => { return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue'];
   //   }))
-  // }
-
-  // async getMarkerTitle() {
-  //   this.markerTitle = firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => {
-
-  //     this.setState({markerTitle2: querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue']})}).then(
-  //       console.log(this.markerTitle2)
-  //     )
-  // ;
   // }
 
   
@@ -98,7 +65,6 @@ export default class EditMarker extends React.Component {
           danger: this.state.danger,
           secrecy: this.state.secrecy,
         })
-        // this.props.navigation.navigate('Map')
         this.props.hideEditMarkerForm()
       }
       }
