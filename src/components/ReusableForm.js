@@ -26,16 +26,11 @@ export default class ReusableForm extends React.Component {
     }
   }
 
-
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
     this.setState(state);
   }
-
-  // this.marker.addressForCoordinate(
-  //   return this.tempCoordinate
-  // );
 
   addMarker = () => {
     if (this.state.title === '') {
@@ -50,10 +45,10 @@ export default class ReusableForm extends React.Component {
         season: this.state.season,
         danger: this.state.danger,
         secrecy: this.state.secrecy,
-        markerID: Math.floor(Math.random() * (10000000 - 0) + 0),
-        userID: this.state.userID
+        userID: this.state.userID,
+        admin: false,
+        trusted: false
       })
-      // this.props.navigation.navigate('Map')
       this.props.hideReusableForm()
     }
     }
