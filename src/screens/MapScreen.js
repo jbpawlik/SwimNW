@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Map from '../components/Map'
 import ReusableForm from "../components/ReusableForm";
 import EditMarker from "../components/EditMarker";
 import MarkerDetail from "../components/MarkerDetail"
+import firebase from "../firebase";
 
 export default class MapScreen extends React.Component {
 
@@ -14,8 +15,8 @@ export default class MapScreen extends React.Component {
       showEditMarkerForm: false,
       showMarkerDetail: false,
       selectedMarker: [],
-      userID: null,
     }
+    this.user = firebase.auth().currentUser;
   }
 
   setTempCoordinate = (data) => {
@@ -39,6 +40,7 @@ export default class MapScreen extends React.Component {
   }
 
   showEditMarkerForm = () => {
+    this.setState({ showMarkerDetail: false})
     this.setState({ showEditMarkerForm: true})
   }
 
@@ -71,6 +73,7 @@ export default class MapScreen extends React.Component {
           showEditMarkerForm={this.showEditMarkerForm}
           setUserID={this.setUserID}
           userID={this.userID}
+          user={this.user}
         />
       )
     } else if (this.state.showEditMarkerForm === true) {
@@ -91,6 +94,8 @@ export default class MapScreen extends React.Component {
             showEditMarkerForm={this.showEditMarkerForm}
             selectedMarker={this.state.selectedMarker}
             showMarkerDetail={this.showMarkerDetail}
+            setUserID={this.setUserID}
+            userID={this.userID}
           />
         </React.Fragment>
       )

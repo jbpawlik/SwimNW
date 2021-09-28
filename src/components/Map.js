@@ -24,6 +24,7 @@ export default class Map extends React.Component {
     // this.selectedMarker = [];
   }
 
+  
 
   getMarkers = async () => {
     this.dbRef.get()
