@@ -73,13 +73,13 @@ export default class Map extends React.Component {
           if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
             const markerID = marker._delegate._document.key.path.segments[6]
             this.props.selectedMarker.push(markerID)
-            if (!user) {
+            // if (!user) {
               this.props.showMarkerDetail() 
-            } else if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
-              this.props.showEditMarkerForm()
-            } else {
-              this.props.showMarkerDetail()
-            }
+            // } else if (user.uid === marker._delegate._document.data.value.mapValue.fields.userID['stringValue']) {
+            //   this.props.showEditMarkerForm()
+            // } else {
+            //   this.props.showMarkerDetail()
+            // }
           }})})
         }
 
