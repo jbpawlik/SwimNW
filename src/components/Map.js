@@ -49,7 +49,9 @@ export default class Map extends React.Component {
   handlePress = (event) => {
     // this.setState({tempCoordinate: event.nativeEvent.coordinate})
     // this.getTempCoordinate(event.nativeEvent.coordinate)
-    // if (this.user) {
+    const user = firebase.auth().currentUser;
+    if (user) {
+    
     this.props.setTempCoordinate(event.nativeEvent.coordinate)
 
     Alert.alert(
@@ -68,7 +70,7 @@ export default class Map extends React.Component {
         }
       ]
     )
-    // }
+    }
   }
 
   markerPress = (event) => {
