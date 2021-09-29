@@ -28,7 +28,6 @@ export default class Signup extends Component {
       // this.setState({
       //   isLoading: true,
       // })
-      console.log('hello')
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -45,7 +44,7 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Signin')
       })
-      .catch(error => this.setState({ errorMessage: error.message }))
+      .catch(error => console.log(error))
     }
   }
 
