@@ -12,6 +12,7 @@ export default class Signup extends Component {
       email: '', 
       password: '',
     }
+    this.users = firebase.firestore().collection('users');
   }
 
   updateInputVal = (val, prop) => {
@@ -29,6 +30,27 @@ export default class Signup extends Component {
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((res) => {
+        console.log(res)
+        const user = res.user;
+        console.log(user)
+        this.users.add({
+          uid: user.uid,
+          displayName: this.state.displayName,
+          email: user.email,
+          admin: false,
+          trust: 0,
+        })
+      })
+      //     const user = res.user
+      //     await this.users.add({
+      //       uid: user.uid,
+      //       name: user.displayName,
+      //       authProvider: 'google',
+      //       email: user.email
+      //     })
+
+
       .then((res) => {
         res.user.updateProfile({
           displayName: this.state.displayName
@@ -99,11 +121,10 @@ export default class Signup extends Component {
           secureTextEntry={true}
         />   
         <Button
-          color="#3740FE"
+          color="#38A3EA"
           title="Signup"
           onPress={() => this.registerUser()}
         />
-
         <Text 
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>
@@ -132,7 +153,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#38A3EA',
     marginTop: 25,
     textAlign: 'center'
   },

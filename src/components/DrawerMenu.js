@@ -66,7 +66,8 @@ export default function DrawerMenu() {
                     color={focused ? "#e91e63" : "black"} 
                   />
                 }}
-            />)
+            />
+           )
           }
         </Drawer.Navigator>
       </NavigationContainer>

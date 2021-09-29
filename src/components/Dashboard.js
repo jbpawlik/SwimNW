@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
         </Text>
 
         <Button
-          color="#3740FE"
+          color="#38A3EA"
           title="Signout"
           onPress={() => this.signOut()}
         />

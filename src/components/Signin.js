@@ -21,7 +21,6 @@ export default class Signin extends Component {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signin!')
     } else {
-
       firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -55,11 +54,10 @@ export default class Signin extends Component {
           secureTextEntry={true}
         />
         <Button
-          color="#3740FE"
+          color="#38A3EA"
           title="Signin"
           onPress={() => this.userLogin()}
         />
-
         <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signup')}>
@@ -88,7 +86,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#38A3EA',
     marginTop: 25,
     textAlign: 'center'
   },
