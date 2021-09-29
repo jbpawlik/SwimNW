@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
     borderColor: 'tan',
     opacity: .8,
     paddingTop: 15,
+    fontWeight: 'bold',
   },
   preloader: {
     left: 0,

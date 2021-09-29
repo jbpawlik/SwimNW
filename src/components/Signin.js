@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable } from 'react-native';
 import firebase from '../firebase';
 
 export default class Signin extends Component {
@@ -41,7 +41,7 @@ export default class Signin extends Component {
       <View style={styles.container}>
         <ImageBackground 
           style={styles.image} 
-          source={require('../assets/images/shroomlog.jpg')}
+          source={require('../assets/images/shroomtree.jpg')}
         />
         <TextInput
           style={styles.inputStyle}
@@ -82,20 +82,19 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
   },
   inputStyle: {
     width: '100%',
-    marginBottom: 15,
-    paddingBottom: 15,
+    margin: 20,
+    padding: 10,
+    paddingTop: 15,
     alignSelf: "center",
-    borderColor: "#ccc",
-    borderBottomWidth: 1
-  },
-  loginText: {
-    color: '#38A3EA',
-    marginTop: 25,
-    textAlign: 'center'
+    borderWidth: 10,
+    borderColor: 'tan',
+    backgroundColor: 'beige',
+    opacity: .9,
+    fontSize: 20,
+    textAlign: 'center',
   },
   image: {
     width: 600,
@@ -104,22 +103,34 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   textStyle: {
-    flex: 1,
-    fontSize: 52,
+    // flex: 1,
+    fontSize: 24,
+    padding: 4,
     fontWeight: 'bold',
-    borderWidth: 10,
+    // borderWidth: 10,
     borderColor: 'tan',
     textAlign: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     color: '#211302',
-    opacity: .6,
+    opacity: .7,
+    paddingBottom: 20,
   },
   button: {
     // position:'absolute',
     minWidth: '100%',
-    height: 100,
     backgroundColor: 'beige',
     opacity: .8,
+  },
+  loginText: {
+    color: '#211302',
+    fontSize: 16,
+    marginTop: 25,
+    textAlign: 'center',
+    backgroundColor: 'beige',
+    borderWidth: 10,
+    borderColor: 'tan',
+    opacity: .8,
+    paddingTop: 15,
   },
   preloader: {
     left: 0,
