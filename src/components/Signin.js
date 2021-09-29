@@ -39,6 +39,10 @@ export default class Signin extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ImageBackground 
+          style={styles.image} 
+          source={require('../assets/images/shroomlog.jpg')}
+        />
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -53,11 +57,14 @@ export default class Signin extends Component {
           maxLength={15}
           secureTextEntry={true}
         />
-        <Button
+        <Pressable
           color="#38A3EA"
           title="Signin"
+          style={styles.loginText}
           onPress={() => this.userLogin()}
-        />
+          >
+          <Text style={styles.textStyle}>SIGN UP</Text>
+        </Pressable>
         <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signup')}>
@@ -89,6 +96,30 @@ const styles = StyleSheet.create({
     color: '#38A3EA',
     marginTop: 25,
     textAlign: 'center'
+  },
+  image: {
+    width: 600,
+    height: 1200,
+    overflow: 'hidden',
+    position: 'absolute',
+  },
+  textStyle: {
+    flex: 1,
+    fontSize: 52,
+    fontWeight: 'bold',
+    borderWidth: 10,
+    borderColor: 'tan',
+    textAlign: 'center',
+    alignItems: 'center',
+    color: '#211302',
+    opacity: .6,
+  },
+  button: {
+    // position:'absolute',
+    minWidth: '100%',
+    height: 100,
+    backgroundColor: 'beige',
+    opacity: .8,
   },
   preloader: {
     left: 0,

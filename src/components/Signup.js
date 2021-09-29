@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, Pressable, ImageBackground } from 'react-native';
 import firebase from '../firebase';
 
 
@@ -99,7 +99,11 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <View style={styles.container}>  
+      <View style={styles.container}>
+        <ImageBackground 
+          style={styles.image} 
+          source={require('../assets/images/elkrock.jpg')}
+        />
         <TextInput
           style={styles.inputStyle}
           placeholder="Name"
@@ -121,15 +125,18 @@ export default class Signup extends Component {
           maxLength={15}
           secureTextEntry={true}
         />   
-        <Button
+        <Pressable
           color="#38A3EA"
+          style={styles.button}
           title="Signup"
           onPress={() => this.registerUser()}
-        />
+        >
+          <Text style={styles.textStyle}>SIGN UP</Text>
+        </Pressable>
         <Text 
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>
-          Already Registered? Click here to login
+          Registered?{'\n'} Click here to login
         </Text>
       </View>
     );
@@ -147,16 +154,52 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     width: '100%',
-    marginBottom: 15,
-    paddingBottom: 15,
+    margin: 20,
+    padding: 10,
+    paddingTop: 15,
     alignSelf: "center",
-    borderColor: "#ccc",
-    borderBottomWidth: 1
+    borderWidth: 10,
+    borderColor: 'tan',
+    backgroundColor: 'beige',
+    opacity: .8,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  image: {
+    width: 600,
+    height: 1200,
+    overflow: 'hidden',
+    position: 'absolute',
+  },
+  textStyle: {
+    // flex: 1,
+    fontSize: 24,
+    padding: 4,
+    fontWeight: 'bold',
+    borderWidth: 10,
+    borderColor: 'tan',
+    textAlign: 'center',
+    alignItems: 'center',
+    color: '#211302',
+    opacity: .6,
+    paddingTop: 20,
+  },
+  button: {
+    // position:'absolute',
+    minWidth: '100%',
+    backgroundColor: 'beige',
+    opacity: .8,
   },
   loginText: {
-    color: '#38A3EA',
+    color: '#211302',
+    fontSize: 16,
     marginTop: 25,
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'beige',
+    borderWidth: 10,
+    borderColor: 'tan',
+    opacity: .8,
+    paddingTop: 15,
   },
   preloader: {
     left: 0,

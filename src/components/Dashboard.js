@@ -36,8 +36,7 @@ export default class Dashboard extends Component {
         <ImageBackground 
           style={styles.image} 
           source={require('../assets/images/shroomlog.jpg')}
-        >
-        </ImageBackground>
+        />
         <Pressable
           title="Signout"
           color='#38A3EA'
