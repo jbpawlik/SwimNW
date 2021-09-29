@@ -27,6 +27,8 @@
     "firestorter": "^3.1.0",
     "formik": "^2.2.9",
     "jdk": "^0.0.0",
+    "jetifier": "^2.0.0",
+    "jetify": "^1.0.2",
     "metro-react-native-babel-preset": "^0.66.2",
     "mobx": "^6.3.3",
     "mobx-react": "^7.2.0",
