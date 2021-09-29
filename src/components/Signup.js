@@ -11,7 +11,6 @@ export default class Signup extends Component {
       displayName: '',
       email: '', 
       password: '',
-      // isLoading: false
     }
   }
 
@@ -27,9 +26,6 @@ export default class Signup extends Component {
     } else if (this.state.password.length < 7 ) {
       Alert.alert('Password must be 6+ characters')
     } else {
-      // this.setState({
-      //   isLoading: true,
-      // })
       firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -39,7 +35,6 @@ export default class Signup extends Component {
         })
         console.log('User registered successfully!')
         this.setState({
-          // isLoading: false,
           displayName: '',
           email: '', 
           password: ''
@@ -80,13 +75,6 @@ export default class Signup extends Component {
   // }
 
   render() {
-    // if(this.state.isLoading){
-    //   return(
-    //     <View style={styles.preloader}>
-    //       <ActivityIndicator size="large" color="#9E9E9E"/>
-    //     </View>
-    //   )
-    // }    
     return (
       <View style={styles.container}>  
         <TextInput
