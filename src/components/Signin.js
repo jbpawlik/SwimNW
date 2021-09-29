@@ -8,7 +8,6 @@ export default class Signin extends Component {
     this.state = {
       email: '',
       password: '',
-      // isLoading: false
     }
   }
   
@@ -22,33 +21,23 @@ export default class Signin extends Component {
     if(this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signin!')
     } else {
-      // this.setState({
-      //   isLoading: true,
-      // })
+
       firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
         console.log('User logged-in successfully!')
         this.setState({
-          // isLoading: false,
           email: '',
           password: ''
         })
         this.props.navigation.navigate('Map')
       })
-      .catch(error => this.setState({ errorMessage: error.message }))
+      .catch(error => alert(error))
     }
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
-        <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E"/>
-        </View>
-      )
-    }
     return (
       <View style={styles.container}>
         <TextInput
