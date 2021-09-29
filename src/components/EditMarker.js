@@ -2,7 +2,7 @@
 // import PropTypes from "prop-types";
 
 import React, { Component, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground } from 'react-native';
 import firebase from '../firebase';
 import {Picker} from '@react-native-picker/picker'
 
@@ -73,6 +73,10 @@ export default class EditMarker extends React.Component {
     return (
       <React.Fragment>
         <View>
+        <ImageBackground 
+          style={styles.image} 
+          source={require('../assets/images/tidepool.jpg')}
+        />
           <Button
             color="#3740FE"
             title="Back to Map"
@@ -183,6 +187,12 @@ const styles = StyleSheet.create({
     color: '#3740FE',
     marginTop: 25,
     textAlign: 'center'
+  },
+  image: {
+    width: 600,
+    height: 1200,
+    overflow: 'hidden',
+    position: 'absolute',
   },
   preloader: {
     left: 0,
