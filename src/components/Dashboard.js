@@ -2,33 +2,30 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
-import { Navigate } from '../helpers/navigate'
+import { navigation } from '../helpers/Navigate'
 export default class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       uid: ''
     }
   }
 
   signOut = () => {
-    // const navigate = Navigate()
+    const {navigation} = this.props;
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Signup')
     })
     // .catch(error => this.setState({ errorMessage: error.message }))
   }
 
-  // getNavigate() {
-  // const navigate = useNavigation()
-  // return navigate
-  // }
 
   render() {
     this.state = {
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid
     }
+    
     return (
       <View style={styles.container}>
         <Text style = {styles.textStyle}>

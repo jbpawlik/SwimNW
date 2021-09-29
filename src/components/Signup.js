@@ -24,6 +24,8 @@ export default class Signup extends Component {
   registerUser = () => {
     if (this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signup!')
+    } else if (this.state.password.length < 7 ) {
+      Alert.alert('Password must be 6+ characters')
     } else {
       // this.setState({
       //   isLoading: true,
@@ -44,7 +46,7 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Signin')
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error))
     }
   }
 
