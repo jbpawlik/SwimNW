@@ -57,18 +57,17 @@ export default class ReusableForm extends React.Component {
     return (
       <React.Fragment>
 
-        <View>
-          {/* <ImageBackground 
+        <View style={styles.container}>
+          <ImageBackground 
             style={styles.image} 
-            source={require('../assets/images/river.jpg')}
-          /> */}
+            source={require('../assets/images/tidepool.jpg')}
+          />
           <Button
             color="#3740FE"
             title="Back to Map"
             onPress={() => this.props.hideReusableForm()}
           />
-        </View>
-        <View style={styles.container}>
+
           <TextInput
             style={styles.inputStyle}
             placeholder="Name (required)"

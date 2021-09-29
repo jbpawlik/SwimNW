@@ -72,7 +72,7 @@ export default class EditMarker extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <View>
+        <View style={styles.container}>
         <ImageBackground 
           style={styles.image} 
           source={require('../assets/images/tidepool.jpg')}
@@ -82,9 +82,7 @@ export default class EditMarker extends React.Component {
             title="Back to Map"
             onPress={() => this.props.hideEditMarkerForm()}
           />
-        </View>
-        {/* <Text>{this.marker.title}</Text> */}
-        <View style={styles.container}>
+
           <TextInput
             style={styles.inputStyle}
             placeholder="Name (required)"
