@@ -2,7 +2,7 @@
 // import PropTypes from "prop-types";
 
 import React, { Component, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable, ScrollView } from 'react-native';
 import firebase from '../firebase';
 import {Picker} from '@react-native-picker/picker'
 
@@ -72,6 +72,7 @@ export default class EditMarker extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <ScrollView>
         <View style={styles.container}>
           <ImageBackground 
             style={styles.image} 
@@ -164,6 +165,7 @@ export default class EditMarker extends React.Component {
             <Text style={styles.loginText}>Back to Map</Text>
           </Pressable>
         </View>
+        </ScrollView>
       </React.Fragment>
     );
   }

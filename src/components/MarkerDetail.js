@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
-import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert} from 'react-native';
+import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert, ScrollView} from 'react-native';
 import firebase from "../firebase";
 import EditMarker from "./EditMarker";
 
@@ -39,6 +39,7 @@ function MarkerDetail(props){
   // if (props.userID === markerDetails.userID) {
     return (
       <React.Fragment>
+        <ScrollView>
         <ImageBackground 
           style={styles.image} 
           source={require('../assets/images/tidepool.jpg')}
@@ -85,6 +86,7 @@ function MarkerDetail(props){
             <Text style={styles.loginText}>Back to Map</Text>
           </Pressable>
         </View>
+        </ScrollView>
       </React.Fragment>
     );
 //   } else {
