@@ -45,7 +45,7 @@ export default class MapScreen extends React.Component {
   }
 
   showEditMarkerForm = () => {
-    // this.setState({ showMarkerDetail: false})
+    this.setState({ showMarkerDetail: false})
     this.setState({ showEditMarkerForm: true})
   }
 

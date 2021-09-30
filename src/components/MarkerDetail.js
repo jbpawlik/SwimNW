@@ -32,11 +32,11 @@ function MarkerDetail(props){
           style={styles.image} 
           source={require('../assets/images/tidepool.jpg')}
         />
-        <Button
+        {/* <Button
           color="#3740FE"
           title="Back to Map"
           onPress={() => props.hideMarkerDetail()}
-        />
+        /> */}
         <Text style={styles.loginText}>
           Name: {markerDetails.title}{'\n'}
           Location:{markerDetails.location}{'\n'}
