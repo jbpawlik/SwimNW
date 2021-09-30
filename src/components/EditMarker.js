@@ -51,23 +51,23 @@ export default class EditMarker extends React.Component {
   }
     
 
-    editMarker = () => {
-      console.log(this.marker)
-      if (this.state.title === '') {
-        Alert.alert('Fill out all required fields')
-      } else {
-        this.marker.update({
-          title: this.state.title,
-          location: this.state.location,
-          description: this.state.description,
-          type: this.state.type,
-          season: this.state.season,
-          danger: this.state.danger,
-          secrecy: this.state.secrecy,
-        })
-        this.props.hideEditMarkerForm()
-      }
-      }
+  editMarker = () => {
+    console.log(this.marker)
+    if (this.state.title === '') {
+      Alert.alert('Fill out all required fields')
+    } else {
+      this.marker.update({
+        title: this.state.title,
+        location: this.state.location,
+        description: this.state.description,
+        type: this.state.type,
+        season: this.state.season,
+        danger: this.state.danger,
+        secrecy: this.state.secrecy,
+      })
+      this.props.hideEditMarkerForm()
+    }
+  }
 
   render() {
     return (

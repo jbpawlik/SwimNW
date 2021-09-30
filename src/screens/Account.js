@@ -16,11 +16,12 @@ function MyStack() {
 
     if (loggedIn) {
       return (
-        <Stack.Navigator>
+        <Stack.Navigator headerShown={false} >
           <Stack.Screen 
             name="Dashboard" 
             component={Dashboard} 
-            options={{ title: 'Dashboard' }}
+            options={{ title: 'Dashboard',
+            headerShown: false  }}
           />
         </Stack.Navigator>
       )
@@ -41,22 +42,24 @@ function MyStack() {
       <Stack.Screen 
         name="Signup" 
         component={Signup} 
-        options={{ title: 'Signup' }}
+        options={{ title: 'Signup',
+        headerShown: false }}
       />
       <Stack.Screen 
         name="Signin" 
         component={Signin} 
         options={
-          {title: 'Signin'},
-          {headerLeft: null} 
+          {title: 'Signin',
+          headerShown: false }
         }
       />
       <Stack.Screen 
        name="Dashboard" 
+
        component={Dashboard} 
        options={
-         { title: 'Dashboard' },
-         {headerLeft: null} 
+         { title: 'Dashboard',
+         headerShown: false  }
        }
       />
     </Stack.Navigator>
