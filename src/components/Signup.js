@@ -51,59 +51,9 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Signin')
       })
-      //     const user = res.user
-      //     await this.users.add({
-      //       uid: user.uid,
-      //       name: user.displayName,
-      //       authProvider: 'google',
-      //       email: user.email
-      //     })
-
-
-      // .then((res) => {
-      //   res.user.updateProfile({
-      //     displayName: this.state.displayName
-      //   })
-      //   console.log('User registered successfully!')
-      //   this.setState({
-      //     displayName: '',
-      //     email: '', 
-      //     password: ''
-      //   })
-      //   this.props.navigation.navigate('Signin')
-      // })
       .catch(error => alert(error))
     }
   }
-
-  //Cannibalize to create a function that will create a collection of users with more than just email/password
-  // registerUser = async () => {
-  //   if(this.state.email === '' && this.state.password === '') {
-  //     Alert.alert('Enter details to signup!')
-  //   } else {
-  //     try {
-
-    
-  //     const res = await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-  //     const user = res.user
-  //     await this.users.add({
-  //       uid: user.uid,
-  //       name: user.displayName,
-  //       authProvider: 'google',
-  //       email: user.email
-  //     })
-
-  //   } catch (error) {
-  //     console.error(error)
-  //     Alert.alert(error.message)
-  //   }
-  //   }
-  // }
-
-  // addUserAndGoToSignUp = () => {
-  //   this.registerUser()
-  //   this.props.navigation.navigate('Signin')
-  // }
 
   render() {
     return (
