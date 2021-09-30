@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
   },
   info: {
     textAlign: 'center',
-    paddingTop: '25%',
+    padding: '25%',
     paddingBottom: '25%',
+    paddingLeft: 20,
+    paddingRight: 20,
     alignItems: 'center',
     fontSize: 18,
-    
-    
   }
 })
