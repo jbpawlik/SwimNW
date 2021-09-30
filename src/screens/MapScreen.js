@@ -32,9 +32,9 @@ export default class MapScreen extends React.Component {
     }
   }
 
-  goToNewMarkerScreen = () => {
-    this.props.navigation.navigate('Add Swim')
-  }
+  // goToNewMarkerScreen = () => {
+  //   this.props.navigation.navigate('Add Swim')
+  // }
 
   showReusableForm = () => {
     this.setState({ showAddMarkerForm: true})

@@ -22,7 +22,6 @@ export default class Signup extends Component {
   }
 
   registerUser = () => {
-    console.log('hello')
     if (this.state.email === '' && this.state.password === '') {
       Alert.alert('Enter details to signup!')
     } else if (this.state.password.length < 7 ) {
@@ -32,7 +31,6 @@ export default class Signup extends Component {
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
-        console.log(res)
         const user = res.user;
         console.log(user)
         this.users.add({
@@ -42,17 +40,6 @@ export default class Signup extends Component {
           admin: false,
           trust: 0,
         })
-      })
-      //     const user = res.user
-      //     await this.users.add({
-      //       uid: user.uid,
-      //       name: user.displayName,
-      //       authProvider: 'google',
-      //       email: user.email
-      //     })
-
-
-      .then((res) => {
         res.user.updateProfile({
           displayName: this.state.displayName
         })
@@ -64,6 +51,27 @@ export default class Signup extends Component {
         })
         this.props.navigation.navigate('Signin')
       })
+      //     const user = res.user
+      //     await this.users.add({
+      //       uid: user.uid,
+      //       name: user.displayName,
+      //       authProvider: 'google',
+      //       email: user.email
+      //     })
+
+
+      // .then((res) => {
+      //   res.user.updateProfile({
+      //     displayName: this.state.displayName
+      //   })
+      //   console.log('User registered successfully!')
+      //   this.setState({
+      //     displayName: '',
+      //     email: '', 
+      //     password: ''
+      //   })
+      //   this.props.navigation.navigate('Signin')
+      // })
       .catch(error => alert(error))
     }
   }

@@ -30,26 +30,11 @@ function MarkerDetail(props){
       }
     };
 
-
     getMarkerDetails();
     return () => {
       isMounted = false;
     };
   }, []);
-
-  // useEffect(() => {
-  //   mounted.current = true;
-
-  //   setTimeout(() => {
-  //     if (mounted.current) {
-  //       setMarkerDetails(false);
-  //     }
-  //   }, 1000);
-
-  //   return function cleanup() {
-  //     mounted.current = false;
-  //   }
-  // }, []);
 
   // if (props.userID === markerDetails.userID) {
     return (
@@ -63,13 +48,25 @@ function MarkerDetail(props){
           title="Back to Map"
           onPress={() => props.hideMarkerDetail()}
         /> */}
-        <Text style={styles.loginText}>
-          Name: {markerDetails.title}{'\n'}
-          Location:{markerDetails.location}{'\n'}
-          Type: {markerDetails.type}{'\n'}
-          Description: {markerDetails.description}{'\n'}
-          Season: {markerDetails.season}{'\n'}
-          Danger: {markerDetails.danger}{'\n'}
+        <Text style={styles.detailText}>
+          Name: {markerDetails.title}
+        </Text>
+        <Text style={styles.detailText}>
+          Location: {markerDetails.location}
+        </Text>
+        <Text style={styles.detailText}>
+          Type: {markerDetails.type}
+          </Text>
+        <Text style={styles.detailText}>
+          Description: {markerDetails.description}
+        </Text>
+        <Text style={styles.detailText}>
+          Season: {markerDetails.season}
+        </Text>
+        <Text style={styles.detailText}>
+          Danger: {markerDetails.danger}
+        </Text>
+        <Text style={styles.detailText}>
           Secrecy: {markerDetails.secrecy}
         </Text>
         <View>
@@ -126,6 +123,16 @@ const styles = StyleSheet.create({
     opacity: .8,
     fontSize: 20,
   },
+  detailText: {
+    color: '#211302',
+    fontSize: 16,
+    backgroundColor: 'beige',
+    borderWidth: 1,
+    borderColor: 'black',
+    opacity: .8,
+    paddingLeft: 15,
+    fontWeight: 'bold',
+  },
   loginText: {
     color: '#211302',
     fontSize: 16,
@@ -135,8 +142,9 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: 'tan',
     opacity: .8,
-    padding: 1,
+    padding: 15,
     fontWeight: 'bold',
+    lineHeight: 30,
   },
   image: {
     width: 600,
