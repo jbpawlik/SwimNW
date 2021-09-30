@@ -63,7 +63,7 @@ export default class Signin extends Component {
           style={styles.loginText}
           onPress={() => this.userLogin()}
           >
-          <Text style={styles.textStyle}>Sign Up</Text>
+          <Text style={styles.textStyle}>Sign In</Text>
         </Pressable>
         <Text
           style={styles.loginText}

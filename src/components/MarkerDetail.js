@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable} from 'react-native';
+import React, {useState, useEffect, useRef} from "react";
+import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert} from 'react-native';
 import firebase from "../firebase";
 import EditMarker from "./EditMarker";
 
@@ -8,22 +8,48 @@ function MarkerDetail(props){
   // const [state, setState] = useState({});
   const [markerDetails, setMarkerDetails] = useState([]);
   const markerID = props.selectedMarker[0];
-  const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
+  // const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
+  // const mounted = useRef(false);
+
   // const user = firebase.auth().currentUser;
   // if (user != null) {
   //   props.setUserID(user.uid)
   // }
+  
+  useEffect(() => {
+    let isMounted = true;
 
-//   useEffect(() => {
-//     anon();
-//     return () => {
-//       setState({});
-//     };
-// }, []);
+    const getMarkerDetails = async () => {
+      try {
+        const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
+        if (isMounted) {
+          setMarkerDetails(marker);
+        }
+      } catch (error) {
+        Alert.alert(error)
+      }
+    };
 
-// const anon = () => {
-//   setState({})
-// }
+
+    getMarkerDetails();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   mounted.current = true;
+
+  //   setTimeout(() => {
+  //     if (mounted.current) {
+  //       setMarkerDetails(false);
+  //     }
+  //   }, 1000);
+
+  //   return function cleanup() {
+  //     mounted.current = false;
+  //   }
+  // }, []);
 
   // if (props.userID === markerDetails.userID) {
     return (
