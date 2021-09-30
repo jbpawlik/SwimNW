@@ -2,21 +2,15 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, ImageBackground, Pressable } from 'react-native';
 import firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
-import { navigation } from '../helpers/Navigate'
 import { UrlTile } from 'react-native-maps';
 export default class Dashboard extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      // uid: ''
-    }
+
   }
 
   signOut = () => {
-    const {navigation} = this.props;
-    console.log('hello')
-
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Signup')
     })
@@ -25,11 +19,7 @@ export default class Dashboard extends Component {
 
 
   render() {
-    // this.state = {
-    //   displayName: firebase.auth().currentUser.displayName,
-    //   uid: firebase.auth().currentUser.uid
-    // }
-    
+
     return (
       <View style={styles.container}>
 
