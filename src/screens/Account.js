@@ -55,7 +55,6 @@ function MyStack() {
       />
       <Stack.Screen 
        name="Dashboard" 
-
        component={Dashboard} 
        options={
          { title: 'Dashboard',
