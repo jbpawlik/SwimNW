@@ -205,7 +205,11 @@ const styles = StyleSheet.create({
     // position: 'absolute'
   },
   scrollView: {
-    flexGrow: 1,
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    // justifyContent: "center",
+    backgroundColor: '#fff'
   },
   inputStyle: {
     width: '100%',
