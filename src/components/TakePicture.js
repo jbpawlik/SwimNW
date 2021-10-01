@@ -82,20 +82,29 @@ export default function TakePicture(props) {
         onCameraReady={onCameraReady}
       />
     <View style={styles.container}>
-  {!isPreview && (
-    <View style={styles.bottomButtonsContainer}>
-      <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
-        <MaterialIcons name='flip-camera-ios' size={28} color='white' />
-      </TouchableOpacity>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        disabled={!isCameraReady}
-        onPress={onSnap}
-        style={styles.capture}
-      />
-    </View>
+    {isPreview && (
+    <TouchableOpacity
+      onPress={cancelPreview}
+      style={styles.closeButton}
+      activeOpacity={0.7}
+    >
+      <AntDesign name='close' size={32} color='#fff' />
+    </TouchableOpacity>
   )}
-</View>
+      {!isPreview && (
+        <View style={styles.bottomButtonsContainer}>
+          <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
+            <MaterialIcons name='flip-camera-ios' size={28} color='white' />
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            disabled={!isCameraReady}
+            onPress={onSnap}
+            style={styles.capture}
+          />
+        </View>
+      )}
+    </View>
   </View>
   );
 }
@@ -138,5 +147,17 @@ const styles = StyleSheet.create({
     borderRadius: Math.floor(CAPTURE_SIZE / 2),
     marginBottom: 28,
     marginHorizontal: 30
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 100,
+    right: 20,
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#5A45FF',
+    opacity: 0.7
   }
 })
