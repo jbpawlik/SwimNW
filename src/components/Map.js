@@ -114,33 +114,33 @@ export default class Map extends React.Component {
             >
             {marker.type == 'Hot Spring' ? <MaterialCommunityIcons
               name="hot-tub"
-              size={48}
-              color="crimson"
+              size={42}
+              color="orangered"
             /> : null}
             {marker.type == 'Pool' ? <FontAwesome5
               name="swimming-pool"
-              size={48}
+              size={42}
               color="turquoise"
             /> : null}
             {marker.type == 'Lake' ? <MaterialCommunityIcons
               name="water"
-              size={48}
-              color="steelblue"
+              size={42}
+              color="blue"
             /> : null}
             {marker.type == 'River' ? <Entypo
               name="air"
-              size={48}
-              color="darkblue"
+              size={42}
+              color="darkcyan"
             /> : null}
             {marker.type == 'Other' ? <FontAwesome5
               name="water"
-              size={48}
-              color="indigo"
+              size={42}
+              color="dodgerblue"
             /> : null}
             {marker.type == '' ? <FontAwesome5
               name="water"
-              size={48}
-              color="indigo"
+              size={42}
+              color="dodgerblue"
             /> : null}
             </Marker>
           ))}
