@@ -51,11 +51,6 @@ export default class MapScreen extends React.Component {
     this.setState({ showEditMarkerForm: true})
   }
 
-  showTakePicture = () => {
-    this.setState({ showMarkerDetail: false})
-    this.setState({ showTakePicture: true})
-  }
-
   hideEditMarkerForm = () => {
     this.setState({ showEditMarkerForm: false})
   }
@@ -66,6 +61,16 @@ export default class MapScreen extends React.Component {
 
   hideMarkerDetail = () => {
     this.setState({ showMarkerDetail: false})
+  }
+
+  showTakePicture = () => {
+    this.setState({ showMarkerDetail: false})
+    this.setState({ showTakePicture: true})
+  }
+
+  hideTakePicture = () => {
+    this.setState({ showTakePicture: false})
+    this.setState({ showMarkerDetail: true})
   }
 
   render() {
@@ -90,8 +95,7 @@ export default class MapScreen extends React.Component {
     } else if (this.state.showTakePicture === true) {
       return (
         <TakePicture
-          hideEditMarkerForm={this.hideEditMarkerForm}
-          selectedMarker={this.state.selectedMarker}
+          hideTakePicture={this.hideTakePicture}
         />
       )
       } else if (this.state.showMarkerDetail === true) {

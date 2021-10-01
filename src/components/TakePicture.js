@@ -9,8 +9,6 @@ const CAPTURE_SIZE = Math.floor(WINDOW_HEIGHT * 0.08);
 export default function TakePicture(props) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-  const WINDOW_HEIGHT = Dimensions.get('window').height;
-  const CAPTURE_SIZE = Math.floor(WINDOW_HEIGHT * 0.08);
   const cameraRef = useRef();
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
   const [isPreview, setIsPreview] = useState(false);
@@ -82,19 +80,22 @@ export default function TakePicture(props) {
         onCameraReady={onCameraReady}
       />
     <View style={styles.container}>
-    {isPreview && (
-    <TouchableOpacity
-      onPress={cancelPreview}
-      style={styles.closeButton}
-      activeOpacity={0.7}
-    >
-      <AntDesign name='close' size={32} color='#fff' />
-    </TouchableOpacity>
-  )}
+      {isPreview && (
+      <TouchableOpacity
+        onPress={cancelPreview}
+        style={styles.closeButton}
+        activeOpacity={0.7}
+      >
+        <AntDesign name='close' size={32} color='#fff'/>
+      </TouchableOpacity>
+      )}
       {!isPreview && (
         <View style={styles.bottomButtonsContainer}>
-          <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
-            <MaterialIcons name='flip-camera-ios' size={28} color='white' />
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={()=> props.hideTakePicture()}
+          >
+            <AntDesign name='caretleft' size={72} color='white'/>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
@@ -102,6 +103,9 @@ export default function TakePicture(props) {
             onPress={onSnap}
             style={styles.capture}
           />
+          <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
+            <MaterialIcons name='flip-camera-ios' size={72} color='white' />
+          </TouchableOpacity>
         </View>
       )}
     </View>
@@ -140,8 +144,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   capture: {
-    backgroundColor: '#5A45FF',
+    backgroundColor: 'white',
     borderRadius: 5,
+    borderColor: 'gray',
+    borderWidth: 5,
     height: CAPTURE_SIZE,
     width: CAPTURE_SIZE,
     borderRadius: Math.floor(CAPTURE_SIZE / 2),
