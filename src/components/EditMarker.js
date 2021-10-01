@@ -20,10 +20,10 @@ export default class EditMarker extends React.Component {
       title: '',
       location: '',
       description: '',
-      type: '',
+      type: 'Pool',
       season: '',
       danger: '',
-      secrecy: '',
+      secrecy: 'Public',
     }
   }
 
@@ -120,8 +120,7 @@ export default class EditMarker extends React.Component {
             <Picker.Item label="Lake" value="Lake"/>
             <Picker.Item label="River" value="River"/>
             <Picker.Item label="Hot Spring" value="Hot Spring"/>
-            <Picker.Item label="Pond" value="Pond"/>
-            <Picker.Item label="Waterfall" value="Waterfall"/>
+            <Picker.Item label="Other" value="Other"/>
           </Picker>
           <Picker
             style={styles.inputStyle}

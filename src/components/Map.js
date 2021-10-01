@@ -3,6 +3,8 @@ import { Alert, Platform, StyleSheet, Text, View, Dimensions } from 'react-nativ
 import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
+import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
+
 const {width, height} = Dimensions.get('window')
 export default class Map extends React.Component {
 
@@ -109,7 +111,38 @@ export default class Map extends React.Component {
             coordinate={marker.coordinate}
             title={marker.title}
             onLongPress={this.markerPress}
-            />
+            >
+            {marker.type == 'Hot Spring' ? <MaterialCommunityIcons
+              name="hot-tub"
+              size={48}
+              color="crimson"
+            /> : null}
+            {marker.type == 'Pool' ? <FontAwesome5
+              name="swimming-pool"
+              size={48}
+              color="turquoise"
+            /> : null}
+            {marker.type == 'Lake' ? <MaterialCommunityIcons
+              name="water"
+              size={48}
+              color="steelblue"
+            /> : null}
+            {marker.type == 'River' ? <Entypo
+              name="air"
+              size={48}
+              color="darkblue"
+            /> : null}
+            {marker.type == 'Other' ? <FontAwesome5
+              name="water"
+              size={48}
+              color="indigo"
+            /> : null}
+            {marker.type == '' ? <FontAwesome5
+              name="water"
+              size={48}
+              color="indigo"
+            /> : null}
+            </Marker>
           ))}
       </MapView>
     );
