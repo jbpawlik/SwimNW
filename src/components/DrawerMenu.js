@@ -10,6 +10,7 @@ import SettingsScreen from '../screens/Settings';
 import SavedScreen from '../screens/Saved';
 import ReferScreen from '../screens/Refer';
 import MapScreen from "../screens/MapScreen";
+import { withRouter } from "react-router";
 
 const Drawer = createDrawerNavigator();
 
@@ -40,11 +41,19 @@ export default function DrawerMenu() {
             headerTitleAlign: 'center',
             activeTintColor: '#e91e63',
             headerTitleContainerStyle: {
-              marginTop: 30,
+              display: 'none',
             },
             headerLeftContainerStyle: {
-              marginTop: 30,
-              // marginLeft: 50,
+              backgroundColor: '#73BFFB',
+              borderWidth: 5,
+              borderColor: 'dodgerblue',
+              borderRadius: 10,
+              marginRight: 280,
+              marginLeft: 40,
+              marginTop: 40,
+              paddingRight: 20,
+              paddingTop: 10,
+              paddingBottom: 40,
             },
             itemStyle: { marginVertical: 10 },
           }}>
