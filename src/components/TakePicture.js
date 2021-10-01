@@ -94,6 +94,7 @@ export default function TakePicture(props) {
           <TouchableOpacity
             activeOpacity={0.7}
             onPress={()=> props.hideTakePicture()}
+            style={styles.bottomButtons}
           >
             <AntDesign name='caretleft' size={72} color='white'/>
           </TouchableOpacity>
@@ -104,7 +105,7 @@ export default function TakePicture(props) {
             style={styles.capture}
           />
           <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
-            <MaterialIcons name='flip-camera-ios' size={72} color='white' />
+            <MaterialIcons name='flip-camera-ios' size={80} color='white' />
           </TouchableOpacity>
         </View>
       )}
@@ -143,6 +144,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  bottomButtons: {
+    padding: 5,
+  },
   capture: {
     backgroundColor: 'white',
     borderRadius: 5,
@@ -151,8 +155,8 @@ const styles = StyleSheet.create({
     height: CAPTURE_SIZE,
     width: CAPTURE_SIZE,
     borderRadius: Math.floor(CAPTURE_SIZE / 2),
-    marginBottom: 28,
-    marginHorizontal: 30
+    marginLeft: 20,
+    marginRight: 40,
   },
   closeButton: {
     position: 'absolute',
