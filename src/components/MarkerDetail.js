@@ -3,6 +3,7 @@ import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert
 import firebase from "../firebase";
 import EditMarker from "./EditMarker";
 
+
 function MarkerDetail(props){
   // console.log(props)
   // const [state, setState] = useState({});
@@ -47,7 +48,11 @@ function MarkerDetail(props){
   if (!loggedIn) {
     return (
       <React.Fragment>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
+            <Button
+              title='Take Picture'
+              onPress={() => props.showTakePicture() }
+            />
           <ImageBackground 
             style={styles.image} 
             source={require('../assets/images/tidepool.jpg')}
@@ -90,7 +95,11 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          <ScrollView>
+          <ScrollView style={styles.scrollView}>
+            <Button
+              title="Take Picture"
+              onPress={() => props.showTakePicture() }
+            />
             <ImageBackground 
               style={styles.image} 
               source={require('../assets/images/tidepool.jpg')}
@@ -138,7 +147,11 @@ function MarkerDetail(props){
   } else {
     return (
       <React.Fragment>
-        <ScrollView>
+        <ScrollView style={styles.scrollView}>
+            <Button
+              title="Take Picture"
+              onPress={() => props.showTakePicture() }
+            />
           <ImageBackground 
             style={styles.image} 
             source={require('../assets/images/tidepool.jpg')}
@@ -172,6 +185,10 @@ function MarkerDetail(props){
             >
               <Text style={styles.loginText}>Back to Map</Text>
             </Pressable>
+            <Button
+              title="Take Picture"
+              onPress={() => props.showTakePicture() }
+            />
           </View>
         </ScrollView>
     </React.Fragment>
@@ -180,6 +197,9 @@ function MarkerDetail(props){
 
 const styles = StyleSheet.create({
 
+  scrollView: {
+    marginTop: 100,
+  },
   inputStyle: {
     width: '100%',
     margin: 5,

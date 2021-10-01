@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 import Map from '../components/Map'
 import ReusableForm from "../components/ReusableForm";
 import EditMarker from "../components/EditMarker";
-import MarkerDetail from "../components/MarkerDetail"
+import MarkerDetail from "../components/MarkerDetail";
+import TakePicture from "../components/TakePicture";
 import firebase from "../firebase";
 
 export default class MapScreen extends React.Component {
@@ -14,6 +15,7 @@ export default class MapScreen extends React.Component {
       showAddMarkerForm: false,
       showEditMarkerForm: false,
       showMarkerDetail: false,
+      showTakePicture: false,
       selectedMarker: [],
       userID: 0,
     }
@@ -49,6 +51,11 @@ export default class MapScreen extends React.Component {
     this.setState({ showEditMarkerForm: true})
   }
 
+  showTakePicture = () => {
+    this.setState({ showMarkerDetail: false})
+    this.setState({ showTakePicture: true})
+  }
+
   hideEditMarkerForm = () => {
     this.setState({ showEditMarkerForm: false})
   }
@@ -80,12 +87,20 @@ export default class MapScreen extends React.Component {
           selectedMarker={this.state.selectedMarker}
         />
       )
+    } else if (this.state.showTakePicture === true) {
+      return (
+        <TakePicture
+          hideEditMarkerForm={this.hideEditMarkerForm}
+          selectedMarker={this.state.selectedMarker}
+        />
+      )
       } else if (this.state.showMarkerDetail === true) {
       return (
         <MarkerDetail
           hideMarkerDetail={this.hideMarkerDetail}
           selectedMarker={this.state.selectedMarker}
           showEditMarkerForm={this.showEditMarkerForm}
+          showTakePicture={this.showTakePicture}
           setUserID={this.setUserID}
           userID={this.userID}
           user={this.user}

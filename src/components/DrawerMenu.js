@@ -44,7 +44,7 @@ export default function DrawerMenu() {
               display: 'none',
             },
             headerLeftContainerStyle: {
-              backgroundColor: '#73BFFB',
+              backgroundColor: 'white',
               borderRadius: 10,
               marginRight: 260,
               marginLeft: 40,

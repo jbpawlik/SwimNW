@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Camera } from 'expo-camera';
 
-export default function TakePicture() {
+export default function TakePicture(props) {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
-
+  console.log(props)
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestPermissionsAsync();
@@ -39,3 +39,15 @@ export default function TakePicture() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  button: {
+
+  },
+  camera: {
+    height: '100%',
+  },
+  buttonContainer: {
+
+  }
+})

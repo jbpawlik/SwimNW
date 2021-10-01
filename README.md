@@ -101,3 +101,5 @@ I'm going to quickly recap the work I got done on the last couple of school days
 6:00 - Now it's working again. For no particular reason
 
 8:00 - I put in marker icons that switch depending on the type of swim. Trying to get the navigation button to be its own thing to minimize screen clutter
+
+8:45 - Got the nav button to be its own thing. Working on allowing user to take and upload pics
