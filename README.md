@@ -105,3 +105,5 @@ I'm going to quickly recap the work I got done on the last couple of school days
 8:45 - Got the nav button to be its own thing. Working on allowing user to take and upload pics
 
 11:45 - Been a hot minute since I updated this. The camera works but it's not hooked up to save data yet. I'm working on adding a picture to the marker detail screen.
+
+12:30 - Picture works but now there's a problem with the scrollview where it is creating a bunch of extra space at the bottom of the screen. All of the suggestions for fixing it on the Internet are the same one; it does not work.

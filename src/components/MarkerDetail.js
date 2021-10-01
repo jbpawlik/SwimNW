@@ -95,8 +95,9 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          <View style={styles.view}> 
-          <ScrollView contentContainerStyle={styles.scrollView}>
+          <View style={styles.view}>
+          <ScrollView contentContainerStyle={{flexGrow: 1}} style={styles.scrollView}>
+            <View style={styles.view}>
             <Image
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
@@ -141,6 +142,7 @@ function MarkerDetail(props){
               >
                 <Text style={styles.loginText}>Back to Map</Text>
               </Pressable>
+            </View>
             </View>
           </ScrollView>
           </View>
