@@ -95,7 +95,7 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          <View style={{height: '100%'}}> 
+          <View style={styles.view}> 
           <ScrollView contentContainerStyle={styles.scrollView}>
             <Image
               style={styles.swimPic} 
@@ -194,14 +194,16 @@ function MarkerDetail(props){
 }
 
 const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+  },
   swimPic: {
     maxHeight: 430,
     overflow: 'hidden',
     // position: 'absolute'
   },
   scrollView: {
-    flex: 1,
-    padding: 0,
+    flexGrow: 1,
   },
   inputStyle: {
     width: '100%',
