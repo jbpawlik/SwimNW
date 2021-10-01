@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Component, useRef, createRef } from 'react';
-import { Alert, Platform, StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect, Component, useRef, createRef} from 'react';
+import { Alert, Platform, StyleSheet, Text, View, Dimensions } from 'react-native';
 import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
-
+const {width, height} = Dimensions.get('window')
 export default class Map extends React.Component {
 
   constructor(props) {
@@ -89,7 +89,7 @@ export default class Map extends React.Component {
   render() {
     return (
       <MapView
-        style={{ flex: 1 }}
+        style={{ flex: 1}}
         provider={PROVIDER_GOOGLE}
         showsUserLocation
         followUserLocation={true}

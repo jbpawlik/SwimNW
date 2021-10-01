@@ -24,10 +24,7 @@ export default function DrawerMenu() {
           screenOptions={{
             headerShown: true,
             headerTransparent: true,
-            headerStyle: {
-              height: '200%',
-            },
-            drawerType: 'slide',
+
             // headerLeft: ()=> (
             //   <View>
             //   <FontAwesome5
@@ -38,9 +35,17 @@ export default function DrawerMenu() {
             //       />
             //   </View>
             // ),
-            title: '',
-            drawerLabel: '',
+            // title: '',
+            // drawerLabel: '',
+            headerTitleAlign: 'center',
             activeTintColor: '#e91e63',
+            headerTitleContainerStyle: {
+              marginTop: 30,
+            },
+            headerLeftContainerStyle: {
+              marginTop: 30,
+              // marginLeft: 50,
+            },
             itemStyle: { marginVertical: 10 },
           }}>
           {

@@ -68,3 +68,34 @@ The most pressing problems to solve:
 2:50 - Took about fifteen for a snack. I've been working on the same problem as this morning but in a different place. This time I can't even update it with an array.
 
 5:20 - Wasted almost all day trying to figure out how to edit the marker, and failed. Ended up adding a delete button (surprisingly easy) and styling the map (surprisingly hard).
+
+#### Monday 9/27 - Thursday 9/30
+
+I'm going to quickly recap the work I got done on the last couple of school days.
+
+- Styled the map
+- Tried to get an address when taking the coordinates from a map press (not yet successful)
+- Added MarkerDetail
+- Add Edit Swim button
+- Add SwimNW info screen
+- Attempted to set up Firebase UI; too much to change
+- Fix navigation in sign-out screens
+- Fix memory leak in MarkerDetail by adding useEffect
+- Put getMarkers() into componentDidMount in Map.js
+- Prevent user from adding marker unless signed in
+- Generate app bundle to submit to Android store
+- Submit app to Android store
+- Add alerts for signin/signup edge cases
+- Create 'users' collection in Firebase that stores extra info when user creates account
+- Add images
+- Remove headers
+- Cleaning and refactoring
+- Prepared app for iOS (this involved booting up my 12-year-old Mac and then renting virtual Mac space when I couldn't install the right software); app ready for iOS; waiting for dev account approval
+
+#### Friday 10/1
+
+5:30 - Woke up early. Need to fix the drawer menu. Trying to get it to only show a hamburger menu (actually I want it to show waves but I can't figure out how to do that). I thought I had it working last night but it's broken this morning.
+
+5:50 - Everything is broken. It was fine last night but now it's not. :|
+
+6:00 - Now it's working again. For no particular reason
