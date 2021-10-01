@@ -49,13 +49,13 @@ function MarkerDetail(props){
     return (
       <React.Fragment>
         <ScrollView style={styles.scrollView}>
-            <Button
+          <Image
+              style={styles.swimPic} 
+              source={require('../assets/images/tidepool.jpg')}
+          />
+          <Button
               title='Take Picture'
               onPress={() => props.showTakePicture() }
-            />
-          <ImageBackground 
-            style={styles.image} 
-            source={require('../assets/images/tidepool.jpg')}
           />
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
@@ -96,13 +96,13 @@ function MarkerDetail(props){
       return (
         <React.Fragment>
           <ScrollView style={styles.scrollView}>
+            <Image
+              style={styles.swimPic} 
+              source={require('../assets/images/tidepool.jpg')}
+            />
             <Button
               title="Take Picture"
               onPress={() => props.showTakePicture() }
-            />
-            <ImageBackground 
-              style={styles.image} 
-              source={require('../assets/images/tidepool.jpg')}
             />
             <Text style={styles.detailText}>
               Name: {markerDetails.title}
@@ -140,6 +140,10 @@ function MarkerDetail(props){
               >
                 <Text style={styles.loginText}>Back to Map</Text>
               </Pressable>
+              <Button
+              title="Take Picture"
+              onPress={() => props.showTakePicture() }
+            />
             </View>
           </ScrollView>
       </React.Fragment>
@@ -148,13 +152,13 @@ function MarkerDetail(props){
     return (
       <React.Fragment>
         <ScrollView style={styles.scrollView}>
-            <Button
+          <Image
+            style={styles.swimPic} 
+            source={require('../assets/images/tidepool.jpg')}
+            />
+          <Button
               title="Take Picture"
               onPress={() => props.showTakePicture() }
-            />
-          <ImageBackground 
-            style={styles.image} 
-            source={require('../assets/images/tidepool.jpg')}
           />
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
@@ -196,9 +200,13 @@ function MarkerDetail(props){
 }
 
 const styles = StyleSheet.create({
-
+  swimPic: {
+    maxHeight: 500,
+    overflow: 'hidden',
+    // position: 'absolute'
+  },
   scrollView: {
-    marginTop: 100,
+    
   },
   inputStyle: {
     width: '100%',
@@ -225,7 +233,7 @@ const styles = StyleSheet.create({
   loginText: {
     color: '#211302',
     fontSize: 16,
-    alignItems: 'center',
+    // alignItems: 'center',
     marginTop: 5,
     backgroundColor: 'beige',
     borderWidth: 10,
@@ -233,14 +241,14 @@ const styles = StyleSheet.create({
     opacity: .8,
     padding: 15,
     fontWeight: 'bold',
-    lineHeight: 30,
+    // lineHeight: 30,
   },
-  image: {
-    width: 600,
-    height: 1200,
-    overflow: 'hidden',
-    position: 'absolute',
-  },
+  // image: {
+  //   width: 600,
+  //   height: 1200,
+  //   overflow: 'hidden',
+  //   // position: 'absolute',
+  // },
   button: {
     // position:'absolute',
     minWidth: '100%',

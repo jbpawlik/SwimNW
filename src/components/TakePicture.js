@@ -63,14 +63,6 @@ export default function TakePicture(props) {
     return <Text style={styles.text}>No access to camera</Text>;
   }
 
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const { status } = await Camera.requestPermissionsAsync();
-  //     setHasPermission(status === 'granted');
-  //   })();
-  // }, []);
-
   return (
     <View style={styles.container}>
       <Camera
