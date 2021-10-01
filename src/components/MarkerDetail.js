@@ -247,12 +247,6 @@ const styles = StyleSheet.create({
     // backgroundColor: 'beige',
     opacity: .8,
   },
-  image: {
-    width: 600,
-    height: 1200,
-    overflow: 'hidden',
-    position: 'absolute',
-  },
 })
 
 export default MarkerDetail;
