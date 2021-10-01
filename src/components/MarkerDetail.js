@@ -95,7 +95,8 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          <ScrollView style={styles.scrollView}>
+          <View style={{height: '100%'}}> 
+          <ScrollView contentContainerStyle={styles.scrollView}>
             <Image
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
@@ -140,12 +141,9 @@ function MarkerDetail(props){
               >
                 <Text style={styles.loginText}>Back to Map</Text>
               </Pressable>
-              <Button
-              title="Take Picture"
-              onPress={() => props.showTakePicture() }
-            />
             </View>
           </ScrollView>
+          </View>
       </React.Fragment>
     );
   } else {
@@ -189,10 +187,6 @@ function MarkerDetail(props){
             >
               <Text style={styles.loginText}>Back to Map</Text>
             </Pressable>
-            <Button
-              title="Take Picture"
-              onPress={() => props.showTakePicture() }
-            />
           </View>
         </ScrollView>
     </React.Fragment>
@@ -201,12 +195,13 @@ function MarkerDetail(props){
 
 const styles = StyleSheet.create({
   swimPic: {
-    maxHeight: 500,
+    maxHeight: 430,
     overflow: 'hidden',
     // position: 'absolute'
   },
   scrollView: {
-    
+    flex: 1,
+    padding: 0,
   },
   inputStyle: {
     width: '100%',
