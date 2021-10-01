@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import {StyleSheet, Image, Icon, View} from "react-native"
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Account from "../screens/Account";
 import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
 import DrawerItems from '../constants/DrawerItems';
@@ -18,10 +19,27 @@ export default function DrawerMenu() {
     <React.Fragment>
       <NavigationContainer>
         <Drawer.Navigator 
-          // drawerType='front'
+          drawerType='slide'
           initialRouteName="Map"
           screenOptions={{
-            // drawerType: 'slide',
+            headerShown: true,
+            headerTransparent: true,
+            headerStyle: {
+              height: '200%',
+            },
+            drawerType: 'slide',
+            // headerLeft: ()=> (
+            //   <View>
+            //   <FontAwesome5
+            //         name="water"
+            //         size={24}
+            //         color='black'
+            //         onPress={() => Drawer.openDrawer()}
+            //       />
+            //   </View>
+            // ),
+            title: '',
+            drawerLabel: '',
             activeTintColor: '#e91e63',
             itemStyle: { marginVertical: 10 },
           }}>
