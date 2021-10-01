@@ -20,6 +20,8 @@ export default class MapScreen extends React.Component {
       showUploadPicture: false,
       selectedMarker: [],
       userID: 0,
+      image: null,
+      uploading: false,
     }
     this.user = firebase.auth().currentUser;
   }
@@ -110,6 +112,8 @@ export default class MapScreen extends React.Component {
       return (
         <PictureUpload
           hideUploadPicture={this.hideUploadPicture}
+          image={this.state.image}
+          uploading={this.state.uploading}
         />
       )
       } else if (this.state.showMarkerDetail === true) {
