@@ -46,12 +46,8 @@ export default function DrawerMenu() {
             headerLeftContainerStyle: {
               backgroundColor: '#73BFFB',
               borderRadius: 10,
-              marginRight: 280,
+              marginRight: 260,
               marginLeft: 40,
-              marginTop: 40,
-              paddingRight: 20,
-              paddingTop: 10,
-              paddingBottom: 40,
             },
             itemStyle: { marginVertical: 10 },
           }}>
