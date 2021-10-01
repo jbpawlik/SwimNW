@@ -99,3 +99,5 @@ I'm going to quickly recap the work I got done on the last couple of school days
 5:50 - Everything is broken. It was fine last night but now it's not. :|
 
 6:00 - Now it's working again. For no particular reason
+
+8:00 - I put in marker icons that switch depending on the type of swim. Trying to get the navigation button to be its own thing to minimize screen clutter
