@@ -109,3 +109,5 @@ I'm going to quickly recap the work I got done on the last couple of school days
 12:30 - Picture works but now there's a problem with the scrollview where it is creating a bunch of extra space at the bottom of the screen. All of the suggestions for fixing it on the Internet are the same one; it does not work
 
 1:20 - Going to work on saving pictures since I haven't been able to figure out the last problem.
+
+3:00 - Trying out a few kinds of upload forms and trying to hook them up to Firebase.
