@@ -4,7 +4,7 @@ import firebase from '../firebase';
 
 export default function ProfileScreen() {
   const [loggedIn, setLoggedIn] = useState(false);
-  
+
 
   useEffect(() => {
     return firebase.auth().onAuthStateChanged(setLoggedIn);

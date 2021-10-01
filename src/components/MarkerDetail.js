@@ -8,6 +8,13 @@ function MarkerDetail(props){
   // const [state, setState] = useState({});
   const [markerDetails, setMarkerDetails] = useState([]);
   const markerID = props.selectedMarker[0];
+  const [loggedIn, setLoggedIn] = useState(false);
+
+
+  useEffect(() => {
+    return firebase.auth().onAuthStateChanged(setLoggedIn);
+  }, []);
+
   // const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
   // const mounted = useRef(false);
 
@@ -37,78 +44,138 @@ function MarkerDetail(props){
   }, []);
 
   // if (props.userID === markerDetails.userID) {
+  if (!loggedIn) {
     return (
       <React.Fragment>
         <ScrollView>
-        <ImageBackground 
-          style={styles.image} 
-          source={require('../assets/images/tidepool.jpg')}
-        />
-        {/* <Button
-          color="#3740FE"
-          title="Back to Map"
-          onPress={() => props.hideMarkerDetail()}
-        /> */}
-        <Text style={styles.detailText}>
-          Name: {markerDetails.title}
-        </Text>
-        <Text style={styles.detailText}>
-          Location: {markerDetails.location}
-        </Text>
-        <Text style={styles.detailText}>
-          Type: {markerDetails.type}
+          <ImageBackground 
+            style={styles.image} 
+            source={require('../assets/images/tidepool.jpg')}
+          />
+          <Text style={styles.detailText}>
+            Name: {markerDetails.title}
           </Text>
-        <Text style={styles.detailText}>
-          Description: {markerDetails.description}
-        </Text>
-        <Text style={styles.detailText}>
-          Season: {markerDetails.season}
-        </Text>
-        <Text style={styles.detailText}>
-          Danger: {markerDetails.danger}
-        </Text>
-        <Text style={styles.detailText}>
-          Secrecy: {markerDetails.secrecy}
-        </Text>
-        <View>
-        <Pressable
-            style={styles.button}
-            title="Edit Marker"
-            onPress={() => props.showEditMarkerForm()}
-          >
-            <Text style={styles.loginText}>Edit Marker</Text>
-          </Pressable>
-        <Pressable
-            style={styles.button}
-            title="Back to Map"
-            onPress={() => props.hideMarkerDetail()}
-          >
-            <Text style={styles.loginText}>Back to Map</Text>
-          </Pressable>
-        </View>
+          <Text style={styles.detailText}>
+            Location: {markerDetails.location}
+          </Text>
+          <Text style={styles.detailText}>
+            Type: {markerDetails.type}
+            </Text>
+          <Text style={styles.detailText}>
+            Description: {markerDetails.description}
+          </Text>
+          <Text style={styles.detailText}>
+            Season: {markerDetails.season}
+          </Text>
+          <Text style={styles.detailText}>
+            Danger: {markerDetails.danger}
+          </Text>
+          <Text style={styles.detailText}>
+            Secrecy: {markerDetails.secrecy}
+          </Text>
+          <View>
+          <Pressable
+              style={styles.button}
+              title="Back to Map"
+              onPress={() => props.hideMarkerDetail()}
+            >
+              <Text style={styles.loginText}>Back to Map</Text>
+            </Pressable>
+          </View>
         </ScrollView>
       </React.Fragment>
+    )
+  } else if (loggedIn) {
+    const user = firebase.auth().currentUser;
+    if (user.uid === markerDetails.userID) {
+      return (
+        <React.Fragment>
+          <ScrollView>
+            <ImageBackground 
+              style={styles.image} 
+              source={require('../assets/images/tidepool.jpg')}
+            />
+            <Text style={styles.detailText}>
+              Name: {markerDetails.title}
+            </Text>
+            <Text style={styles.detailText}>
+              Location: {markerDetails.location}
+            </Text>
+            <Text style={styles.detailText}>
+              Type: {markerDetails.type}
+              </Text>
+            <Text style={styles.detailText}>
+              Description: {markerDetails.description}
+            </Text>
+            <Text style={styles.detailText}>
+              Season: {markerDetails.season}
+            </Text>
+            <Text style={styles.detailText}>
+              Danger: {markerDetails.danger}
+            </Text>
+            <Text style={styles.detailText}>
+              Secrecy: {markerDetails.secrecy}
+            </Text>
+            <View>
+            <Pressable
+                style={styles.button}
+                title="Edit Marker"
+                onPress={() => props.showEditMarkerForm()}
+            >
+              <Text style={styles.loginText}>Edit Marker</Text>
+            </Pressable>
+            <Pressable
+                style={styles.button}
+                title="Back to Map"
+                onPress={() => props.hideMarkerDetail()}
+              >
+                <Text style={styles.loginText}>Back to Map</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
+      </React.Fragment>
     );
-//   } else {
-//     return (
-//       <React.Fragment>
-//         <Button
-//           color="#3740FE"
-//           title="Back to Map"
-//           onPress={() => props.hideMarkerDetail()}
-//         />
-//         <Text>
-//           Name: {markerDetails.title}{'\n'}
-//           Location:{markerDetails.location}{'\n'}
-//           Type: {markerDetails.type}{'\n'}
-//           Description: {markerDetails.description}{'\n'}
-//           Season: {markerDetails.season}{'\n'}
-//           Danger: {markerDetails.danger}{'\n'}
-//           Secrecy: {markerDetails.secrecy}
-//         </Text>
-//       </React.Fragment>
-//     );
-//   }
+  } else {
+    return (
+      <React.Fragment>
+        <ScrollView>
+          <ImageBackground 
+            style={styles.image} 
+            source={require('../assets/images/tidepool.jpg')}
+          />
+          <Text style={styles.detailText}>
+            Name: {markerDetails.title}
+          </Text>
+          <Text style={styles.detailText}>
+            Location: {markerDetails.location}
+          </Text>
+          <Text style={styles.detailText}>
+            Type: {markerDetails.type}
+            </Text>
+          <Text style={styles.detailText}>
+            Description: {markerDetails.description}
+          </Text>
+          <Text style={styles.detailText}>
+            Season: {markerDetails.season}
+          </Text>
+          <Text style={styles.detailText}>
+            Danger: {markerDetails.danger}
+          </Text>
+          <Text style={styles.detailText}>
+            Secrecy: {markerDetails.secrecy}
+          </Text>
+          <View>
+          <Pressable
+              style={styles.button}
+              title="Back to Map"
+              onPress={() => props.hideMarkerDetail()}
+            >
+              <Text style={styles.loginText}>Back to Map</Text>
+            </Pressable>
+          </View>
+        </ScrollView>
+    </React.Fragment>
+  )}}
 }
 
 const styles = StyleSheet.create({
