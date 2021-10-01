@@ -54,6 +54,10 @@ function MarkerDetail(props){
               source={require('../assets/images/tidepool.jpg')}
           />
           <Button
+            title="Upload Picture"
+            onPress={() => props.showUploadPicture()}
+          /> 
+          <Button
               title='Take Picture'
               onPress={() => props.showTakePicture() }
           />
@@ -102,6 +106,10 @@ function MarkerDetail(props){
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
             />
+            <Button
+              title="Upload Picture"
+              onPress={() => props.showUploadPicture()}
+            /> 
             <Button
               title="Take Picture"
               onPress={() => props.showTakePicture() }
@@ -157,8 +165,12 @@ function MarkerDetail(props){
             source={require('../assets/images/tidepool.jpg')}
             />
           <Button
-              title="Take Picture"
-              onPress={() => props.showTakePicture() }
+            title="Upload Picture"
+            onPress={() => props.showUploadPicture()}
+          /> 
+          <Button
+            title="Take Picture"
+            onPress={() => props.showTakePicture() }
           />
           <Text style={styles.detailText}>
             Name: {markerDetails.title}

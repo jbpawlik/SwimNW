@@ -4,6 +4,7 @@ import ReusableForm from "../components/ReusableForm";
 import EditMarker from "../components/EditMarker";
 import MarkerDetail from "../components/MarkerDetail";
 import TakePicture from "../components/TakePicture";
+import PictureUpload from "../components/PictureUpload";
 import firebase from "../firebase";
 
 export default class MapScreen extends React.Component {
@@ -16,6 +17,7 @@ export default class MapScreen extends React.Component {
       showEditMarkerForm: false,
       showMarkerDetail: false,
       showTakePicture: false,
+      showUploadPicture: false,
       selectedMarker: [],
       userID: 0,
     }
@@ -33,10 +35,6 @@ export default class MapScreen extends React.Component {
       this.setState({userID: 0})
     }
   }
-
-  // goToNewMarkerScreen = () => {
-  //   this.props.navigation.navigate('Add Swim')
-  // }
 
   showReusableForm = () => {
     this.setState({ showAddMarkerForm: true})
@@ -73,6 +71,16 @@ export default class MapScreen extends React.Component {
     this.setState({ showMarkerDetail: true})
   }
 
+  showUploadPicture = () => {
+    this.setState({ showMarkerDetail: false})
+    this.setState({ showUploadPicture: true})
+  }
+
+  hideUploadPicture = () => {
+    this.setState({ showUploadPicture: false})
+    this.setState({ showMarkerDetail: true})
+  }
+
   render() {
     if (this.state.showAddMarkerForm === true) {
       return(
@@ -98,12 +106,19 @@ export default class MapScreen extends React.Component {
           hideTakePicture={this.hideTakePicture}
         />
       )
+    } else if (this.state.showUploadPicture === true) {
+      return (
+        <PictureUpload
+          hideUploadPicture={this.hideUploadPicture}
+        />
+      )
       } else if (this.state.showMarkerDetail === true) {
       return (
         <MarkerDetail
           hideMarkerDetail={this.hideMarkerDetail}
           selectedMarker={this.state.selectedMarker}
           showEditMarkerForm={this.showEditMarkerForm}
+          showUploadPicture={this.showUploadPicture}
           showTakePicture={this.showTakePicture}
           setUserID={this.setUserID}
           userID={this.userID}
@@ -129,5 +144,4 @@ export default class MapScreen extends React.Component {
       )
     }
   }
-
 }
