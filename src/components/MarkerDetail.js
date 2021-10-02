@@ -53,11 +53,13 @@ function MarkerDetail(props){
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
           />
-          <Button
+          <Button 
+            style={styles.button}
             title="Upload Picture"
             onPress={() => props.showUploadPicture()}
           /> 
           <Button
+              style={styles.button}
               title='Take Picture'
               onPress={() => props.showTakePicture() }
           />

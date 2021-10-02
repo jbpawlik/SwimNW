@@ -15,9 +15,7 @@ import {
 } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import uuid from "uuid";
-import storage from '@react-native-firebase/storage';
 
-const reference = storage().ref('<filename>');
 
 export default class App extends React.Component {
   state = {
@@ -41,6 +39,11 @@ export default class App extends React.Component {
 
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Button
+          onPress={() => this.props.hideUploadPicture()}
+          title="Back to Swim"
+        />
+        
         {!!image && (
           <Text
             style={{
@@ -155,8 +158,6 @@ export default class App extends React.Component {
       aspect: [4, 3],
     });
 
-    // console.log({ pickerResult });
-
     this._handleImagePicked(pickerResult);
   };
 
@@ -194,7 +195,7 @@ async function uploadImageAsync(uri) {
     xhr.send(null);
   });
 
-  const ref = firebase.storage().ref().child(uuid.v4());
+  // const ref = firebase.storage().ref().child(uuid.v4());
   const snapshot = await ref.put(blob);
 
   // We're done with the blob, close and release it
