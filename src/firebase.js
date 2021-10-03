@@ -19,11 +19,10 @@ const firebaseConfig = {
   authDomain: "swimnw.firebaseapp.com" ,
   databaseURL: "https://SwimNW.firebaseio.com",
   projectId: "swimnw",
-  storageBucket: "swimnw.appspot.com",
+  storageBucket: "gs://swimnw.appspot.com",
   messagingSenderId: "638140442903",
   appId: "1:638140442903:web:8b7e88477773bc04166f52"
 }
-
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 
