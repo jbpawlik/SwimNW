@@ -2,10 +2,11 @@
 // import PropTypes from "prop-types";
 
 import React, { Component, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable, ScrollView } from 'react-native';
+import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable, ScrollView, Dimensions } from 'react-native';
 import firebase from '../firebase';
 import {Picker} from '@react-native-picker/picker'
-
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default class ReusableForm extends React.Component {
 
@@ -17,10 +18,10 @@ export default class ReusableForm extends React.Component {
       title: '',
       location: '',
       description: '',
-      type: 'Pool',
+      type: '',
       season: '',
       danger: '',
-      secrecy: 'Public',
+      secrecy: '',
       userID: user.uid
     }
   }
@@ -33,7 +34,7 @@ export default class ReusableForm extends React.Component {
 
   addMarker = () => {
     if (this.state.title === '') {
-      Alert.alert('Fill out all required fields')
+      Alert.alert('Please fill out all fields')
     } else {
       this.dbRef.add({
         title: this.state.title,
@@ -55,12 +56,12 @@ export default class ReusableForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <ScrollView>
         <View style={styles.container}>
           <ImageBackground 
             style={styles.image} 
             source={require('../assets/images/tidepool.jpg')}
           />
+          <View style={styles.form}>
           <TextInput
             style={styles.inputStyle}
             placeholder="Name (required)"
@@ -79,68 +80,74 @@ export default class ReusableForm extends React.Component {
             value={this.state.description}
             onChangeText={(val) => this.updateInputVal(val, 'description')}
           />
-          <Picker
-            style={styles.inputStyle}
-            selectedValue={this.state.season}
-            onValueChange={(val, index) =>
-              this.updateInputVal(val, 'season')
-            }>
-            <Picker.Item label="Year-Round" value="Year-Round"/>
-            <Picker.Item label="Spring to Fall" value="Spring to Fall"/>
-            <Picker.Item label="Spring to Summer" value="Spring to Summer"/>
-            <Picker.Item label="Summer" value="Summer"/>
-            <Picker.Item label="Late Summer" value="Late Summer"/>
-            <Picker.Item label="Summer to Fall" value="Summer to Fall"/>
-            <Picker.Item label="Only on the Hottest Days" value="Only on the Hottest Days"/>
-          </Picker>
-          <Picker
-            style={styles.inputStyle}
-            selectedValue={this.state.type}
-            onValueChange={(val, index) =>
-              this.updateInputVal(val, 'type')
-            }>
-            <Picker.Item label="Pool" value="Pool"/>
-            <Picker.Item label="Lake" value="Lake"/>
-            <Picker.Item label="River" value="River"/>
-            <Picker.Item label="Hot Spring" value="Hot Spring"/>
-            <Picker.Item label="Other" value="Other"/>
-          </Picker>
-          <Picker
-            style={styles.inputStyle}
-            selectedValue={this.state.danger}
-            onValueChange={(val, index) =>
-              this.updateInputVal(val, 'danger')
-            }>
-            <Picker.Item label="Low Risk" value="Low Risk" />
-            <Picker.Item label="Moderate Risk" value="Moderate Risk" />
-            <Picker.Item label="High Risk" value="High Risk" />
-          </Picker>
-          <Picker
-            style={styles.inputStyle}
-            selectedValue={this.state.secrecy}
-            onValueChange={(val, index) =>
-              this.updateInputVal(val, 'secrecy')
-            }>
-            <Picker.Item label="Public" value="Public" />
-            <Picker.Item label="Protected" value="Protected" />
-            <Picker.Item label="Private" value="Private" />
-          </Picker>
-          <Pressable
-            style={styles.loginText}
-            title="Add Marker"
-            onPress={() => this.addMarker()}
-          >
-            <Text>Add Marker</Text>
-          </Pressable>
-          <Pressable
-            style={styles.loginText}
-            title="Back to Map"
-            onPress={() => this.props.hideReusableForm()}
-          >
-            <Text styles={styles.loginText}>Back to Map</Text>
-          </Pressable>
+          <View style={styles.pickers}>
+            <Picker
+              style={styles.picker}
+              selectedValue={this.state.season}
+              onValueChange={(val, index) =>
+                this.updateInputVal(val, 'season')
+              }>
+              <Picker.Item label="Year-Round" value="Year-Round"/>
+              <Picker.Item label="Spring to Fall" value="Spring to Fall"/>
+              <Picker.Item label="Spring to Summer" value="Spring to Summer"/>
+              <Picker.Item label="Summer" value="Summer"/>
+              <Picker.Item label="Late Summer" value="Late Summer"/>
+              <Picker.Item label="Summer to Fall" value="Summer to Fall"/>
+              <Picker.Item label="Only on the Hottest Days" value="Only on the Hottest Days"/>
+            </Picker>
+            <Picker
+              style={styles.picker}
+              selectedValue={this.state.type}
+              onValueChange={(val, index) =>
+                this.updateInputVal(val, 'type')
+              }>
+              <Picker.Item label="Pool" value="Pool"/>
+              <Picker.Item label="Lake" value="Lake"/>
+              <Picker.Item label="River" value="River"/>
+              <Picker.Item label="Hot Spring" value="Hot Spring"/>
+              <Picker.Item label="Other" value="Other"/>
+            </Picker>
+          </View>
+          <View style={styles.pickers}>
+            <Picker
+              style={styles.picker}
+              selectedValue={this.state.danger}
+              onValueChange={(val, index) =>
+                this.updateInputVal(val, 'danger')
+              }>
+              <Picker.Item label="Low Risk" value="Low Risk" />
+              <Picker.Item label="Moderate Risk" value="Moderate Risk" />
+              <Picker.Item label="High Risk" value="High Risk" />
+            </Picker>
+            <Picker
+              style={styles.picker}
+              selectedValue={this.state.secrecy}
+              onValueChange={(val, index) =>
+                this.updateInputVal(val, 'secrecy')
+              }>
+              <Picker.Item label="Public" value="Public" />
+              <Picker.Item label="Protected" value="Protected" />
+              <Picker.Item label="Private" value="Private" />
+            </Picker>
+          </View>
+          <View style={styles.buttons}>
+              <Pressable
+                  // style={styles.button}
+                  title="Add Marker"
+                  onPress={() => this.addMarker()}
+              >
+                <Text style={styles.loginText}>Add Marker</Text>
+              </Pressable>
+              <Pressable
+                  // style={styles.button}
+                  title="Back to Map"
+                  onPress={() => this.props.hideReusableForm()}
+                >
+                  <Text style={styles.loginText}>Back to Map</Text>
+                </Pressable>
+              </View>
+          </View>
         </View>
-        </ScrollView>
       </React.Fragment>
     );
   }
@@ -148,24 +155,46 @@ export default class ReusableForm extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
+    width: windowWidth,
+    height: windowHeight,
     justifyContent: "center",
-    padding: 35,
-    backgroundColor: '#fff'
+  },
+  form: {
+    position: 'absolute',
+    bottom: 0,
   },
   inputStyle: {
     width: '100%',
+    // margin: 5,
+    padding: 10,
+    paddingTop: 15,
+    textAlign: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: 'beige',
+    opacity: .8,
+    fontSize: 20,
+  },
+  picker: {
     margin: 5,
     padding: 10,
     paddingTop: 15,
     textAlign: 'center',
-    borderWidth: 10,
-    borderColor: 'tan',
+    borderWidth: 1,
+    borderColor: 'black',
+    // backgroundColor: 'beige',
+    // opacity: .8,
+    // fontSize: 20,
+    height: 50,
+    flex: 1,
+  },
+  pickers: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: windowWidth,
+    justifyContent: 'space-evenly',
     backgroundColor: 'beige',
     opacity: .8,
-    fontSize: 20,
   },
   loginText: {
     textAlign: 'center',
@@ -173,16 +202,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignItems: 'center',
     marginTop: 5,
-    backgroundColor: 'beige',
-    borderWidth: 10,
-    borderColor: 'tan',
-    opacity: .8,
-    padding: 1,
+    // backgroundColor: 'beige',
+    // borderWidth: 1,
+    // borderColor: 'tan',
+    // opacity: .8,
+    padding: 10,
     fontWeight: 'bold',
   },
   image: {
-    width: 600,
-    height: 1200,
+    width: windowWidth,
+    height: windowHeight,
     overflow: 'hidden',
     position: 'absolute',
   },
@@ -192,14 +221,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'beige',
     opacity: .8,
   },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
-  }
+  // preloader: {
+  //   left: 0,
+  //   right: 0,
+  //   top: 0,
+  //   bottom: 0,
+  //   position: 'absolute',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  //   backgroundColor: '#fff'
+  // },
+  buttons: {
+    flexDirection: 'row',
+    // position:'absolute',
+    backgroundColor: 'beige',
+    justifyContent: 'space-evenly',
+    padding: 10,
+    opacity: .8,
+  },
 });
