@@ -38,8 +38,6 @@ export default class Dashboard extends Component {
   }
 }
 
-
-
 const styles = StyleSheet.create({
   container: {
     height: windowHeight,
