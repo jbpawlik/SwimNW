@@ -1,21 +1,11 @@
 import * as ImagePicker from "expo-image-picker";
 import * as firebase from "../firebase";
 import React from "react";
-import {
-  ActivityIndicator,
-  Button,
-  Image,
-  Share,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
-  LogBox,
-  SegmentedControlIOSComponent,
-} from "react-native";
+import { ActivityIndicator, Dimensions, Button, Image, Share, StatusBar, StyleSheet, Text, View, LogBox, SegmentedControlIOSComponent } from "react-native";
 import * as Clipboard from "expo-clipboard";
 import uuid from "uuid";
-
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default class App extends React.Component {
   state = {

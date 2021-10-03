@@ -231,9 +231,6 @@ const styles = StyleSheet.create({
     minWidth: windowWidth,
     minHeight: windowHeight,
   },
-  scrollView: {
-    // justifyContent: "center",
-  },
   detailText: {
     color: '#211302',
     fontSize: 16,

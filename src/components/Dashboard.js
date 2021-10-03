@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, ImageBackground, Pressable } from 'react-native';
+import { StyleSheet, View, Text, Button, ImageBackground, Pressable, Dimensions } from 'react-native';
 import firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import { UrlTile } from 'react-native-maps';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 export default class Dashboard extends Component {
   
   constructor(props) {
