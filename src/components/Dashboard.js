@@ -6,7 +6,7 @@ import { UrlTile } from 'react-native-maps';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 export default class Dashboard extends Component {
-  
+
   constructor(props) {
     super(props);
   }
@@ -15,15 +15,12 @@ export default class Dashboard extends Component {
     firebase.auth().signOut().then(() => {
       this.props.navigation.navigate('Account', {screen: 'Signup'})
     })
-    // .catch(error => this.setState({ errorMessage: error.message }))
+    .catch(error => Alert.alert(error.message))
   }
 
-
   render() {
-
     return (
       <View style={styles.container}>
-
         <ImageBackground 
           style={styles.image} 
           source={require('../assets/images/shroomlog.jpg')}
@@ -36,7 +33,6 @@ export default class Dashboard extends Component {
         >
           <Text style={styles.textStyle}>LOG OUT</Text>
         </Pressable>
-        
       </View>
     );
   }
@@ -51,7 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 35,
-
   },
   textStyle: {
     flex: 1,
