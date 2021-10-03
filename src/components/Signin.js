@@ -78,8 +78,8 @@ export default class Signin extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    display: "flex",
+    width: windowWidth,
+    height: windowHeight,
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,

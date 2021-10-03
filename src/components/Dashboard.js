@@ -46,8 +46,8 @@ export default class Dashboard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    display: "flex",
+    height: windowHeight,
+    width: windowWidth,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 35,
