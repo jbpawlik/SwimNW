@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Map from './components/Map'
 import DrawerMenu from './components/DrawerMenu';
-import firebase from 'firebase';
+import firebase from '../src/firebase';
 import 'react-native-gesture-handler';
 
 // Ignore timer warning in re: Firebase; fundamental incompatibility with React Native; placeholder solution while debugging
