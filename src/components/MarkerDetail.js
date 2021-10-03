@@ -234,13 +234,12 @@ const styles = StyleSheet.create({
   scrollView: {
     // justifyContent: "center",
   },
-
   detailText: {
     color: '#211302',
     fontSize: 16,
     backgroundColor: 'beige',
-    borderWidth: 1,
-    lineHeight: 40,
+    borderWidth: .5,
+    lineHeight: 30,
     borderColor: 'black',
     // opacity: .8,
     paddingLeft: 15,

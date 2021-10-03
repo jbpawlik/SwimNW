@@ -77,7 +77,7 @@ export default class EditMarker extends React.Component {
         <View style={styles.container}>
             <ImageBackground 
               style={styles.image} 
-              source={require('../assets/images/tidepool.jpg')}
+              source={require('../assets/images/elkrock.jpg')}
             />
           <View style={styles.form}>
             <TextInput
@@ -168,7 +168,7 @@ export default class EditMarker extends React.Component {
             <Pressable
               style={styles.button}
               title="Back to Swim"
-              onPress={() => this.props.hideEditMarkerAndShowMarkerDetail()}
+              onPress={() => this.props.hideEditMarkerAndGoBackToMarkerDetail()}
             >
               <Text style={styles.loginText}>Back to Swim</Text>
             </Pressable>
