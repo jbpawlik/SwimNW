@@ -26,14 +26,11 @@
     "expo-status-bar": "~1.0.4",
     "expo-updates": "~0.8.1",
     "firebase": "^8.2.3",
-    "firestorter": "^3.1.0",
     "formik": "^2.2.9",
     "jdk": "^0.0.0",
     "jetifier": "^2.0.0",
     "jetify": "^1.0.2",
     "metro-react-native-babel-preset": "^0.66.2",
-    "mobx": "^6.3.3",
-    "mobx-react": "^7.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^7.15.4",
@@ -52,7 +49,8 @@
     "react-redux-firebase": "^3.10.0",
     "react-router-dom": "^5.3.0",
     "redux": "^4.1.1",
-    "redux-firestore": "^0.15.0"
+    "redux-firestore": "^0.15.0",
+    "yarn": "^1.22.15"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
