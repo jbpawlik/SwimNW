@@ -5,25 +5,15 @@ import EditMarker from "./EditMarker";
 
 
 function MarkerDetail(props){
-  // console.log(props)
-  // const [state, setState] = useState({});
+
   const [markerDetails, setMarkerDetails] = useState([]);
   const markerID = props.selectedMarker[0];
   const [loggedIn, setLoggedIn] = useState(false);
-
 
   useEffect(() => {
     return firebase.auth().onAuthStateChanged(setLoggedIn);
   }, []);
 
-  // const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
-  // const mounted = useRef(false);
-
-  // const user = firebase.auth().currentUser;
-  // if (user != null) {
-  //   props.setUserID(user.uid)
-  // }
-  
   useEffect(() => {
     let isMounted = true;
 
@@ -44,7 +34,6 @@ function MarkerDetail(props){
     };
   }, []);
 
-  // if (props.userID === markerDetails.userID) {
   if (!loggedIn) {
     return (
       <React.Fragment>
@@ -67,16 +56,6 @@ function MarkerDetail(props){
           >
             <Text style={styles.loginText}>Take Picture</Text>
           </Pressable>
-          {/* <Button 
-            style={styles.button}
-            title="Upload Picture"
-            onPress={() => props.showUploadPicture()}
-          /> 
-          <Button
-              style={styles.button}
-              title='Take Picture'
-              onPress={() => props.showTakePicture() }
-          /> */}
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
           </Text>
@@ -136,14 +115,6 @@ function MarkerDetail(props){
             >
             <Text style={styles.loginText}>Take Picture</Text>
           </Pressable>
-            {/* <Button
-              title="Upload Picture"
-              onPress={() => props.showUploadPicture()}
-            /> 
-            <Button
-              title="Take Picture"
-              onPress={() => props.showTakePicture() }
-            /> */}
             <Text style={styles.detailText}>
               Name: {markerDetails.title}
             </Text>
@@ -208,14 +179,6 @@ function MarkerDetail(props){
           >
             <Text style={styles.loginText}>Take Picture</Text>
           </Pressable>
-          {/* <Button
-            title="Upload Picture"
-            onPress={() => props.showUploadPicture()}
-          /> 
-          <Button
-            title="Take Picture"
-            onPress={() => props.showTakePicture() }
-          /> */}
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
           </Text>
