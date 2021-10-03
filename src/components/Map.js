@@ -4,7 +4,6 @@ import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
 import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
-
 const {width, height} = Dimensions.get('window')
 export default class Map extends React.Component {
 
@@ -72,18 +71,20 @@ export default class Map extends React.Component {
     }
   }
 
-  markerPress = (event) => {
-    const user = firebase.auth().currentUser;
+  markerPress = async (event) => {
+    // const user = firebase.auth().currentUser;
     const coord = event.nativeEvent.coordinate.latitude
     this.props.selectedMarker.shift()
     this.dbRef.get()
       .then(snapshot => {
         snapshot.docs.forEach(marker => {
-          if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
-            const markerID = marker._delegate._document.key.path.segments[6]
+          console.log(marker.id)
+
+          // if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
+            const markerID = marker.id
             this.props.selectedMarker.push(markerID)
             this.props.showMarkerDetail() 
-          }
+          // }
         })
       })
     }
