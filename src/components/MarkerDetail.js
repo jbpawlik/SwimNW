@@ -53,7 +53,21 @@ function MarkerDetail(props){
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
           />
-          <Button 
+          <Pressable
+            style={styles.button}
+            title="Upload Picture"
+            onPress={() => props.showUploadPicture()}
+          >
+            <Text style={styles.loginText}>Upload Picture</Text>
+          </Pressable>
+          <Pressable
+            style={styles.button}
+            title="Take Picture"
+            onPress={() => props.showTakePicture()}
+          >
+            <Text style={styles.loginText}>Take Picture</Text>
+          </Pressable>
+          {/* <Button 
             style={styles.button}
             title="Upload Picture"
             onPress={() => props.showUploadPicture()}
@@ -62,7 +76,7 @@ function MarkerDetail(props){
               style={styles.button}
               title='Take Picture'
               onPress={() => props.showTakePicture() }
-          />
+          /> */}
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
           </Text>
@@ -108,14 +122,28 @@ function MarkerDetail(props){
               style={styles.swimPic} 
               source={require('../assets/images/tidepool.jpg')}
             />
-            <Button
+            <Pressable
+              style={styles.button}
+              title="Upload Picture"
+              onPress={() => props.showUploadPicture()}
+            >
+              <Text style={styles.loginText}>Upload Picture</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              title="Take Picture"
+              onPress={() => props.showTakePicture()}
+            >
+            <Text style={styles.loginText}>Take Picture</Text>
+          </Pressable>
+            {/* <Button
               title="Upload Picture"
               onPress={() => props.showUploadPicture()}
             /> 
             <Button
               title="Take Picture"
               onPress={() => props.showTakePicture() }
-            />
+            /> */}
             <Text style={styles.detailText}>
               Name: {markerDetails.title}
             </Text>
@@ -166,14 +194,28 @@ function MarkerDetail(props){
             style={styles.swimPic} 
             source={require('../assets/images/tidepool.jpg')}
             />
-          <Button
+          <Pressable
+            style={styles.button}
+            title="Upload Picture"
+            onPress={() => props.showUploadPicture()}
+          >
+            <Text style={styles.loginText}>Upload Picture</Text>
+          </Pressable>
+          <Pressable
+            style={styles.button}
+            title="Take Picture"
+            onPress={() => props.showTakePicture()}
+          >
+            <Text style={styles.loginText}>Take Picture</Text>
+          </Pressable>
+          {/* <Button
             title="Upload Picture"
             onPress={() => props.showUploadPicture()}
           /> 
           <Button
             title="Take Picture"
             onPress={() => props.showTakePicture() }
-          />
+          /> */}
           <Text style={styles.detailText}>
             Name: {markerDetails.title}
           </Text>
@@ -253,8 +295,8 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     marginTop: 5,
     backgroundColor: 'beige',
-    borderWidth: 10,
-    borderColor: 'tan',
+    // borderWidth: 10,
+    // borderColor: 'tan',
     opacity: .8,
     padding: 15,
     fontWeight: 'bold',
@@ -270,7 +312,6 @@ const styles = StyleSheet.create({
     // position:'absolute',
     minWidth: '100%',
     // backgroundColor: 'beige',
-    opacity: .8,
   },
 })
 
