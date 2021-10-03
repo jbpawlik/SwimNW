@@ -78,8 +78,6 @@ export default class Map extends React.Component {
     this.dbRef.get()
       .then(snapshot => {
         snapshot.docs.forEach(marker => {
-          console.log(marker.id)
-
           // if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
             const markerID = marker.id
             this.props.selectedMarker.push(markerID)
