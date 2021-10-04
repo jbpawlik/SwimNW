@@ -78,13 +78,18 @@ export default class Map extends React.Component {
     this.dbRef.get()
       .then(snapshot => {
         snapshot.docs.forEach(marker => {
+          console.log(marker.data().coordinate)
+          console.log(coord)
           // if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
+          if (marker.data().coordinate.latitude == coord) {
             const markerID = marker.id
             this.props.selectedMarker.push(markerID)
             this.props.showMarkerDetail() 
-          // }
+            console.log('hello')
+          }
         })
       })
+      .then(console.log(this.props.selectedMarker))
     }
 
   render() {
