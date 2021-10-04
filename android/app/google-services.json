@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "638140442903",
+    "project_id": "swimnw",
+    "storage_bucket": "swimnw.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638140442903:android:c0ef0ca2e2e595a5166f52",
+        "android_client_info": {
+          "package_name": "com.swimnw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638140442903-mm21netnub2kp8kue4qpau5lnccbpti5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYRVRxaFsimFtDeBVlBWuCCn2koBn-9gM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638140442903-mm21netnub2kp8kue4qpau5lnccbpti5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
