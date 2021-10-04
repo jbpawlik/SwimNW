@@ -7,7 +7,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function InfoScreen() {
   return (
     <React.Fragment>
-      <View style={styles}>
+      <View style={styles.container}>
       <ImageBackground 
           style={styles.image} 
           source={require('../assets/images/elkrock.jpg')}
@@ -21,21 +21,21 @@ export default function InfoScreen() {
 }
 
 const styles = StyleSheet.create({
-  image: {
+  container: {
     width: windowWidth,
     height: windowHeight,
+    flex: 1,
+  },
+  image: {
     overflow: 'hidden',
-    // position: 'absolute',
     opacity: .5,
+    flexGrow: 1,
   },
   info: {
     textAlign: 'center',
-    // height: '100%',
     padding: '10%',
     position: 'absolute',
     bottom: 0,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     fontSize: 20,
     color: 'black',
     fontWeight: 'bold',
