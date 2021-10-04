@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert, ScrollView, Dimensions} from 'react-native';
 import firebase from "../firebase";
 import EditMarker from "./EditMarker";
-import { Entypo } from '@expo/vector-icons'
+import { Entypo, AntDesign } from '@expo/vector-icons'
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
@@ -73,13 +73,12 @@ function MarkerDetail(props){
             <Text style={styles.detailText}>
               Secrecy: {markerDetails.secrecy}
             </Text>
-            <Pressable
-              style={styles.button}
-              title="Back to Map"
+            <AntDesign 
+              style={styles.arrow}
+              name='back'
+              size={120}
               onPress={() => props.hideMarkerDetail()}
-            >
-              <Text style={styles.loginText}>Back to Map</Text>
-            </Pressable>
+            />
           </View>
         </View>
       </React.Fragment>
@@ -129,24 +128,29 @@ function MarkerDetail(props){
               Secrecy: {markerDetails.secrecy}
             </Text>
             <View style={styles.buttons}>
-              <Pressable
+                <AntDesign 
+                  style={styles.arrow}
+                  name='back'
+                  size={120}
+                  onPress={() => props.hideMarkerDetail()}
+                />
+                <Pressable
                   // style={styles.button}
                   title="Edit Marker"
                   onPress={() => props.showEditMarkerForm()}
-              >
-                <Text style={styles.loginText}>Edit Marker</Text>
+                >
+                <Text style={styles.loginText}>Edit Swim</Text>
               </Pressable>
-              <Pressable
+              {/* <Pressable
                   // style={styles.button}
                   title="Back to Map"
                   onPress={() => props.hideMarkerDetail()}
                 >
                   <Text style={styles.loginText}>Back to Map</Text>
-                </Pressable>
+                </Pressable> */}
               </View>
             </View>
           </View>
-          {/* </ScrollView> */}
       </React.Fragment>
     );
   } else {
@@ -186,13 +190,19 @@ function MarkerDetail(props){
             <Text style={styles.detailText}>
               Secrecy: {markerDetails.secrecy}
             </Text>
-            <Pressable
+            <AntDesign 
+              style={styles.arrow}
+              name='back'
+              size={120}
+              onPress={() => props.hideMarkerDetail()}
+            />
+            {/* <Pressable
               style={styles.button}
               title="Back to Map"
               onPress={() => props.hideMarkerDetail()}
             >
               <Text style={styles.loginText}>Back to Map</Text>
-            </Pressable>
+            </Pressable> */}
         </View>
       </View>
     </React.Fragment>
@@ -254,6 +264,13 @@ const styles = StyleSheet.create({
     padding: 15,
     fontWeight: 'bold',
     // lineHeight: 30,
+  },
+  arrow: {
+    color: '#211302',
+    fontSize: 45,
+    backgroundColor: 'beige',
+    padding: 15,
+    fontWeight: 'bold',
   },
   // image: {
   //   width: 600,
