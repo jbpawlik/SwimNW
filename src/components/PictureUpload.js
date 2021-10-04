@@ -1,13 +1,15 @@
 import * as ImagePicker from "expo-image-picker";
 import * as firebase from "../firebase";
 import React from "react";
-import { ActivityIndicator, Dimensions, Button, Image, Share, StatusBar, StyleSheet, Text, View, LogBox, SegmentedControlIOSComponent } from "react-native";
+import { ActivityIndicator, Dimensions, Button, Image, Share, StatusBar, StyleSheet, Text, View, LogBox, Pressable } from "react-native";
+import { Entypo, AntDesign } from '@expo/vector-icons'
 import * as Clipboard from "expo-clipboard";
 import uuid from "uuid";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+// import {getStorage, ref} from "firebase/firebase-storage"
 
-export default class App extends React.Component {
+export default class PictureUpload extends React.Component {
   state = {
     image: null,
     uploading: false,
@@ -27,13 +29,18 @@ export default class App extends React.Component {
   render() {
     let { image } = this.state;
 
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          onPress={() => this.props.hideUploadPicture()}
-          title="Back to Swim"
+    return (  
+      <View style={styles.view}>
+        <Entypo 
+          name='camera'
+          size={120}
+          onPress={this._takePhoto} title="Take a photo"
         />
-        
+        <AntDesign
+          name='addfolder'
+          size={120}
+          onPress={this._pickImage}
+        />
         {!!image && (
           <Text
             style={{
@@ -46,17 +53,39 @@ export default class App extends React.Component {
             Example: Upload ImagePicker result
           </Text>
         )}
-
-        <Button
+        <AntDesign 
+          name='back'
+          size={120}
+          onPress={() => this.props.hideUploadPicture()}
+        />
+        {/* <Pressable
+          onPress={() => this.props.hideUploadPicture()}
+          title="Back to Swim"
+        >
+          <Text>
+            Back to Swim
+          </Text>
+        </Pressable> */}
+        
+        
+        {/* <Pressable
           onPress={this._pickImage}
           title="Pick an image from camera roll"
-        />
+        >
+          <Text>
+            Upload Image
+          </Text>
+        </Pressable> */}
 
-        <Button onPress={this._takePhoto} title="Take a photo" />
-        
+        {/* <Pressable 
+          onPress={this._takePhoto} title="Take a photo" >
+         */}
         {this._maybeRenderImage()}
         {this._maybeRenderUploadingOverlay()}
-
+        {/* <Text>
+          Take a Photo
+        </Text>
+        </Pressable> */}
         <StatusBar barStyle="default" />
       </View>
     );
@@ -185,7 +214,7 @@ async function uploadImageAsync(uri) {
     xhr.send(null);
   });
 
-  // const ref = firebase.storage().ref().child(uuid.v4());
+  const ref = firebase.storage().ref().child(uuid.v4());
   const snapshot = await ref.put(blob);
 
   // We're done with the blob, close and release it
@@ -193,3 +222,13 @@ async function uploadImageAsync(uri) {
 
   return await snapshot.ref.getDownloadURL();
 }
+
+styles = StyleSheet.create({
+  view: {
+    width: windowWidth,
+    height: windowHeight,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    backgroundColor: 'beige',
+  },
+})
