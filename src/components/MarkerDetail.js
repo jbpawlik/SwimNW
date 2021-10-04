@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     color: '#211302',
     fontSize: 16,
     // alignItems: 'center',
-    marginTop: 5,
+    // marginTop: 5,
     backgroundColor: 'beige',
     // borderWidth: 10,
     // borderColor: 'tan',
