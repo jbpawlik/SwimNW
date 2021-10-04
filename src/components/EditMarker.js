@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
   form: {
     position: 'absolute',
     bottom: 0,
+    paddingBottom: 25,
   },
   inputStyle: {
     width: '100%',
@@ -206,7 +207,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
     backgroundColor: 'beige',
-    opacity: .8,
+    // opacity: .8,
     fontSize: 20,
   },
   picker: {
@@ -228,7 +229,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     justifyContent: 'space-evenly',
     backgroundColor: 'beige',
-    opacity: .8,
+    // opacity: .8,
   },
   loginText: {
     textAlign: 'center',
@@ -255,7 +256,7 @@ const styles = StyleSheet.create({
   button: {
     // position:'absolute',
     // minWidth: '100%',
-    opacity: .8,
+    // opacity: .8,
     justifyContent: 'center'
   },
   // preloader: {
@@ -273,7 +274,7 @@ const styles = StyleSheet.create({
     // position:'absolute',
     backgroundColor: 'beige',
     justifyContent: 'space-evenly',
-    padding: 10,
-    opacity: .8,
+    // padding: 10,
+    // opacity: .8,
   },
 });
