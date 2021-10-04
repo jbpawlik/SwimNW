@@ -1,5 +1,8 @@
 import React, {Container} from "react";
-import {View, Text, StyleSheet, ImageBackground} from 'react-native'
+import {View, Text, StyleSheet, ImageBackground, Dimensions} from 'react-native'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default function InfoScreen() {
   return (
@@ -19,18 +22,22 @@ export default function InfoScreen() {
 
 const styles = StyleSheet.create({
   image: {
-    width: 600,
-    height: 1200,
+    width: windowWidth,
+    height: windowHeight,
     overflow: 'hidden',
-    position: 'absolute',
+    // position: 'absolute',
+    opacity: .5,
   },
   info: {
     textAlign: 'center',
-    padding: '25%',
-    paddingBottom: '25%',
-    paddingLeft: 20,
-    paddingRight: 20,
-    alignItems: 'center',
-    fontSize: 18,
+    // height: '100%',
+    padding: '10%',
+    position: 'absolute',
+    bottom: 0,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    fontSize: 20,
+    color: 'black',
+    fontWeight: 'bold',
   }
 })
