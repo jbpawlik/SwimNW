@@ -24,18 +24,6 @@ export default function DrawerMenu() {
           screenOptions={{
             headerShown: true,
             headerTransparent: true,
-            // headerLeft: ()=> (
-            //   <View>
-            //   <FontAwesome5
-            //         name="water"
-            //         size={24}
-            //         color='black'
-            //         onPress={() => Drawer.openDrawer()}
-            //       />
-            //   </View>
-            // ),
-            // title: '',
-            // drawerLabel: '',
             headerTitleAlign: 'center',
             activeTintColor: '#e91e63',
             headerTitleContainerStyle: {
@@ -60,7 +48,7 @@ export default function DrawerMenu() {
                 drawer.name==='Map'? MapScreen 
                 : drawer.name==='SwimNW' ? InfoScreen 
                 : drawer.name==='Settings' ? SettingsScreen
-                : drawer.name==='My Swims' ? SavedScreen
+                // : drawer.name==='My Swims' ? SavedScreen
                 : Account
               }
               options={{

@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   form: {
     position: 'absolute',
     bottom: 0,
-    paddingBottom: 25,
+    // paddingBottom: 25,
   },
   inputStyle: {
     width: '100%',

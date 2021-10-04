@@ -19,11 +19,11 @@ export default [
 //       iconType:'Feather',
 //       iconName: 'settings'
 //   },
-  {
-      name:'My Swims',
-      iconType:'Material',
-      iconName:'bookmark-check-outline'
-  },
+  // {
+  //     name:'My Swims',
+  //     iconType:'Material',
+  //     iconName:'bookmark-check-outline'
+  // },
   {
       name:'Account',
       iconType:'FontAwesome5',
