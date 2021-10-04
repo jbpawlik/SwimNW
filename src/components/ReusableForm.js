@@ -62,52 +62,52 @@ export default class ReusableForm extends React.Component {
             source={require('../assets/images/tidepool.jpg')}
           />
           <View style={styles.form}>
-          <TextInput
-            style={styles.inputStyle}
-            placeholder="Name (required)"
-            value={this.state.title}
-            onChangeText={(val) => this.updateInputVal(val, 'title')}
-          />
-          <TextInput
-            style={styles.inputStyle}
-            placeholder="Address or Directions"
-            value={this.state.location}
-            onChangeText={(val) => this.updateInputVal(val, 'location')}
-          />
-          <TextInput
-            style={styles.inputStyle}
-            placeholder="Description"
-            value={this.state.description}
-            onChangeText={(val) => this.updateInputVal(val, 'description')}
-          />
-          <View style={styles.pickers}>
-            <Picker
-              style={styles.picker}
-              selectedValue={this.state.season}
-              onValueChange={(val, index) =>
-                this.updateInputVal(val, 'season')
-              }>
-              <Picker.Item label="Year-Round" value="Year-Round"/>
-              <Picker.Item label="Spring to Fall" value="Spring to Fall"/>
-              <Picker.Item label="Spring to Summer" value="Spring to Summer"/>
-              <Picker.Item label="Summer" value="Summer"/>
-              <Picker.Item label="Late Summer" value="Late Summer"/>
-              <Picker.Item label="Summer to Fall" value="Summer to Fall"/>
-              <Picker.Item label="Only on the Hottest Days" value="Only on the Hottest Days"/>
-            </Picker>
-            <Picker
-              style={styles.picker}
-              selectedValue={this.state.type}
-              onValueChange={(val, index) =>
-                this.updateInputVal(val, 'type')
-              }>
-              <Picker.Item label="Pool" value="Pool"/>
-              <Picker.Item label="Lake" value="Lake"/>
-              <Picker.Item label="River" value="River"/>
-              <Picker.Item label="Hot Spring" value="Hot Spring"/>
-              <Picker.Item label="Other" value="Other"/>
-            </Picker>
-          </View>
+            <TextInput
+              style={styles.inputStyle}
+              placeholder="Name (required)"
+              value={this.state.title}
+              onChangeText={(val) => this.updateInputVal(val, 'title')}
+            />
+            <TextInput
+              style={styles.inputStyle}
+              placeholder="Address or Directions"
+              value={this.state.location}
+              onChangeText={(val) => this.updateInputVal(val, 'location')}
+            />
+            <TextInput
+              style={styles.inputStyle}
+              placeholder="Description"
+              value={this.state.description}
+              onChangeText={(val) => this.updateInputVal(val, 'description')}
+            />
+            <View style={styles.pickers}>
+              <Picker
+                style={styles.picker}
+                selectedValue={this.state.season}
+                onValueChange={(val, index) =>
+                  this.updateInputVal(val, 'season')
+                }>
+                <Picker.Item label="Year-Round" value="Year-Round"/>
+                <Picker.Item label="Spring to Fall" value="Spring to Fall"/>
+                <Picker.Item label="Spring to Summer" value="Spring to Summer"/>
+                <Picker.Item label="Summer" value="Summer"/>
+                <Picker.Item label="Late Summer" value="Late Summer"/>
+                <Picker.Item label="Summer to Fall" value="Summer to Fall"/>
+                <Picker.Item label="Only on the Hottest Days" value="Only on the Hottest Days"/>
+              </Picker>
+              <Picker
+                style={styles.picker}
+                selectedValue={this.state.type}
+                onValueChange={(val, index) =>
+                  this.updateInputVal(val, 'type')
+                }>
+                <Picker.Item label="Pool" value="Pool"/>
+                <Picker.Item label="Lake" value="Lake"/>
+                <Picker.Item label="River" value="River"/>
+                <Picker.Item label="Hot Spring" value="Hot Spring"/>
+                <Picker.Item label="Other" value="Other"/>
+              </Picker>
+            </View>
           <View style={styles.pickers}>
             <Picker
               style={styles.picker}
@@ -158,10 +158,12 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
     justifyContent: "center",
+    flex: 1,
   },
   form: {
     position: 'absolute',
     bottom: 0,
+    flexGrow: 1
   },
   inputStyle: {
     width: '100%',

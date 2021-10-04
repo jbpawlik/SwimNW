@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: windowHeight,
     justifyContent: "center",
+    flex: 1,
   },
   form: {
     position: 'absolute',
