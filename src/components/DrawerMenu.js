@@ -8,7 +8,6 @@ import DrawerItems from '../constants/DrawerItems';
 import InfoScreen from '../screens/InfoScreen';
 import SettingsScreen from '../screens/Settings';
 import SavedScreen from '../screens/Saved';
-import ReferScreen from '../screens/Refer';
 import MapScreen from "../screens/MapScreen";
 import { withRouter } from "react-router";
 
