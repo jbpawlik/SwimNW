@@ -98,26 +98,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   image: {
-    width: 600,
-    height: 1200,
+    width: windowWidth,
+    height: windowHeight,
     overflow: 'hidden',
     position: 'absolute',
   },
   textStyle: {
-    // flex: 1,
     fontSize: 24,
     padding: 4,
     fontWeight: 'bold',
-    // borderWidth: 10,
     borderColor: 'tan',
     textAlign: 'center',
-    // alignItems: 'center',
     color: '#211302',
     opacity: .7,
     paddingBottom: 20,
   },
   button: {
-    // position:'absolute',
     minWidth: '100%',
     backgroundColor: 'beige',
     opacity: .8,
@@ -132,15 +128,5 @@ const styles = StyleSheet.create({
     borderColor: 'tan',
     opacity: .8,
     paddingTop: 15,
-  },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff'
   }
 });
