@@ -6,7 +6,7 @@ import DrawerMenu from './components/DrawerMenu';
 import firebase from '../src/firebase';
 import 'react-native-gesture-handler';
 
-// Ignore timer warning in re: Firebase; fundamental incompatibility with React Native; placeholder solution while debugging
+// Ignore timer warning in re: Firebase; fundamental incompatibility with React Native; placeholder solution while debugging (remove on iOS)
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Setting a timer for a long period of time'])
 

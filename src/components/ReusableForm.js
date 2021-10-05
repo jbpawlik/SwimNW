@@ -1,6 +1,3 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-
 import React, { Component, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable, ScrollView, Dimensions } from 'react-native';
 import firebase from '../firebase';
@@ -131,21 +128,19 @@ export default class ReusableForm extends React.Component {
             </Picker>
           </View>
           <View style={styles.buttons}>
-              <Pressable
-                  // style={styles.button}
-                  title="Add Marker"
-                  onPress={() => this.addMarker()}
+            <Pressable
+                title="Add Marker"
+                onPress={() => this.addMarker()}
+            >
+              <Text style={styles.loginText}>Add Marker</Text>
+            </Pressable>
+            <Pressable
+                title="Back to Map"
+                onPress={() => this.props.hideReusableForm()}
               >
-                <Text style={styles.loginText}>Add Marker</Text>
+                <Text style={styles.loginText}>Back to Map</Text>
               </Pressable>
-              <Pressable
-                  // style={styles.button}
-                  title="Back to Map"
-                  onPress={() => this.props.hideReusableForm()}
-                >
-                  <Text style={styles.loginText}>Back to Map</Text>
-                </Pressable>
-              </View>
+            </View>
           </View>
         </View>
       </React.Fragment>
@@ -167,7 +162,6 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     width: '100%',
-    // margin: 5,
     padding: 10,
     paddingTop: 15,
     textAlign: 'center',
@@ -184,9 +178,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderColor: 'black',
-    // backgroundColor: 'beige',
-    // opacity: .8,
-    // fontSize: 20,
     height: 50,
     flex: 1,
   },
@@ -204,10 +195,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     alignItems: 'center',
     marginTop: 5,
-    // backgroundColor: 'beige',
-    // borderWidth: 1,
-    // borderColor: 'tan',
-    // opacity: .8,
     padding: 10,
     fontWeight: 'bold',
   },
@@ -218,24 +205,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   button: {
-    // position:'absolute',
     minWidth: '100%',
     backgroundColor: 'beige',
     opacity: .8,
   },
-  // preloader: {
-  //   left: 0,
-  //   right: 0,
-  //   top: 0,
-  //   bottom: 0,
-  //   position: 'absolute',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: '#fff'
-  // },
   buttons: {
     flexDirection: 'row',
-    // position:'absolute',
     backgroundColor: 'beige',
     justifyContent: 'space-evenly',
     padding: 10,
