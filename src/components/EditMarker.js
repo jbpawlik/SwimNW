@@ -29,18 +29,6 @@ export default class EditMarker extends React.Component {
     }
   }
 
-  // componentDidMount(){
-  //   this.marker = firebase.firestore().collection('markers').get().then(snapshot => { snapshot.docs.forEach(marker => { if (marker._delegate._document.key.path.segments[6] === this.markerID ) {
-
-  //      this.markerTitle2.push(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})}).then(console.log(this.markerTitle2))
-  // }
-
-  // componentDidMount = () => {
-  //   this.markerTitle2.push(markerTitle2: firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => { return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue'];
-  //   }))
-  // }
-
-  
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -51,10 +39,8 @@ export default class EditMarker extends React.Component {
       this.marker.delete();
       this.props.hideEditMarkerForm();
   }
-    
-
+  
   editMarker = () => {
-    console.log(this.marker)
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {

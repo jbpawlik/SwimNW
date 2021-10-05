@@ -34,7 +34,6 @@ export default class Signup extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((res) => {
         const user = res.user;
-        console.log(user)
         this.users.add({
           uid: user.uid,
           displayName: this.state.displayName,
