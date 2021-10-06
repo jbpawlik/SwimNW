@@ -10,7 +10,7 @@ SwimNW is a cross-platform mobile app designed for hydrophiles living in or trav
 SwimNW was written in React Native for iOS and Android. It uses Firebase and Firestore to store users and saved swims. Countless React Native dependencies were used in the making of SwimNW, with special honors to React Native Maps and the Expo emulator tools.
 
 ### __Setup/Installation__
-SwimNW has been accepted into the Google Play store. Because each update requires review, and reviews can take up to a week, only a skeletal, pre-release build is available there. This will be updated when the new build is released.
+SwimNW has been accepted into the Google Play store. There is a [live development build](https://play.google.com/store/apps/details?id=com.swimnw).
 
 SwimNW is awaiting approval by the App Store.
 
