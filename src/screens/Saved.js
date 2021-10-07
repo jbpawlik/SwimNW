@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
-// import NewMarker from '../screens/NewMarker';
 
 export default function SavedScreen() {
   return (

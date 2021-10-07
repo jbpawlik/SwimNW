@@ -1,6 +1,3 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-
 import React, { Component, useEffect } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImageBackground, Pressable, ScrollView, Dimensions } from 'react-native';
 import firebase from '../firebase';
@@ -29,18 +26,6 @@ export default class EditMarker extends React.Component {
     }
   }
 
-  // componentDidMount(){
-  //   this.marker = firebase.firestore().collection('markers').get().then(snapshot => { snapshot.docs.forEach(marker => { if (marker._delegate._document.key.path.segments[6] === this.markerID ) {
-
-  //      this.markerTitle2.push(marker._delegate._document.data.value.mapValue.fields.title['stringValue'])}})}).then(console.log(this.markerTitle2))
-  // }
-
-  // componentDidMount = () => {
-  //   this.markerTitle2.push(markerTitle2: firebase.firestore().collection('markers').doc(this.markerID).get().then(querySnapshot => { return querySnapshot._delegate._document.data.value.mapValue.fields.title['stringValue'];
-  //   }))
-  // }
-
-  
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -51,10 +36,8 @@ export default class EditMarker extends React.Component {
       this.marker.delete();
       this.props.hideEditMarkerForm();
   }
-    
 
   editMarker = () => {
-    console.log(this.marker)
     if (this.state.title === '') {
       Alert.alert('Fill out all required fields')
     } else {
@@ -197,18 +180,15 @@ const styles = StyleSheet.create({
   form: {
     position: 'absolute',
     bottom: 0,
-    // paddingBottom: 25,
   },
   inputStyle: {
     width: '100%',
-    // margin: 5,
     padding: 10,
     paddingTop: 15,
     textAlign: 'center',
     borderWidth: 1,
     borderColor: 'black',
     backgroundColor: 'beige',
-    // opacity: .8,
     fontSize: 20,
   },
   picker: {
@@ -218,9 +198,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     borderWidth: 1,
     borderColor: 'black',
-    // backgroundColor: 'beige',
-    // opacity: .8,
-    // fontSize: 20,
     height: 50,
     flex: 1,
   },
@@ -230,18 +207,12 @@ const styles = StyleSheet.create({
     width: windowWidth,
     justifyContent: 'space-evenly',
     backgroundColor: 'beige',
-    // opacity: .8,
   },
   loginText: {
     textAlign: 'center',
     color: '#211302',
     fontSize: 16,
     alignItems: 'center',
-    // marginTop: 5,
-    // backgroundColor: 'beige',
-    // borderWidth: 1,
-    // borderColor: 'tan',
-    // opacity: .8,
     width: windowWidth/2,
     padding: 15,
     fontWeight: 'bold',
@@ -255,27 +226,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   button: {
-    // position:'absolute',
-    // minWidth: '100%',
-    // opacity: .8,
     justifyContent: 'center'
   },
-  // preloader: {
-  //   left: 0,
-  //   right: 0,
-  //   top: 0,
-  //   bottom: 0,
-  //   position: 'absolute',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   backgroundColor: '#fff'
-  // },
   buttons: {
     flexDirection: 'row',
-    // position:'absolute',
     backgroundColor: 'beige',
     justifyContent: 'space-evenly',
-    // padding: 10,
-    // opacity: .8,
   },
 });

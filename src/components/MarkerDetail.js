@@ -88,25 +88,20 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          {/* <ScrollView contentContainerStyle={{flexGrow: 1}} style={styles.scrollView}> */}
-            <ImageBackground
-              style={styles.swimPic} 
-              source={require('../assets/images/tidepool.jpg')}
+          <ImageBackground
+            style={styles.swimPic} 
+            source={require('../assets/images/tidepool.jpg')}
+          />
+          <View style={styles.container}>
+          <View style={styles.row}>
+            <Entypo 
+              name='camera'
+              size={42}
+              onPress={() => props.showUploadPicture()}
             />
-            <View style={styles.container}>
-            <View style={styles.row}>
-            
-              <Entypo 
-                name='camera'
-                size={42}
-                onPress={() => props.showUploadPicture()}
-              />
-
-
-              <Text style={styles.name}>
-                {markerDetails.title}
-              </Text>
-
+            <Text style={styles.name}>
+              {markerDetails.title}
+            </Text>
           </View>
           <View style={styles.body}> 
             <Text style={styles.detailText}>
@@ -128,26 +123,18 @@ function MarkerDetail(props){
               Secrecy: {markerDetails.secrecy}
             </Text>
             <View style={styles.buttons}>
-                <AntDesign 
-                  style={styles.arrow}
-                  name='back'
-                  size={120}
-                  onPress={() => props.hideMarkerDetail()}
-                />
-                <Pressable
-                  // style={styles.button}
-                  title="Edit Marker"
-                  onPress={() => props.showEditMarkerForm()}
-                >
+              <AntDesign 
+                style={styles.arrow}
+                name='back'
+                size={120}
+                onPress={() => props.hideMarkerDetail()}
+              />
+              <Pressable
+                title="Edit Marker"
+                onPress={() => props.showEditMarkerForm()}
+              >
                 <Text style={styles.loginText}>Edit Swim</Text>
               </Pressable>
-              {/* <Pressable
-                  // style={styles.button}
-                  title="Back to Map"
-                  onPress={() => props.hideMarkerDetail()}
-                >
-                  <Text style={styles.loginText}>Back to Map</Text>
-                </Pressable> */}
               </View>
             </View>
           </View>
@@ -159,7 +146,7 @@ function MarkerDetail(props){
       <ImageBackground
         style={styles.swimPic} 
         source={require('../assets/images/tidepool.jpg')}
-        />
+      />
       <View style={styles.container}>
         <View style={styles.row}>
           <Entypo 
@@ -196,17 +183,11 @@ function MarkerDetail(props){
               size={120}
               onPress={() => props.hideMarkerDetail()}
             />
-            {/* <Pressable
-              style={styles.button}
-              title="Back to Map"
-              onPress={() => props.hideMarkerDetail()}
-            >
-              <Text style={styles.loginText}>Back to Map</Text>
-            </Pressable> */}
-        </View>
+          </View>
       </View>
     </React.Fragment>
-  )}}
+    )}
+  }
 }
 
 const styles = StyleSheet.create({
@@ -216,7 +197,6 @@ const styles = StyleSheet.create({
   },
   body: {
     flexDirection: 'column',
-    // marginTop: '50%',
   },
   name: {
     fontSize: 24,
@@ -248,22 +228,14 @@ const styles = StyleSheet.create({
     borderWidth: .5,
     lineHeight: 30,
     borderColor: 'black',
-    // opacity: .8,
     paddingLeft: 15,
-    // fontWeight: 'bold',
   },
   loginText: {
     color: '#211302',
     fontSize: 16,
-    // alignItems: 'center',
-    // marginTop: 5,
     backgroundColor: 'beige',
-    // borderWidth: 10,
-    // borderColor: 'tan',
-    // opacity: .8,
     padding: 15,
     fontWeight: 'bold',
-    // lineHeight: 30,
   },
   arrow: {
     color: '#211302',
@@ -272,15 +244,8 @@ const styles = StyleSheet.create({
     padding: 15,
     fontWeight: 'bold',
   },
-  // image: {
-  //   width: 600,
-  //   height: 1200,
-  //   overflow: 'hidden',
-  //   // position: 'absolute',
-  // },
   buttons: {
     flexDirection: 'row',
-    // position:'absolute',
     backgroundColor: 'beige',
     justifyContent: 'space-evenly',
   },

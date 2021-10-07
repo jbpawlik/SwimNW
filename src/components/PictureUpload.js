@@ -58,34 +58,8 @@ export default class PictureUpload extends React.Component {
           size={120}
           onPress={() => this.props.hideUploadPicture()}
         />
-        {/* <Pressable
-          onPress={() => this.props.hideUploadPicture()}
-          title="Back to Swim"
-        >
-          <Text>
-            Back to Swim
-          </Text>
-        </Pressable> */}
-        
-        
-        {/* <Pressable
-          onPress={this._pickImage}
-          title="Pick an image from camera roll"
-        >
-          <Text>
-            Upload Image
-          </Text>
-        </Pressable> */}
-
-        {/* <Pressable 
-          onPress={this._takePhoto} title="Take a photo" >
-         */}
         {this._maybeRenderImage()}
         {this._maybeRenderUploadingOverlay()}
-        {/* <Text>
-          Take a Photo
-        </Text>
-        </Pressable> */}
         <StatusBar barStyle="default" />
       </View>
     );
@@ -198,8 +172,6 @@ export default class PictureUpload extends React.Component {
 }
 
 async function uploadImageAsync(uri) {
-  // Why are we using XMLHttpRequest? See:
-  // https://github.com/expo/expo/issues/2402#issuecomment-443726662
   const blob = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -217,7 +189,6 @@ async function uploadImageAsync(uri) {
   const ref = firebase.storage().ref().child(uuid.v4());
   const snapshot = await ref.put(blob);
 
-  // We're done with the blob, close and release it
   blob.close();
 
   return await snapshot.ref.getDownloadURL();
