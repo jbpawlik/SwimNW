@@ -10,7 +10,7 @@ export default function InfoScreen() {
       <View style={styles.container}>
       <ImageBackground 
           style={styles.image} 
-          source={require('../assets/images/elkrock.jpg')}
+          source={require('../assets/images/tidepool.jpg')}
         />
         <Text style={styles.info}>
           SwimNW is a resource for hydrophiles in the Pacific Northwest. The map shows swims of all different types, from community pools to hot springs.{'\n'}{'\n'}Users that create an account can add, edit, and delete swims.{'\n'}{'\n'}Users who contribute high-quality content will receive access to Protected swims. These are swims that others have chosen to keep out of the public eye.{'\n'}{'\n'}Users may also create Private swims, which will only be visible to them. You can see all of your swims in the My Swims tab.

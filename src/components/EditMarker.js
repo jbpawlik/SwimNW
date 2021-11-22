@@ -60,7 +60,7 @@ export default class EditMarker extends React.Component {
         <View style={styles.container}>
             <ImageBackground 
               style={styles.image} 
-              source={require('../assets/images/elkrock.jpg')}
+              source={require('../assets/images/tidepool.jpg')}
             />
           <View style={styles.form}>
             <TextInput

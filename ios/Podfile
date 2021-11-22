@@ -9,6 +9,7 @@ target 'SwimNW' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+  pod 'GoogleMaps', '5.1.0'
 
   # Uncomment to opt-in to using Flipper
   #
@@ -19,5 +20,6 @@ target 'SwimNW' do
   #   end
   # end
 end
+
 
 pod 'FirebaseUI'

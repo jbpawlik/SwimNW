@@ -61,7 +61,7 @@ export default class Signup extends Component {
       <View style={styles.container}>
         <ImageBackground 
           style={styles.image} 
-          source={require('../assets/images/elkrock.jpg')}
+          source={require('../assets/images/tidepool.jpg')}
         />
         <TextInput
           style={styles.inputStyle}

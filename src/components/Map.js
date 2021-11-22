@@ -89,7 +89,7 @@ export default class Map extends React.Component {
     return (
       <MapView
         style={{ flex: 1}}
-        provider={PROVIDER_GOOGLE}
+        //provider={PROVIDER_GOOGLE}
         showsUserLocation
         followUserLocation={true}
         initialRegion = {this.state.region}
