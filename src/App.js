@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import Map from './components/Map'
 import DrawerMenu from './components/DrawerMenu';
 import firebase from '../src/firebase';
@@ -18,7 +18,8 @@ export default function App() {
   }, []);
 
   return (
-    <React.Fragment>      
+    <React.Fragment>
+      <StatusBar hidden/>
       <DrawerMenu/>
     </React.Fragment>
   );}
