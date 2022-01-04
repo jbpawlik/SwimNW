@@ -19,7 +19,6 @@ export default function DrawerMenu() {
     <React.Fragment>
       <NavigationContainer>
         <Drawer.Navigator 
-          drawerType='slide'
           initialRouteName="Map"
           screenOptions={{
             headerShown: true,
@@ -28,6 +27,7 @@ export default function DrawerMenu() {
             activeTintColor: '#e91e63',
             headerTitleContainerStyle: {
             display: 'none',
+            drawerType: 'slide'
             },
             headerLeftContainerStyle: {
               backgroundColor: 'white',
@@ -48,7 +48,7 @@ export default function DrawerMenu() {
                 drawer.name==='Map'? MapScreen 
                 : drawer.name==='SwimNW' ? InfoScreen 
                 : drawer.name==='Settings' ? SettingsScreen
-                // : drawer.name==='My Swims' ? SavedScreen
+                : drawer.name==='My Swims' ? SavedScreen
                 : Account
               }
               options={{
