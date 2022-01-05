@@ -1,39 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Button, ActivityIndicator, Dimensions, Share, StatusBar, LogBox, Pressable } from 'react-native';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import firebase from '../firebase';
 import { useNavigation } from '@react-navigation/native';
+import 'firebase/storage';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-// const storageRef = firebase.storage().ref();
+const storageRef = firebase.storage().ref();
+const imageRef = storageRef.child('photo.jpg');
+
 // const photoRef = storageRef.child('photo.png');
 // const imagesRef = storageRef.child('images/photo.png');
 
-export default function PictureUpload({route, hideUploadPicture}) {
+export default function PictureUpload({selectedMarker, hideUploadPicture}) {
   const [pickedImagePath, setPickedImagePath] = useState('');
-  const [photoURL, setPhotoUrl] = useState('');
+  const [photoURL, setPhotoURL] = useState('');
   const [image, setImage] = useState(null)
   const [uploading, setUploading] = useState(false);
   const [loadingPic, setLoadingPic] = useState({})
   const navigation = useNavigation();
-
+  const imageRef = storageRef.child(selectedMarker + '.jpg');
   const user = firebase.auth().currentUser;
 
   // const { pickedImagePath } = route.params
   // console.log(pickedImagePath)
-  
+
+  // useEffect(() => {
+  //   const URL = imageRef.getDownloadURL()
+  //   return () => {
+  //     console.log(URL)
+  //   }
+  // }, [])
+
   const openCamera = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-    
+
     if (permissionResult.granted === false) {
       alert("Permission denied.");
       return;
     }
 
     const result = await ImagePicker.launchCameraAsync();
-
+    
     if (!result.cancelled) {
       setPickedImagePath(result.uri);
     }
@@ -48,28 +58,38 @@ export default function PictureUpload({route, hideUploadPicture}) {
   // }
 
   const onBackButtonPress = () => {
-    navigation.navigate("CentralMapScreen");
+    // navigation.navigate("MapScreen");
+    hideUploadPicture()
   }
 
   const onCheckButtonPress = () => {
+    // console.log(pickedImagePath)
+    uploadImage()
+    // imageRef.put(pickedImagePath, {contentType: 'image/jpg'})
     setPickedImagePath(null)
     hideUploadPicture()
   }
 
-  const saveImage = (uploadResult) => {
-    setImage({
-      image: uploadResult
-  }, setLoadingPic({
-    loadingPic: true,
-  }))}
+  // const saveImage = (uploadResult) => {
+  //   setImage({
+  //     image: uploadResult
+  // }, setLoadingPic({
+  //   loadingPic: true,
+  // }))}
 
+  const uploadImage = async () => {
+    const response = await fetch(pickedImagePath)
+    const blob = await response.blob();
+    return imageRef.put(blob)
+}
 
-  const handleImagePicked = async pickerResult => {
-    const uploadResult = await uploadImageAsync(pickerResult.uri)
-    // console.log(uploadResult)
-    saveImage(uploadResult)
-    hideUploadPicture()
-  }
+  // const handleImagePicked = async pickerResult => {
+  //   // const uploadResult = await uploadImageAsync(pickerResult.uri)
+  //   // console.log(pickerResult)
+  //   // saveImage(uploadResult)
+  //   // hideUploadPicture()
+  //   setPickedImagePath(pickerResult.uri);
+  // }
 
 //   const handleImagePicked = async pickerResult => {
 //     let uploadResponse, uploadResult;
@@ -121,60 +141,60 @@ export default function PictureUpload({route, hideUploadPicture}) {
   //   }
   // };
 
-  const maybeRenderUploadingOverlay = () => {
-    if (uploading) {
-      return (
-        <View
-          style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
-          <ActivityIndicator color="#fff" size="large" />
-        </View>
-      );
-    }
-  };
+  // const maybeRenderUploadingOverlay = () => {
+  //   if (uploading) {
+  //     return (
+  //       <View
+  //         style={[StyleSheet.absoluteFill, styles.maybeRenderUploading]}>
+  //         <ActivityIndicator color="#fff" size="large" />
+  //       </View>
+  //     );
+  //   }
+  // };
 
-  const maybeRenderImage = () => {
-    const {
-      image
-    } = photoURL;
+  // const maybeRenderImage = () => {
+  //   const {
+  //     image
+  //   } = photoURL;
 
-    if (!image) {
-      return;
-    }
+  //   if (!image) {
+  //     return;
+  //   }
 
-    return (
-      <View>
-        { loading ? (
-          <Modal
-            style={styles.maybeRenderContainer}>
-            <View
-              style={styles.maybeRenderImageContainer}>
-              <Image source={{ uri: image }} style={styles.maybeRenderImage} />
-            </View>
+  //   return (
+  //     <View>
+  //       { loading ? (
+  //         <Modal
+  //           style={styles.maybeRenderContainer}>
+  //           <View
+  //             style={styles.maybeRenderImageContainer}>
+  //             <Image source={{ uri: image }} style={styles.maybeRenderImage} />
+  //           </View>
 
-            <Text
-              onPress={()=> setLoading(true), navigation.navigate('CentralMapScreen')}
-              onLongPress={share}
-              style={styles.maybeRenderImageText}>
-              Approve
-            </Text>
-          </Modal>
-        ) : (
-          <></>
-        )
-      }</View>)}
+  //           <Text
+  //             onPress={()=> setLoading(true), navigation.navigate('CentralMapScreen')}
+  //             onLongPress={share}
+  //             style={styles.maybeRenderImageText}>
+  //             Approve
+  //           </Text>
+  //         </Modal>
+  //       ) : (
+  //         <></>
+  //       )
+  //     }</View>)}
 
-  const share = () => {
-    Share.share({
-      message: image,
-      title: 'Check out this photo',
-      url: image,
-    });
-  };
+  // const share = () => {
+  //   Share.share({
+  //     message: image,
+  //     title: 'Check out this photo',
+  //     url: image,
+  //   });
+  // };
 
-  const copyToClipboard = () => {
-    Clipboard.setString(image);
-    alert('Copied image URL to clipboard');
-  };
+  // const copyToClipboard = () => {
+  //   Clipboard.setString(image);
+  //   alert('Copied image URL to clipboard');
+  // };
 
   const pickImage = async () => {
     // const {
@@ -187,8 +207,8 @@ export default function PictureUpload({route, hideUploadPicture}) {
         allowsEditing: true,
         aspect: [4, 3],
       });
-
-      handleImagePicked(pickerResult);
+      // handleImagePicked(pickerResult);
+      setPickedImagePath(pickerResult.uri);
     // }
   };
 
@@ -220,7 +240,6 @@ export default function PictureUpload({route, hideUploadPicture}) {
 // }
 
 const uploadImageAsync = async (uri) => {
-  console.log(uri)
   const apiUrl = uri;
   const uriParts = uri.split('.');
   const fileType = uriParts[uriParts.length - 1];
@@ -313,8 +332,8 @@ const uploadImageAsync = async (uri) => {
             size={180}
             onPress={() => onBackButtonPress()}
           />
-          {maybeRenderImage()}
-          {maybeRenderUploadingOverlay()}
+          {/* {maybeRenderImage()}
+          {maybeRenderUploadingOverlay()} */}
         </View>
         :
         <View style={styles.imageContainer}>
@@ -364,49 +383,49 @@ const styles = StyleSheet.create({
     height: 300,
     resizeMode: 'cover'
   },
-  exampleText: {
-    fontSize: 20,
-    marginBottom: 20,
-    marginHorizontal: 15,
-    textAlign: 'center',
-  },
-  maybeRenderUploading: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    justifyContent: 'center',
-  },
-  maybeRenderContainer: {
-    borderRadius: 3,
-    elevation: 2,
-    marginTop: 30,
-    shadowColor: 'rgba(0,0,0,1)',
-    shadowOpacity: 0.2,
-    shadowOffset: {
-      height: 4,
-      width: 4,
-    },
-    shadowRadius: 5,
-    width: 250,
-  },
-  maybeRenderImageContainer: {
-    borderTopLeftRadius: 3,
-    borderTopRightRadius: 3,
-    overflow: 'hidden',
-  },
-  maybeRenderImage: {
-    height: 250,
-    width: 250,
-  },
-  maybeRenderImageText: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-  },
-  view: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    backgroundColor: "gold",
-  },
+  // exampleText: {
+  //   fontSize: 20,
+  //   marginBottom: 20,
+  //   marginHorizontal: 15,
+  //   textAlign: 'center',
+  // },
+  // maybeRenderUploading: {
+  //   alignItems: 'center',
+  //   backgroundColor: 'rgba(0,0,0,0.4)',
+  //   justifyContent: 'center',
+  // },
+  // maybeRenderContainer: {
+  //   borderRadius: 3,
+  //   elevation: 2,
+  //   marginTop: 30,
+  //   shadowColor: 'rgba(0,0,0,1)',
+  //   shadowOpacity: 0.2,
+  //   shadowOffset: {
+  //     height: 4,
+  //     width: 4,
+  //   },
+  //   shadowRadius: 5,
+  //   width: 250,
+  // },
+  // maybeRenderImageContainer: {
+  //   borderTopLeftRadius: 3,
+  //   borderTopRightRadius: 3,
+  //   overflow: 'hidden',
+  // },
+  // maybeRenderImage: {
+  //   height: 250,
+  //   width: 250,
+  // },
+  // maybeRenderImageText: {
+  //   paddingHorizontal: 10,
+  //   paddingVertical: 10,
+  // },
+  // view: {
+  //   flex: 1,
+  //   alignItems: "center",
+  //   justifyContent: "space-evenly",
+  //   backgroundColor: "gold",
+  // },
 });
 
 
