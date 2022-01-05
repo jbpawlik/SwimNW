@@ -3,14 +3,18 @@ import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert
 import firebase from "../firebase";
 import EditMarker from "./EditMarker";
 import { Entypo, AntDesign } from '@expo/vector-icons'
+import 'firebase/storage';
+
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+const storageRef = firebase.storage();
 
-function MarkerDetail(props){
-
+export default function MarkerDetail(props) {
   const [markerDetails, setMarkerDetails] = useState([]);
   const markerID = props.selectedMarker[0];
   const [loggedIn, setLoggedIn] = useState(false);
+  const [imageURL, setImageURL] = useState(undefined);
+
 
   useEffect(() => {
     return firebase.auth().onAuthStateChanged(setLoggedIn);
@@ -18,6 +22,15 @@ function MarkerDetail(props){
 
   useEffect(() => {
     let isMounted = true;
+
+    storageRef
+      .ref(markerID + '.jpg')
+      .getDownloadURL()
+      .then((url) => {
+        setImageURL(url);
+      })
+      .catch((e) => console.log('Errors while downloading => ', e))
+      .then(console.log(imageURL))
 
     const getMarkerDetails = async () => {
       try {
@@ -40,12 +53,12 @@ function MarkerDetail(props){
     return (
       <React.Fragment>
         <ImageBackground
-          style={styles.swimPic} 
+          style={styles.swimPic}
           source={require('../assets/images/tidepool.jpg')}
         />
         <View style={styles.container}>
           <View style={styles.row}>
-            <Entypo 
+            <Entypo
               name='camera'
               size={42}
               onPress={() => props.showUploadPicture()}
@@ -88,10 +101,18 @@ function MarkerDetail(props){
     if (user.uid === markerDetails.userID) {
       return (
         <React.Fragment>
-          <ImageBackground
-            style={styles.swimPic} 
-            source={require('../assets/images/tidepool.jpg')}
-          />
+          { !imageURL ? ( 
+            <ImageBackground
+              style={styles.swimPic} 
+              source={require('../assets/images/tidepool.jpg')}
+            />
+            ) : (
+              <ImageBackground
+              style={styles.swimPic}
+              source={{uri: imageURL}}
+              />
+            )
+          }
           <View style={styles.container}>
           <View style={styles.row}>
             <Entypo 
@@ -250,5 +271,3 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
 })
-
-export default MarkerDetail;
