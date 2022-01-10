@@ -1,7 +1,6 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import {View, Text, Button, Image, ImageBackground, StyleSheet, Pressable, Alert, ScrollView, Dimensions} from 'react-native';
 import firebase from "../firebase";
-import EditMarker from "./EditMarker";
 import { Entypo, AntDesign } from '@expo/vector-icons'
 import 'firebase/storage';
 
@@ -15,22 +14,22 @@ export default function MarkerDetail(props) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [imageURL, setImageURL] = useState(undefined);
 
-
   useEffect(() => {
     return firebase.auth().onAuthStateChanged(setLoggedIn);
   }, []);
 
   useEffect(() => {
-    let isMounted = true;
+      storageRef
+        .ref(markerID + '.jpg')
+        .getDownloadURL()
+        .then((url) => {
+          setImageURL(url);
+        })
+        .catch((e) => console.log('Errors while downloading => ', e))
+  }, []);
 
-    storageRef
-      .ref(markerID + '.jpg')
-      .getDownloadURL()
-      .then((url) => {
-        setImageURL(url);
-      })
-      .catch((e) => console.log('Errors while downloading => ', e))
-      .then(console.log(imageURL))
+  useEffect(() => {
+    let isMounted = true;
 
     const getMarkerDetails = async () => {
       try {
@@ -52,9 +51,9 @@ export default function MarkerDetail(props) {
   if (!loggedIn) {
     return (
       <React.Fragment>
-        <ImageBackground
+        <Image
           style={styles.swimPic}
-          source={require('../assets/images/tidepool.jpg')}
+          source={require('../assets/images/boat.jpg')}
         />
         <View style={styles.container}>
           <View style={styles.row}>
@@ -102,18 +101,18 @@ export default function MarkerDetail(props) {
       return (
         <React.Fragment>
           { !imageURL ? ( 
-            <ImageBackground
+            <Image
               style={styles.swimPic} 
-              source={require('../assets/images/tidepool.jpg')}
+              source={require('../assets/images/boat.jpg')}
             />
             ) : (
-              <ImageBackground
+              <Image
               style={styles.swimPic}
               source={{uri: imageURL}}
               />
             )
           }
-          <View style={styles.container}>
+        <View style={styles.container}>
           <View style={styles.row}>
             <Entypo 
               name='camera'
@@ -161,12 +160,13 @@ export default function MarkerDetail(props) {
           </View>
       </React.Fragment>
     );
-  } else {
+  } 
+  else {
     return (
     <React.Fragment>
-      <ImageBackground
+      <Image
         style={styles.swimPic} 
-        source={require('../assets/images/tidepool.jpg')}
+        source={require('../assets/images/boat.jpg')}
       />
       <View style={styles.container}>
         <View style={styles.row}>
@@ -216,31 +216,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
-  body: {
-    flexDirection: 'column',
-  },
   name: {
     fontSize: 24,
     fontWeight: 'bold',
   },
-  view: {
-    height: windowHeight,
-    width: windowWidth,
-    alignItems: 'center',
-    position: 'relative'
-  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    marginTop: '100%',
     backgroundColor: 'beige',
-    minWidth: windowWidth,
-  }, 
+    minWidth: '100%',
+  },
   swimPic: {
     overflow: 'hidden',
     position: 'absolute',
-    minWidth: windowWidth,
-    minHeight: windowHeight,
+    width: '100%',
+    height: '60%',
   },
   detailText: {
     color: '#211302',
