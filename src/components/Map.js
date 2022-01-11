@@ -4,7 +4,9 @@ import {Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 import firebase from '../firebase';
 import { MaterialCommunityIcons, Feather, FontAwesome5, Entypo } from '@expo/vector-icons';
+
 const {width, height} = Dimensions.get('window')
+
 export default class Map extends React.Component {
 
   constructor(props) {
@@ -17,36 +19,50 @@ export default class Map extends React.Component {
         longitudeDelta: 10
       },
       tempCoordinate: {},
-      dataSource: []
     }
     this.dbRef = firebase.firestore().collection('markers');
+    this.storageRef = firebase.storage();
     this.markerArray = [];
+    this.imageURLArray = [];
     this.user = firebase.auth().currentUser;
     this.users = firebase.firestore().collection('users');
-
   }
 
   componentDidMount() {
     this.getMarkers()
+    this.getImages()
+    console.log(this.markerArray)
   }
-  
+
   componentWillUnmount() {
     this.setState({})
   }
 
   getMarkers = async () => {
     this.dbRef.get()
-        .then(snapshot => {
-            snapshot.docs.forEach(marker => {
-              if (!this.markerArray.includes(marker.id)) {
-                let currentID = marker.id
-                let appObj = { ...marker.data(), ['id']: currentID }
-                this.markerArray.push(appObj)
-              }
+      .then(snapshot => {
+          snapshot.docs.forEach(marker => {
+            if (!this.markerArray.includes(marker.id)) {
+              let appObj = { ...marker.data(), ['id']: marker.id }
+              this.markerArray.push(appObj)
+            }
         })
-        this.setState({markerArray: this.markerArray})
+      this.setState({markerArray: this.markerArray})
     })
   }
+
+  //saves image URLs to an array for use in other areas
+  getImages = async () => {
+    this.storageRef.ref().listAll().then((result) => {
+      result.items.forEach((imageRef) => {
+        imageRef.getDownloadURL().then((url) => {
+          this.imageURLArray.push({id: imageRef._delegate._location.path_.slice(0, -4), URL: url})
+        })
+      })
+      this.setState({imageURLArray: this.imageURLArray})
+    })
+  }
+
   handlePress = (event) => {
     const user = firebase.auth().currentUser;
     if (user) {
@@ -77,9 +93,8 @@ export default class Map extends React.Component {
         snapshot.docs.forEach(marker => {
           // if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
           if (marker.data().coordinate.latitude == coord) {
-            const markerID = marker.id
-            this.props.selectedMarker.push(markerID)
-            this.props.showMarkerDetail() 
+            this.props.selectedMarker.push(marker.id)
+            this.props.showMarkerDetail()
           }
         })
       })
