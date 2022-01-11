@@ -12,25 +12,34 @@ export default function MarkerDetail(props) {
   const [markerDetails, setMarkerDetails] = useState([]);
   const markerID = props.selectedMarker[0];
   const [loggedIn, setLoggedIn] = useState(false);
-  const [imageURL, setImageURL] = useState(undefined);
+  // const [imageURL, setImageURL] = useState(undefined);
+  const imageURL = props.imageURL
 
   useEffect(() => {
     return firebase.auth().onAuthStateChanged(setLoggedIn);
   }, []);
 
-  useEffect(() => {
-      storageRef
-        .ref(markerID + '.jpg')
-        .getDownloadURL()
-        .then((url) => {
-          setImageURL(url);
-        })
-        .catch((e) => console.log('Errors while downloading => ', e))
-  }, []);
+  // useEffect(()=> {
+  //   props.imageURLArray.forEach(marker => {
+  //     if (marker.id === markerID) {
+  //       setImageURL(marker.URL)
+  //     }
+  //   })
+  // })
+
+  // useEffect(() => {
+  //   storageRef
+  //     .ref(markerID + '.jpg')
+  //     .getDownloadURL()
+  //     .then((url) => {
+  //       setImageURL(url);
+  //     })
+  //     .catch((e) => console.log('Errors while downloading => ', e))
+  // }, []);
 
   useEffect(() => {
     let isMounted = true;
-
+    
     const getMarkerDetails = async () => {
       try {
         const marker = firebase.firestore().collection('markers').doc(markerID).get().then((snapshot) => {setMarkerDetails(snapshot.data())});
@@ -160,7 +169,7 @@ export default function MarkerDetail(props) {
           </View>
       </React.Fragment>
     );
-  } 
+  }
   else {
     return (
     <React.Fragment>

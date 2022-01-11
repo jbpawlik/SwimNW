@@ -3,7 +3,7 @@ import Map from '../components/Map'
 import ReusableForm from "../components/ReusableForm";
 import EditMarker from "../components/EditMarker";
 import MarkerDetail from "../components/MarkerDetail";
-import TakePicture from "../components/TakePicture";
+import TakePicture from "../Obsolete-ForReference/TakePicture";
 import PictureUpload from "../components/PictureUpload";
 import firebase from "../firebase";
 
@@ -19,11 +19,42 @@ export default class MapScreen extends React.Component {
       showTakePicture: false,
       showUploadPicture: false,
       selectedMarker: [],
+      imageURL: null,
+      imageURLArray: [],
       userID: 0,
-      image: null,
+      // image: null,
       uploading: false,
     }
     this.user = firebase.auth().currentUser;
+    this.storageRef = firebase.storage();
+  }
+
+  componentDidMount() {
+    this.getImages()
+  }
+
+  //saves image URLs to an array for use in other areas
+  getImages = async () => {
+    this.storageRef.ref().listAll().then((result) => {
+      result.items.forEach((imageRef) => {
+        imageRef.getDownloadURL().then((url) => {
+          this.state.imageURLArray.push({id: imageRef._delegate._location.path_.slice(0, -4), URL: url})
+        })
+      })
+      this.setState({imageURLArray: this.state.imageURLArray})
+    })
+  }
+
+  setSelectedMarkerImageURL = async (url) => {
+    this.setState({imageURL: url})
+    // this.state.imageURLArray.forEach(marker => {
+    //   if (this.state.selectedMarker) {
+    //     console.log('hello')
+    //   if (marker.id === this.state.selectedMarker.id) {
+    //     this.setState({imageURL: marker.URL})
+    //   }
+    // }
+    // })
   }
 
   setTempCoordinate = (data) => {
@@ -65,17 +96,7 @@ export default class MapScreen extends React.Component {
   }
 
   hideMarkerDetail = () => {
-    this.setState({ showMarkerDetail: false})
-  }
-
-  showTakePicture = () => {
-    this.setState({ showMarkerDetail: false})
-    this.setState({ showTakePicture: true})
-  }
-
-  hideTakePicture = () => {
-    this.setState({ showTakePicture: false})
-    this.setState({ showMarkerDetail: true})
+    this.setState({ imageURL: null, showMarkerDetail: false})
   }
 
   showUploadPicture = () => {
@@ -108,18 +129,13 @@ export default class MapScreen extends React.Component {
           hideEditMarkerAndGoBackToMarkerDetail={this.hideEditMarkerAndGoBackToMarkerDetail}
         />
       )
-    } else if (this.state.showTakePicture === true) {
-      return (
-        <TakePicture
-          hideTakePicture={this.hideTakePicture}
-        />
-      )
     } else if (this.state.showUploadPicture === true) {
       return (
         <PictureUpload
           hideUploadPicture={this.hideUploadPicture}
           image={this.state.image}
           uploading={this.state.uploading}
+          selectedMarker={this.state.selectedMarker}
         />
       )
       } else if (this.state.showMarkerDetail === true) {
@@ -131,11 +147,12 @@ export default class MapScreen extends React.Component {
           showUploadPicture={this.showUploadPicture}
           showTakePicture={this.showTakePicture}
           setUserID={this.setUserID}
+          imageURLArray={this.state.imageURLArray}
+          imageURL={this.state.imageURL}
           userID={this.userID}
           user={this.user}
         />
       )
-    
     } else {
       return (
         <React.Fragment>
@@ -147,6 +164,8 @@ export default class MapScreen extends React.Component {
             showEditMarkerForm={this.showEditMarkerForm}
             selectedMarker={this.state.selectedMarker}
             showMarkerDetail={this.showMarkerDetail}
+            imageURLArray={this.state.imageURLArray}
+            setSelectedMarkerImageURL={this.setSelectedMarkerImageURL}
             setUserID={this.setUserID}
             userID={this.userID}
           />

@@ -21,17 +21,14 @@ export default class Map extends React.Component {
       tempCoordinate: {},
     }
     this.dbRef = firebase.firestore().collection('markers');
-    this.storageRef = firebase.storage();
     this.markerArray = [];
-    this.imageURLArray = [];
+    this.imageURLArray = props.imageURLArray
     this.user = firebase.auth().currentUser;
     this.users = firebase.firestore().collection('users');
   }
 
   componentDidMount() {
     this.getMarkers()
-    this.getImages()
-    console.log(this.markerArray)
   }
 
   componentWillUnmount() {
@@ -48,18 +45,6 @@ export default class Map extends React.Component {
             }
         })
       this.setState({markerArray: this.markerArray})
-    })
-  }
-
-  //saves image URLs to an array for use in other areas
-  getImages = async () => {
-    this.storageRef.ref().listAll().then((result) => {
-      result.items.forEach((imageRef) => {
-        imageRef.getDownloadURL().then((url) => {
-          this.imageURLArray.push({id: imageRef._delegate._location.path_.slice(0, -4), URL: url})
-        })
-      })
-      this.setState({imageURLArray: this.imageURLArray})
     })
   }
 
@@ -88,12 +73,18 @@ export default class Map extends React.Component {
   markerPress = async (event) => {
     const coord = event.nativeEvent.coordinate.latitude
     this.props.selectedMarker.shift()
+    //should pass in and use markerArray instead
     this.dbRef.get()
       .then(snapshot => {
         snapshot.docs.forEach(marker => {
           // if (marker._delegate._document.data.value.mapValue.fields.coordinate.mapValue.fields.latitude['doubleValue'] == coord) {
           if (marker.data().coordinate.latitude == coord) {
             this.props.selectedMarker.push(marker.id)
+            this.imageURLArray.forEach(imageURL => {
+              if (imageURL.id = marker.id) {
+                this.props.setSelectedMarkerImageURL(imageURL.URL)
+              }
+            })
             this.props.showMarkerDetail()
           }
         })
